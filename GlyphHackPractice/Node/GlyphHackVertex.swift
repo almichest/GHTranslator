@@ -11,24 +11,18 @@ import QuartzCore
 
 class GlyphHackVertex: SKSpriteNode {
     
-    let index: Int
+    private(set) var index: Int = -1
     let shape = CGRectMake(10, 10, 50, 50)
     
-    init(index: Int) {
+    private override init() {
+        let image = UIImage(named: "Circle")
+        let texture = SKTexture(image: image!)
+        super.init(texture: texture, color: UIColor.redColor(), size:texture.size())
+    }
+    
+    convenience init(index: Int) {
+        self.init()
         self.index = index
-        super.init(color: UIColor.redColor(), size: CGSizeMake(50, 50))
-        
-        self.size = CGSizeMake(50, 50)
-        let tile = SKSpriteNode(color: UIColor.redColor(), size: CGSizeMake(50, 50))
-        
-        let crop = SKCropNode()
-        let mask = SKShapeNode()
-        mask.path = CGPathCreateWithRoundedRect(shape, 4, 4, nil)
-        mask.fillColor = SKColor.redColor()
-        crop.maskNode = mask
-        crop.addChild(tile)
-        
-        self.addChild(crop)
     }
     
     required init?(coder aDecoder: NSCoder) {
