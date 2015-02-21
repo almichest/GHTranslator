@@ -10,7 +10,6 @@ import SpriteKit
 
 class GameScene: SKScene {
     
-    let vertexCount = 11
     private var rootNode:RootNode?
     
     override init(size: CGSize) {
@@ -22,28 +21,19 @@ class GameScene: SKScene {
     }
     
     override func didMoveToView(view: SKView) {
-        let rootNode = RootNode(color: SKColor.redColor(), size: self.size)
+        println(self.size)
+        let rootNode = RootNode(color: SKColor.redColor(), size: CGSizeMake(300, 300))
         super.addChild(rootNode)
         rootNode.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
         self.rootNode = rootNode
+        rootNode.prepare()
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             
-            let sprite = GlyphHackVertex(index: 0)
-            println(location)
-            
-            sprite.xScale = 0.5
-            sprite.yScale = 0.5
-            sprite.position = CGPoint(x: 0, y:0)
-            self.addChild(sprite)
         }
-    }
-    
-    override func addChild(node: SKNode) {
-        self.rootNode?.addChild(node)
     }
     
     override func update(currentTime: CFTimeInterval) {
