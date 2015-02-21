@@ -18,6 +18,8 @@
 		42CDD0E61A7CFEA0001FFC1F /* GlyphHackVertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDD0E51A7CFEA0001FFC1F /* GlyphHackVertex.swift */; };
 		42CDD11B1A7E4A4D001FFC1F /* RootNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDD11A1A7E4A4D001FFC1F /* RootNode.swift */; };
 		42D559A31A9895D70091A490 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D559A21A9895D70091A490 /* Log.swift */; };
+		42D559A61A98D5DA0091A490 /* Tracing.sks in Resources */ = {isa = PBXBuildFile; fileRef = 42D559A41A98D5DA0091A490 /* Tracing.sks */; };
+		42D559A71A98D5DA0091A490 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 42D559A51A98D5DA0091A490 /* spark.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,8 @@
 		42CDD0E51A7CFEA0001FFC1F /* GlyphHackVertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GlyphHackVertex.swift; path = Node/GlyphHackVertex.swift; sourceTree = "<group>"; };
 		42CDD11A1A7E4A4D001FFC1F /* RootNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNode.swift; sourceTree = "<group>"; };
 		42D559A21A9895D70091A490 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		42D559A41A98D5DA0091A490 /* Tracing.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Tracing.sks; path = Particle/Tracing.sks; sourceTree = "<group>"; };
+		42D559A51A98D5DA0091A490 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spark.png; path = Particle/spark.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,8 @@
 				42CDD0CE1A7CFC10001FFC1F /* LaunchScreen.xib */,
 				42CDD0BF1A7CFC10001FFC1F /* Supporting Files */,
 				42D559A21A9895D70091A490 /* Log.swift */,
+				42D559A41A98D5DA0091A490 /* Tracing.sks */,
+				42D559A51A98D5DA0091A490 /* spark.png */,
 			);
 			path = GlyphHackPractice;
 			sourceTree = "<group>";
@@ -216,8 +222,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				42CDD0D01A7CFC10001FFC1F /* LaunchScreen.xib in Resources */,
+				42D559A71A98D5DA0091A490 /* spark.png in Resources */,
 				42CDD0CD1A7CFC10001FFC1F /* Images.xcassets in Resources */,
 				42CDD0C41A7CFC10001FFC1F /* GameScene.sks in Resources */,
+				42D559A61A98D5DA0091A490 /* Tracing.sks in Resources */,
 				42CDD0CB1A7CFC10001FFC1F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

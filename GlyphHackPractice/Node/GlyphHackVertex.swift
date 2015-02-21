@@ -13,17 +13,18 @@ class GlyphHackVertex: SKSpriteNode {
     
     var delegate: GlyphHackVertexDelegate?
     private(set) var index: Int = -1
-    let shape = CGRectMake(10, 10, 50, 50)
     
     private override init() {
         let image = UIImage(named: "Circle")
         let texture = SKTexture(image: image!)
         super.init(texture: texture, color: UIColor.redColor(), size:texture.size())
+        
     }
     
     convenience init(index: Int) {
         self.init()
         self.index = index
+        self.name = "Vertex \(index)"
     }
     
     required init?(coder aDecoder: NSCoder) {

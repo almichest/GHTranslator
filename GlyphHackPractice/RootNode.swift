@@ -11,6 +11,9 @@ import SpriteKit
 class RootNode: SKSpriteNode {
     
     func prepare() {
+        
+        self.name = "RootNode"
+        
         let baseRadius = self.size.width / 2.0
         let radiuses = [baseRadius,
                         baseRadius,
@@ -48,10 +51,5 @@ class RootNode: SKSpriteNode {
             sprite.setScale(0.5)
             self.addChild(sprite)
         }
-    }
-    
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        let position = touches.anyObject()?.locationInNode(self)
-        Log.d("\(position)")
     }
 }

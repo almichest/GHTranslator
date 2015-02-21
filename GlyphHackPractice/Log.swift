@@ -11,9 +11,7 @@ import Foundation
 class Log: NSObject {
     
     class func d(message: String) {
-        #if DEBUG
-            println("\(__FUNCTION__) \(__FILE__) \(__LINE__) " + message)
-        #endif
+        println(message)
     }
 
 }

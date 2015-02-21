@@ -21,11 +21,56 @@ class GameScene: SKScene {
     }
     
     override func didMoveToView(view: SKView) {
-        println(self.size)
         let rootNode = RootNode(color: SKColor.redColor(), size: CGSizeMake(self.size.width, self.size.height))
         super.addChild(rootNode)
         rootNode.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
         self.rootNode = rootNode
         rootNode.prepare()
+    }
+    
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        Log.d("Began - \(position)")
+        
+        self.clearParticles()
+        
+        let touch: UITouch = touches.anyObject() as UITouch
+        let location = touch.locationInNode(self)
+        let node = self.nodeAtPoint(location)
+        
+        Log.d("\(node)")
+    }
+    
+    private func clearParticles() {
+        for node in self.children {
+            if (node as SKNode) != self.rootNode {
+                node.removeFromParent()
+            }
+        }
+    }
+    
+    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
+        Log.d("Moved - \(position)")
+        let touch: UITouch = touches.anyObject() as UITouch
+        let location = touch.locationInNode(self)
+        let node = self.nodeAtPoint(location)
+        
+        let particle = self.createTracingParticle()
+        particle.position = location
+        self.addChild(particle)
+        Log.d("\(node)")
+    }
+    
+    let particlePath = NSBundle.mainBundle().pathForResource("Tracing", ofType: "sks")
+    private func createTracingParticle() -> SKEmitterNode {
+        return NSKeyedUnarchiver.unarchiveObjectWithFile(particlePath!) as SKEmitterNode
+    }
+    
+    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        Log.d("Ended - \(position)")
+        let touch: UITouch = touches.anyObject() as UITouch
+        let location = touch.locationInNode(self)
+        let node = self.nodeAtPoint(location)
+        
+        Log.d("\(node)")
     }
 }
