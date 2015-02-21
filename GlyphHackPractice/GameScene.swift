@@ -31,11 +31,12 @@ class GameScene: SKScene {
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         Log.d("Began - \(position)")
         
-        self.clearParticles()
-        
         let touch: UITouch = touches.anyObject() as UITouch
         let location = touch.locationInNode(self)
         let node = self.nodeAtPoint(location)
+        
+        let particle = self.createTracingParticle(location)
+        self.addChild(particle)
         
         Log.d("\(node)")
     }
@@ -54,15 +55,18 @@ class GameScene: SKScene {
         let location = touch.locationInNode(self)
         let node = self.nodeAtPoint(location)
         
-        let particle = self.createTracingParticle()
-        particle.position = location
+        let particle = self.createTracingParticle(location)
         self.addChild(particle)
         Log.d("\(node)")
     }
     
     let particlePath = NSBundle.mainBundle().pathForResource("Tracing", ofType: "sks")
-    private func createTracingParticle() -> SKEmitterNode {
-        return NSKeyedUnarchiver.unarchiveObjectWithFile(particlePath!) as SKEmitterNode
+    private func createTracingParticle(point: CGPoint) -> SKEmitterNode {
+        let particle = NSKeyedUnarchiver.unarchiveObjectWithFile(particlePath!) as SKEmitterNode
+        particle.position = point
+        particle.setScale(2.0)
+        
+        return particle
     }
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
@@ -70,6 +74,10 @@ class GameScene: SKScene {
         let touch: UITouch = touches.anyObject() as UITouch
         let location = touch.locationInNode(self)
         let node = self.nodeAtPoint(location)
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2.0 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { () -> Void in
+            self.clearParticles()
+        }
         
         Log.d("\(node)")
     }
