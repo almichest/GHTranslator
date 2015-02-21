@@ -11,12 +11,21 @@ import SpriteKit
 class GameScene: SKScene {
     
     let vertexCount = 11
+    private var rootNode:RootNode?
     
-    override func didMoveToView(view: SKView) {
-        self.backgroundColor = SKColor.blueColor()
+    override init(size: CGSize) {
+        super.init(size: size)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
-    func prepare() {
+    override func didMoveToView(view: SKView) {
+        let rootNode = RootNode(color: SKColor.redColor(), size: self.size)
+        super.addChild(rootNode)
+        rootNode.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+        self.rootNode = rootNode
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -28,14 +37,13 @@ class GameScene: SKScene {
             
             sprite.xScale = 0.5
             sprite.yScale = 0.5
-            sprite.position = location
-            
-            let action = SKAction.rotateByAngle(CGFloat(M_PI), duration:1)
-            
-            sprite.runAction(SKAction.repeatActionForever(action))
-            
+            sprite.position = CGPoint(x: 0, y:0)
             self.addChild(sprite)
         }
+    }
+    
+    override func addChild(node: SKNode) {
+        self.rootNode?.addChild(node)
     }
     
     override func update(currentTime: CFTimeInterval) {

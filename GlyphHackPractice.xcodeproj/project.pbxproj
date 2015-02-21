@@ -16,6 +16,7 @@
 		42CDD0D01A7CFC10001FFC1F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42CDD0CE1A7CFC10001FFC1F /* LaunchScreen.xib */; };
 		42CDD0DC1A7CFC11001FFC1F /* GlyphHackPracticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDD0DB1A7CFC11001FFC1F /* GlyphHackPracticeTests.swift */; };
 		42CDD0E61A7CFEA0001FFC1F /* GlyphHackVertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDD0E51A7CFEA0001FFC1F /* GlyphHackVertex.swift */; };
+		42CDD11B1A7E4A4D001FFC1F /* RootNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDD11A1A7E4A4D001FFC1F /* RootNode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		42CDD0DA1A7CFC10001FFC1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42CDD0DB1A7CFC11001FFC1F /* GlyphHackPracticeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlyphHackPracticeTests.swift; sourceTree = "<group>"; };
 		42CDD0E51A7CFEA0001FFC1F /* GlyphHackVertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GlyphHackVertex.swift; path = Node/GlyphHackVertex.swift; sourceTree = "<group>"; };
+		42CDD11A1A7E4A4D001FFC1F /* RootNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				42CDD0E51A7CFEA0001FFC1F /* GlyphHackVertex.swift */,
+				42CDD11A1A7E4A4D001FFC1F /* RootNode.swift */,
 			);
 			name = Node;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 			files = (
 				42CDD0C61A7CFC10001FFC1F /* GameScene.swift in Sources */,
 				42CDD0E61A7CFEA0001FFC1F /* GlyphHackVertex.swift in Sources */,
+				42CDD11B1A7E4A4D001FFC1F /* RootNode.swift in Sources */,
 				42CDD0C81A7CFC10001FFC1F /* GameViewController.swift in Sources */,
 				42CDD0C21A7CFC10001FFC1F /* AppDelegate.swift in Sources */,
 			);
