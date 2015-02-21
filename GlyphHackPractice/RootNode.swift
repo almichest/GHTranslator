@@ -11,21 +11,37 @@ import SpriteKit
 class RootNode: SKSpriteNode {
     
     func prepare() {
-        let radius = (self.size.height / 2.0 - 20)
-        println(self.size)
-        let vertexes = [CGPointMake(0, radius),
-                        CGPointMake(0, -1.0 * radius)]
-//                        CGPointMake((self.size.width - 30), self.size.height / 6),
-//                        CGPointMake(-1.0 * (self.size.width - 60), self.size.height / 12),
-//                        CGPointMake((self.size.width - 60), self.size.height / 12)]
-//                        CGPointMake(0, self.size.height / 3),
-//                        CGPointMake(0, self.size.height / 3),
-//                        CGPointMake(0, self.size.height / 3),
-//                        CGPointMake(0, self.size.height / 3),
-//                        CGPointMake(0, self.size.height / 3),
-//                        CGPointMake(0, self.size.height / 3),
-//                        CGPointMake(0, self.size.height / 3),
-//                        CGPointMake(0, self.size.height / 3)]
+        let baseRadius = self.size.width / 2.0
+        let radiuses = [baseRadius,
+                        baseRadius,
+                        baseRadius,
+                        baseRadius / 2.0,
+                        baseRadius / 2.0,
+                        0,
+                        baseRadius / 2.0,
+                        baseRadius / 2.0,
+                        baseRadius,
+                        baseRadius,
+                        baseRadius]
+        
+        let radians:[CGFloat] = [CGFloat(M_PI) * (1.0 / 2.0),
+                                 CGFloat(M_PI) * (5.0 / 6.0),
+                                 CGFloat(M_PI) * (1.0 / 6.0),
+                                 CGFloat(M_PI) * (5.0 / 6.0),
+                                 CGFloat(M_PI) * (1.0 / 6.0),
+                                 0,
+                                 CGFloat(M_PI) * (7.0 / 6.0),
+                                 CGFloat(M_PI) * (11.0 / 6.0),
+                                 CGFloat(M_PI) * (7.0 / 6.0),
+                                 CGFloat(M_PI) * (11.0 / 6.0),
+                                 CGFloat(M_PI) * (3.0 / 2.0)]
+        
+        var vertexes:[CGPoint] = []
+        
+        for i in 0 ..< radiuses.count {
+//            vertexes[i] = CGPointMake(radiuses[i] * cos(radians[i]), radiuses[i] * sin(radians[i]))
+            vertexes.append(CGPointMake(radiuses[i] * cos(radians[i]), radiuses[i] * sin(radians[i])))
+        }
         
         for i in 0 ..< vertexes.count {
             let sprite = GlyphHackVertex(index: i)
