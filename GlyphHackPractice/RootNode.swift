@@ -39,7 +39,6 @@ class RootNode: SKSpriteNode {
         var vertexes:[CGPoint] = []
         
         for i in 0 ..< radiuses.count {
-//            vertexes[i] = CGPointMake(radiuses[i] * cos(radians[i]), radiuses[i] * sin(radians[i]))
             vertexes.append(CGPointMake(radiuses[i] * cos(radians[i]), radiuses[i] * sin(radians[i])))
         }
         
@@ -49,5 +48,10 @@ class RootNode: SKSpriteNode {
             sprite.setScale(0.5)
             self.addChild(sprite)
         }
+    }
+    
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        let position = touches.anyObject()?.locationInNode(self)
+        Log.d("\(position)")
     }
 }

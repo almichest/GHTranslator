@@ -28,14 +28,4 @@ class GameScene: SKScene {
         self.rootNode = rootNode
         rootNode.prepare()
     }
-    
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        for touch: AnyObject in touches {
-            let location = touch.locationInNode(self)
-            
-        }
-    }
-    
-    override func update(currentTime: CFTimeInterval) {
-    }
 }

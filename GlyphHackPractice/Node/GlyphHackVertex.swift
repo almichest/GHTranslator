@@ -11,6 +11,7 @@ import QuartzCore
 
 class GlyphHackVertex: SKSpriteNode {
     
+    var delegate: GlyphHackVertexDelegate?
     private(set) var index: Int = -1
     let shape = CGRectMake(10, 10, 50, 50)
     
@@ -29,4 +30,11 @@ class GlyphHackVertex: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        Log.d("Touched : \(self.index)")
+    }
+}
+
+protocol GlyphHackVertexDelegate {
+    func didTouchVertexAtIndex(index: Int)
 }
