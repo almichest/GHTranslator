@@ -64,8 +64,6 @@ class GameScene: SKScene {
     private func createTracingParticle(point: CGPoint) -> SKEmitterNode {
         let particle = NSKeyedUnarchiver.unarchiveObjectWithFile(particlePath!) as SKEmitterNode
         particle.position = point
-        particle.setScale(2.0)
-        
         return particle
     }
     
