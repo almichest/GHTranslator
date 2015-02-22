@@ -20,6 +20,7 @@
 		42D559A31A9895D70091A490 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D559A21A9895D70091A490 /* Log.swift */; };
 		42D559A61A98D5DA0091A490 /* Tracing.sks in Resources */ = {isa = PBXBuildFile; fileRef = 42D559A41A98D5DA0091A490 /* Tracing.sks */; };
 		42D559A71A98D5DA0091A490 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 42D559A51A98D5DA0091A490 /* spark.png */; };
+		42D559A91A9A08C00091A490 /* GlyphTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D559A81A9A08C00091A490 /* GlyphTypes.swift */; };
 		42F4FC191A99BA0100833C21 /* Glyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F4FC181A99BA0100833C21 /* Glyph.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		42D559A21A9895D70091A490 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		42D559A41A98D5DA0091A490 /* Tracing.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = Tracing.sks; path = Particle/Tracing.sks; sourceTree = "<group>"; };
 		42D559A51A98D5DA0091A490 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spark.png; path = Particle/spark.png; sourceTree = "<group>"; };
+		42D559A81A9A08C00091A490 /* GlyphTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlyphTypes.swift; sourceTree = "<group>"; };
 		42F4FC181A99BA0100833C21 /* Glyph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Glyph.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				42F4FC181A99BA0100833C21 /* Glyph.swift */,
+				42D559A81A9A08C00091A490 /* GlyphTypes.swift */,
 			);
 			path = Glyph;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				42CDD0E61A7CFEA0001FFC1F /* GlyphHackVertex.swift in Sources */,
 				42F4FC191A99BA0100833C21 /* Glyph.swift in Sources */,
 				42D559A31A9895D70091A490 /* Log.swift in Sources */,
+				42D559A91A9A08C00091A490 /* GlyphTypes.swift in Sources */,
 				42CDD11B1A7E4A4D001FFC1F /* RootNode.swift in Sources */,
 				42CDD0C81A7CFC10001FFC1F /* GameViewController.swift in Sources */,
 				42CDD0C21A7CFC10001FFC1F /* AppDelegate.swift in Sources */,
