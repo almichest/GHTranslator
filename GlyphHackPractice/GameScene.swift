@@ -10,13 +10,21 @@ import SpriteKit
 
 class GameScene: SKScene {
     
-    private var rootNode:RootNode?
+    private var rootNode: RootNode?
+    private var currentPath: [Glyph.Path]
+    private var lastTouchedIndex: Int
     
     override init(size: CGSize) {
+        self.currentPath = []
+        self.currentPath.reserveCapacity(50)
+        self.lastTouchedIndex = -1
         super.init(size: size)
     }
 
     required init?(coder aDecoder: NSCoder) {
+        self.currentPath = []
+        self.currentPath.reserveCapacity(50)
+        self.lastTouchedIndex = -1
         super.init(coder: aDecoder)
     }
     
@@ -30,14 +38,15 @@ class GameScene: SKScene {
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         Log.d("Began - \(position)")
+        self.currentPath.removeAll(keepCapacity: true)
         
         let touch: UITouch = touches.anyObject() as UITouch
         let location = touch.locationInNode(self)
         let node = self.nodeAtPoint(location)
         
-        let particle = self.createTracingParticle(location)
-        self.addChild(particle)
-        
+//        let particle = self.createTracingParticle(location)
+//        self.addChild(particle)
+//        
         Log.d("\(node)")
     }
     
@@ -55,9 +64,34 @@ class GameScene: SKScene {
         let location = touch.locationInNode(self)
         let node = self.nodeAtPoint(location)
         
-        let particle = self.createTracingParticle(location)
-        self.addChild(particle)
+//        let particle = self.createTracingParticle(location)
+//        self.addChild(particle)
+        self.handleNodeTouch(node)
         Log.d("\(node)")
+    }
+    
+    private func handleNodeTouch(node: SKNode) {
+        if !(node is GlyphHackVertex) {
+            return
+        }
+        
+        let vertex = node as GlyphHackVertex
+        
+        let index = vertex.index
+        
+        if(self.lastTouchedIndex < 0) {
+            self.lastTouchedIndex = index
+            return
+        }
+        
+        if index != self.lastTouchedIndex {
+            
+            let point1 = index < self.lastTouchedIndex ? index : self.lastTouchedIndex
+            let point2 = index > self.lastTouchedIndex ? index : self.lastTouchedIndex
+            
+            self.currentPath.append(Glyph.Path(point1: point1, point2: point2))
+            self.lastTouchedIndex = index
+        }
     }
     
     let particlePath = NSBundle.mainBundle().pathForResource("Tracing", ofType: "sks")
@@ -76,6 +110,8 @@ class GameScene: SKScene {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2.0 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { () -> Void in
             self.clearParticles()
         }
+        
+        self.lastTouchedIndex = -1
         
         Log.d("\(node)")
     }

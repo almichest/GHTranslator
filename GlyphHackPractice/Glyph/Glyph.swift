@@ -39,7 +39,7 @@ public class Glyph: NSObject {
         }
         
         override public func isEqual(object: AnyObject?) -> Bool {
-            var another = object as Path
+            let another = object as Path
             return ((self.point1 == another.point1) && (self.point2 == another.point2));
         }
     }

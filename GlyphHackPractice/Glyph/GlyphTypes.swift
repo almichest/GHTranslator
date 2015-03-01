@@ -15,6 +15,8 @@ enum GlyphType: String {
     
     case Advance                                        = "ADVANCE"
     
+    case After                                          = "AFTER"
+    
     case Again                                          = "AGAIN"
     case Repeat                                         = "REPEAT"
     

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42165D121AA2F0EB001EC0F5 /* GlyphGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42165D111AA2F0EB001EC0F5 /* GlyphGenerator.swift */; };
 		42CDD0C21A7CFC10001FFC1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDD0C11A7CFC10001FFC1F /* AppDelegate.swift */; };
 		42CDD0C41A7CFC10001FFC1F /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 42CDD0C31A7CFC10001FFC1F /* GameScene.sks */; };
 		42CDD0C61A7CFC10001FFC1F /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDD0C51A7CFC10001FFC1F /* GameScene.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		42165D111AA2F0EB001EC0F5 /* GlyphGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlyphGenerator.swift; sourceTree = "<group>"; };
 		42CDD0BC1A7CFC10001FFC1F /* GlyphHackPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlyphHackPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42CDD0C01A7CFC10001FFC1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42CDD0C11A7CFC10001FFC1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			children = (
 				42F4FC181A99BA0100833C21 /* Glyph.swift */,
 				42D559A81A9A08C00091A490 /* GlyphTypes.swift */,
+				42165D111AA2F0EB001EC0F5 /* GlyphGenerator.swift */,
 			);
 			path = Glyph;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 					};
 					42CDD0D41A7CFC10001FFC1F = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 5M2EQKMGE5;
 						TestTargetID = 42CDD0BB1A7CFC10001FFC1F;
 					};
 				};
@@ -263,6 +267,7 @@
 				42CDD0E61A7CFEA0001FFC1F /* GlyphHackVertex.swift in Sources */,
 				42F4FC191A99BA0100833C21 /* Glyph.swift in Sources */,
 				42D559A31A9895D70091A490 /* Log.swift in Sources */,
+				42165D121AA2F0EB001EC0F5 /* GlyphGenerator.swift in Sources */,
 				42D559A91A9A08C00091A490 /* GlyphTypes.swift in Sources */,
 				42CDD11B1A7E4A4D001FFC1F /* RootNode.swift in Sources */,
 				42CDD0C81A7CFC10001FFC1F /* GameViewController.swift in Sources */,
@@ -395,7 +400,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "df2c9d89-da69-4b3d-b8c2-335ae41ada84";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -409,7 +414,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "df2c9d89-da69-4b3d-b8c2-335ae41ada84";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -417,6 +422,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -428,6 +435,7 @@
 				INFOPLIST_FILE = GlyphHackPracticeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GlyphHackPractice.app/GlyphHackPractice";
 			};
 			name = Debug;
@@ -436,6 +444,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -443,6 +453,7 @@
 				INFOPLIST_FILE = GlyphHackPracticeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GlyphHackPractice.app/GlyphHackPractice";
 			};
 			name = Release;
