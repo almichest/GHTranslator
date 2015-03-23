@@ -44,9 +44,9 @@ class GameScene: SKScene {
         let location = touch.locationInNode(self)
         let node = self.nodeAtPoint(location)
         
-//        let particle = self.createTracingParticle(location)
-//        self.addChild(particle)
-//        
+        let particle = self.createTracingParticle(location)
+        self.addChild(particle)
+        
         Log.d("\(node)")
     }
     
@@ -64,8 +64,8 @@ class GameScene: SKScene {
         let location = touch.locationInNode(self)
         let node = self.nodeAtPoint(location)
         
-//        let particle = self.createTracingParticle(location)
-//        self.addChild(particle)
+        let particle = self.createTracingParticle(location)
+        self.addChild(particle)
         self.handleNodeTouch(node)
         Log.d("\(node)")
     }
@@ -94,7 +94,7 @@ class GameScene: SKScene {
         }
     }
     
-    let particlePath = NSBundle.mainBundle().pathForResource("Tracing", ofType: "sks")
+    let particlePath = NSBundle.mainBundle().pathForResource("TracingParticle", ofType: "sks")
     private func createTracingParticle(point: CGPoint) -> SKEmitterNode {
         let particle = NSKeyedUnarchiver.unarchiveObjectWithFile(particlePath!) as SKEmitterNode
         particle.position = point
