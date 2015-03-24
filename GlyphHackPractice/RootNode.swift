@@ -8,10 +8,9 @@
 
 import SpriteKit
 
-class RootNode: SKSpriteNode {
+class RootNode: SKSpriteNode{
     
     func prepare() {
-        
         self.name = "RootNode"
         
         let baseRadius = self.size.width / 2.0
@@ -52,4 +51,6 @@ class RootNode: SKSpriteNode {
             self.addChild(sprite)
         }
     }
+    
 }
+

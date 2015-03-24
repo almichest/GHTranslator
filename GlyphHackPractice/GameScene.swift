@@ -8,10 +8,9 @@
 
 import SpriteKit
 
-class GameScene: SKScene {
+class GameScene: SKScene{
     
     private var rootNode: RootNode?
-//    private var currentPath: [Glyph.Path]
     private var currentPath: Set<Glyph.Path>
     private var lastTouchedIndex: Int
     private var tracingParticles: [SKEmitterNode]
@@ -39,15 +38,19 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        
         self.currentPath.removeAll(keepCapacity: true)
-        
+        self.handleTouches(touches)
+    }
+    
+    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+        self.handleTouches(touches)
+    }
+    
+    private func handleTouches(touches: Set<NSObject>) {
         let touch: UITouch = touches.first as! UITouch
         let location = touch.locationInNode(self)
         let node = self.nodeAtPoint(location)
-        
-        let particle = self.createTracingParticle(location)
-        self.addChild(particle)
+        self.handleNodeTouch(node)
     }
     
     private func clearTracingParticles() {
@@ -57,17 +60,7 @@ class GameScene: SKScene {
         self.tracingParticles.removeAll(keepCapacity: true)
     }
     
-    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
-        let touch: UITouch = touches.first as! UITouch
-        let location = touch.locationInNode(self)
-        let node = self.nodeAtPoint(location)
-        
-        let particle = self.createTracingParticle(location)
-        self.addChild(particle)
-        self.handleNodeTouch(node)
-    }
-    
-    private func handleNodeTouch(node: SKNode) {
+    private func handleNodeTouch(node: SKNode?) {
         if !(node is GlyphHackVertex) {
             return
         }
@@ -75,6 +68,8 @@ class GameScene: SKScene {
         let vertex = node as! GlyphHackVertex
         
         let index = vertex.index
+        
+        Log.d("Node with index \(index) touched")
         
         if(self.lastTouchedIndex < 0) {
             self.lastTouchedIndex = index
@@ -91,12 +86,12 @@ class GameScene: SKScene {
         }
     }
     
-    private func createTracingParticle(point: CGPoint) -> SKEmitterNode {
+    private func createTracingParticle(point: CGPoint) {
         let particlePath = NSBundle.mainBundle().pathForResource("TracingParticle", ofType: "sks")
         let particle = NSKeyedUnarchiver.unarchiveObjectWithFile(particlePath!) as! SKEmitterNode
         particle.position = point
         self.tracingParticles.append(particle)
-        return particle
+        self.addChild(particle)
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -107,4 +102,5 @@ class GameScene: SKScene {
         self.clearTracingParticles()
         self.lastTouchedIndex = -1
     }
+    
 }
