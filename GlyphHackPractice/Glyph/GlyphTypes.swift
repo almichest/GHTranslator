@@ -318,4 +318,7 @@ enum GlyphType: String {
     
     case You                                            = "YOU"
     case Other                                          = "OTHER"
+    
+    case UserInteractionResult                          = "USER_INTERACTION_RESULT"
+    
 }

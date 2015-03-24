@@ -11,11 +11,12 @@ import UIKit
 public class Glyph: NSObject {
     
     
-    var paths: [Path]?
+    var paths: Set<Path>
     let type: GlyphType
     
     init(type: GlyphType) {
         self.type = type
+        self.paths = []
         super.init()
         
         self.prepare()
@@ -23,6 +24,11 @@ public class Glyph: NSObject {
     
     private func prepare() {
         
+    }
+    
+    public override func isEqual(object: AnyObject?) -> Bool {
+        let another = object as! Glyph
+        return (another.paths.isSubsetOf(self.paths) && (another.paths.isSupersetOf(self.paths)))
     }
     
     /* Internal class */
@@ -57,5 +63,6 @@ public class Glyph: NSObject {
                 return "\(self.point1) - \(self.point2)"
             }
         }
+        
     }
 }

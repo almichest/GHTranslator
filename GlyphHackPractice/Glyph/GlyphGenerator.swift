@@ -10,7 +10,7 @@ import UIKit
 
 class GlyphGenerator: NSObject {
     
-    class func createGlyphWithType(type: GlyphType) -> Glyph? {
+    class func createGlyphWithType(type: GlyphType, path: Set<Glyph.Path>) -> Glyph {
         let glyph = Glyph(type: type)
         switch type {
         case .Abandon:
@@ -362,7 +362,12 @@ class GlyphGenerator: NSObject {
             glyph.paths = [Glyph.Path(point1: 0, point2: 1)]
 
         case .Truth:
-            glyph.paths = [Glyph.Path(point1: 0, point2: 1)]
+            glyph.paths = [Glyph.Path(point1: 3, point2: 5),
+                           Glyph.Path(point1: 3, point2: 6),
+                           Glyph.Path(point1: 4, point2: 5),
+                           Glyph.Path(point1: 4, point2: 7),
+                           Glyph.Path(point1: 5, point2: 6),
+                           Glyph.Path(point1: 5, point2: 7)]
 
         case .Use:
             glyph.paths = [Glyph.Path(point1: 0, point2: 1)]
@@ -387,6 +392,9 @@ class GlyphGenerator: NSObject {
 
         case .You, .Other:
             glyph.paths = [Glyph.Path(point1: 0, point2: 1)]
+            
+        case .UserInteractionResult:
+            glyph.paths = path
         }
         
         return glyph
