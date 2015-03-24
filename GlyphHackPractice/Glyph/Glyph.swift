@@ -49,7 +49,7 @@ public class Glyph: NSObject {
         }
         
         override public var hash: Int {
-            return "\(self.point1)\(self.point2)".hash
+            return self.description.hash
         }
         
         override public var description: String {
