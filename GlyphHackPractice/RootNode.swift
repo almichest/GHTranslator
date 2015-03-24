@@ -11,6 +11,9 @@ import SpriteKit
 class RootNode: SKSpriteNode {
     
     func prepare() {
+        
+        self.name = "RootNode"
+        
         let baseRadius = self.size.width / 2.0
         let radiuses = [baseRadius,
                         baseRadius,
@@ -39,7 +42,6 @@ class RootNode: SKSpriteNode {
         var vertexes:[CGPoint] = []
         
         for i in 0 ..< radiuses.count {
-//            vertexes[i] = CGPointMake(radiuses[i] * cos(radians[i]), radiuses[i] * sin(radians[i]))
             vertexes.append(CGPointMake(radiuses[i] * cos(radians[i]), radiuses[i] * sin(radians[i])))
         }
         
