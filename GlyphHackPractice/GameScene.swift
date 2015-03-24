@@ -69,8 +69,6 @@ class GameScene: SKScene{
         
         let index = vertex.index
         
-        Log.d("Node with index \(index) touched")
-        
         if(self.lastTouchedIndex < 0) {
             self.lastTouchedIndex = index
             return
@@ -84,6 +82,8 @@ class GameScene: SKScene{
             self.currentPath.insert(Glyph.Path(point1: point1, point2: point2))
             self.lastTouchedIndex = index
         }
+        
+        Log.d("touched : \(self.currentPath)")
     }
     
     private func createTracingParticle(point: CGPoint) {
@@ -101,6 +101,8 @@ class GameScene: SKScene{
         
         self.clearTracingParticles()
         self.lastTouchedIndex = -1
+        
+        Log.d("touched : \(self.currentPath)")
     }
     
 }

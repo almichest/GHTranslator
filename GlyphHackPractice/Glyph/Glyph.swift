@@ -26,7 +26,7 @@ public class Glyph: NSObject {
     }
     
     /* Internal class */
-    public class Path: NSObject {
+    public class Path: NSObject, NSCopying {
         
         /* Point2 must be larger than Point1. */
         let point1: Int
@@ -38,9 +38,24 @@ public class Glyph: NSObject {
             self.point2 = point2
         }
         
+        public func copyWithZone(zone: NSZone) -> AnyObject {
+            return Path(point1: self.point1, point2: self.point2)
+        }
+        
         override public func isEqual(object: AnyObject?) -> Bool {
             let another = object as! Path
+            let hash = self.hash
             return ((self.point1 == another.point1) && (self.point2 == another.point2));
+        }
+        
+        override public var hash: Int {
+            return "\(self.point1)\(self.point2)".hash
+        }
+        
+        override public var description: String {
+            get {
+                return "\(self.point1) - \(self.point2)"
+            }
         }
     }
 }
