@@ -13,11 +13,13 @@ class GameScene: SKScene {
     private var rootNode: RootNode?
     private var currentPath: [Glyph.Path]
     private var lastTouchedIndex: Int
+    private var tracingParticles: [SKEmitterNode]
     
     override init(size: CGSize) {
         self.currentPath = []
         self.currentPath.reserveCapacity(50)
         self.lastTouchedIndex = -1
+        self.tracingParticles = []
         super.init(size: size)
     }
 
@@ -25,19 +27,20 @@ class GameScene: SKScene {
         self.currentPath = []
         self.currentPath.reserveCapacity(50)
         self.lastTouchedIndex = -1
+        self.tracingParticles = []
         super.init(coder: aDecoder)
     }
     
     override func didMoveToView(view: SKView) {
         let rootNode = RootNode(color: SKColor.redColor(), size: CGSizeMake(self.size.width, self.size.height))
-        super.addChild(rootNode)
+        self.addChild(rootNode)
         rootNode.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
         self.rootNode = rootNode
         rootNode.prepare()
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        Log.d("Began - \(position)")
+        
         self.currentPath.removeAll(keepCapacity: true)
         
         let touch: UITouch = touches.anyObject() as UITouch
@@ -46,20 +49,16 @@ class GameScene: SKScene {
         
         let particle = self.createTracingParticle(location)
         self.addChild(particle)
-        
-        Log.d("\(node)")
     }
     
-    private func clearParticles() {
-        for node in self.children {
-            if (node as SKNode) != self.rootNode {
-                node.removeFromParent()
-            }
+    private func clearTracingParticles() {
+        for particle in self.tracingParticles {
+            particle.removeFromParent()
         }
+        self.tracingParticles.removeAll(keepCapacity: true)
     }
     
     override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        Log.d("Moved - \(position)")
         let touch: UITouch = touches.anyObject() as UITouch
         let location = touch.locationInNode(self)
         let node = self.nodeAtPoint(location)
@@ -67,7 +66,6 @@ class GameScene: SKScene {
         let particle = self.createTracingParticle(location)
         self.addChild(particle)
         self.handleNodeTouch(node)
-        Log.d("\(node)")
     }
     
     private func handleNodeTouch(node: SKNode) {
@@ -94,25 +92,20 @@ class GameScene: SKScene {
         }
     }
     
-    let particlePath = NSBundle.mainBundle().pathForResource("TracingParticle", ofType: "sks")
     private func createTracingParticle(point: CGPoint) -> SKEmitterNode {
+        let particlePath = NSBundle.mainBundle().pathForResource("TracingParticle", ofType: "sks")
         let particle = NSKeyedUnarchiver.unarchiveObjectWithFile(particlePath!) as SKEmitterNode
         particle.position = point
+        self.tracingParticles.append(particle)
         return particle
     }
     
     override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        Log.d("Ended - \(position)")
         let touch: UITouch = touches.anyObject() as UITouch
         let location = touch.locationInNode(self)
         let node = self.nodeAtPoint(location)
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(2.0 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { () -> Void in
-            self.clearParticles()
-        }
-        
+        self.clearTracingParticles()
         self.lastTouchedIndex = -1
-        
-        Log.d("\(node)")
     }
 }

@@ -43,5 +43,4 @@ public class Glyph: NSObject {
             return ((self.point1 == another.point1) && (self.point2 == another.point2));
         }
     }
-    
 }
