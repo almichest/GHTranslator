@@ -14,7 +14,7 @@ class GlyphHackVertex: SKSpriteNode {
     var delegate: GlyphHackVertexDelegate?
     private(set) var index: Int = -1
     
-    private override init() {
+    private init() {
         let image = UIImage(named: "Circle")
         let texture = SKTexture(image: image!)
         super.init(texture: texture, color: UIColor.redColor(), size:texture.size())
@@ -31,7 +31,7 @@ class GlyphHackVertex: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         Log.d("Touched : \(self.index)")
     }
 }

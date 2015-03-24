@@ -11,13 +11,13 @@ import SpriteKit
 class GameScene: SKScene {
     
     private var rootNode: RootNode?
-    private var currentPath: [Glyph.Path]
+//    private var currentPath: [Glyph.Path]
+    private var currentPath: Set<Glyph.Path>
     private var lastTouchedIndex: Int
     private var tracingParticles: [SKEmitterNode]
     
     override init(size: CGSize) {
         self.currentPath = []
-        self.currentPath.reserveCapacity(50)
         self.lastTouchedIndex = -1
         self.tracingParticles = []
         super.init(size: size)
@@ -25,7 +25,6 @@ class GameScene: SKScene {
 
     required init?(coder aDecoder: NSCoder) {
         self.currentPath = []
-        self.currentPath.reserveCapacity(50)
         self.lastTouchedIndex = -1
         self.tracingParticles = []
         super.init(coder: aDecoder)
@@ -39,11 +38,11 @@ class GameScene: SKScene {
         rootNode.prepare()
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         
         self.currentPath.removeAll(keepCapacity: true)
         
-        let touch: UITouch = touches.anyObject() as UITouch
+        let touch: UITouch = touches.first as! UITouch
         let location = touch.locationInNode(self)
         let node = self.nodeAtPoint(location)
         
@@ -58,8 +57,8 @@ class GameScene: SKScene {
         self.tracingParticles.removeAll(keepCapacity: true)
     }
     
-    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
-        let touch: UITouch = touches.anyObject() as UITouch
+    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+        let touch: UITouch = touches.first as! UITouch
         let location = touch.locationInNode(self)
         let node = self.nodeAtPoint(location)
         
@@ -73,7 +72,7 @@ class GameScene: SKScene {
             return
         }
         
-        let vertex = node as GlyphHackVertex
+        let vertex = node as! GlyphHackVertex
         
         let index = vertex.index
         
@@ -87,21 +86,21 @@ class GameScene: SKScene {
             let point1 = index < self.lastTouchedIndex ? index : self.lastTouchedIndex
             let point2 = index > self.lastTouchedIndex ? index : self.lastTouchedIndex
             
-            self.currentPath.append(Glyph.Path(point1: point1, point2: point2))
+            self.currentPath.insert(Glyph.Path(point1: point1, point2: point2))
             self.lastTouchedIndex = index
         }
     }
     
     private func createTracingParticle(point: CGPoint) -> SKEmitterNode {
         let particlePath = NSBundle.mainBundle().pathForResource("TracingParticle", ofType: "sks")
-        let particle = NSKeyedUnarchiver.unarchiveObjectWithFile(particlePath!) as SKEmitterNode
+        let particle = NSKeyedUnarchiver.unarchiveObjectWithFile(particlePath!) as! SKEmitterNode
         particle.position = point
         self.tracingParticles.append(particle)
         return particle
     }
     
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        let touch: UITouch = touches.anyObject() as UITouch
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+        let touch: UITouch = touches.first as! UITouch
         let location = touch.locationInNode(self)
         let node = self.nodeAtPoint(location)
         
