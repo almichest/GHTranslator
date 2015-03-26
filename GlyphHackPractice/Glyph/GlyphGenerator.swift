@@ -10,7 +10,7 @@ import UIKit
 
 class GlyphGenerator: NSObject {
     
-    class func createGlyphWithType(type: GlyphType, path: Set<Glyph.GlyphPath>) -> Glyph {
+    class func createGlyphWithType(type: GlyphType, path: Set<Glyph.GlyphPath>?) -> Glyph {
         let glyph = Glyph(type: type)
         switch type {
         case .Abandon:
@@ -62,7 +62,14 @@ class GlyphGenerator: NSObject {
             glyph.paths = [Glyph.GlyphPath(point1: 0, point2: 1)]
 
         case .Chaos, .Disorder:
-            glyph.paths = [Glyph.GlyphPath(point1: 0, point2: 1)]
+            glyph.paths = [Glyph.GlyphPath(point1: 0, point2: 1),
+                           Glyph.GlyphPath(point1: 0, point2: 2),
+                           Glyph.GlyphPath(point1: 1, point2: 8),
+                           Glyph.GlyphPath(point1: 2, point2: 4),
+                           Glyph.GlyphPath(point1: 4, point2: 5),
+                           Glyph.GlyphPath(point1: 5, point2: 6),
+                           Glyph.GlyphPath(point1: 6, point2: 10),
+                          ]
 
         case .Clear:
             glyph.paths = [Glyph.GlyphPath(point1: 0, point2: 1)]
@@ -394,7 +401,7 @@ class GlyphGenerator: NSObject {
             glyph.paths = [Glyph.GlyphPath(point1: 0, point2: 1)]
             
         case .UserInteractionResult:
-            glyph.paths = path
+            glyph.paths = path!
         }
         
         return glyph

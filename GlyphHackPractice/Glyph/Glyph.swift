@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class Glyph: NSObject {
+public class Glyph: NSObject, NSCopying {
     
     
     var paths: Set<GlyphPath>
@@ -22,16 +22,26 @@ public class Glyph: NSObject {
         self.prepare()
     }
     
+    private convenience init(type: GlyphType, paths: Set<GlyphPath>) {
+        self.init(type: type)
+        self.paths = paths
+    }
+    
     private func prepare() {
         
     }
     
     public override func isEqual(object: AnyObject?) -> Bool {
-        let another = object as! Glyph
-        return (another.paths.isSubsetOf(self.paths) && (another.paths.isSupersetOf(self.paths)))
+        let another = (object as! Glyph).copy() as! Glyph
+        another.extractAllGlyphPaths()
+        let selfCopy = self.copy() as! Glyph
+        selfCopy.extractAllGlyphPaths()
+        Log.d("self - \(selfCopy)")
+        Log.d("another - \(another)")
+        return (selfCopy.paths.isSubsetOf(another.paths) && (selfCopy.paths.isSupersetOf(another.paths)))
     }
     
-    public func extractAllGlyphPaths() {
+    private func extractAllGlyphPaths() {
         var newGlyphPaths: Set<GlyphPath> = []
         for path in self.paths {
             let extracted = path.extract()
@@ -41,6 +51,17 @@ public class Glyph: NSObject {
         }
         self.paths = newGlyphPaths
     }
+    
+    public func copyWithZone(zone: NSZone) -> AnyObject {
+        return Glyph(type: self.type, paths: self.paths)
+    }
+    
+    override public var description: String {
+        get {
+            return "\(self.type.rawValue) - \(self.paths)"
+        }
+    }
+    
     
     /* Internal class */
     public class GlyphPath: NSObject, NSCopying {
@@ -96,7 +117,7 @@ public class Glyph: NSObject {
                 GlyphPath(point1: 5, point2: 8)    : [GlyphPath(point1: 5, point2: 6), GlyphPath(point1: 6, point2: 8)],
             ]
         
-        public func extract() -> Set<GlyphPath> {
+        private func extract() -> Set<GlyphPath> {
             let result = GlyphPath.extractingDictionary[self]
             return (result != nil) ? result! : [self]
         }
