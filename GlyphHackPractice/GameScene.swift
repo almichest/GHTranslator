@@ -11,14 +11,14 @@ import SpriteKit
 class GameScene: SKScene{
     
     private var rootNode: RootNode?
-    private var currentPath: Set<Glyph.Path>
+    private var currentGlyphPath: Set<Glyph.GlyphPath>
     private var lastTouchedIndex: Int
     private var tracingParticles: [SKEmitterNode]
     
     private let debugTarget: Glyph
     
     override init(size: CGSize) {
-        self.currentPath = []
+        self.currentGlyphPath = []
         self.lastTouchedIndex = -1
         self.tracingParticles = []
         self.debugTarget = GlyphGenerator.createGlyphWithType(GlyphType.Truth, path: [])
@@ -26,7 +26,7 @@ class GameScene: SKScene{
     }
 
     required init?(coder aDecoder: NSCoder) {
-        self.currentPath = []
+        self.currentGlyphPath = []
         self.lastTouchedIndex = -1
         self.tracingParticles = []
         self.debugTarget = GlyphGenerator.createGlyphWithType(GlyphType.Truth, path: [])
@@ -42,7 +42,7 @@ class GameScene: SKScene{
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        self.currentPath.removeAll(keepCapacity: true)
+        self.currentGlyphPath.removeAll(keepCapacity: true)
         self.handleTouches(touches)
     }
     
@@ -83,16 +83,16 @@ class GameScene: SKScene{
             let point1 = index < self.lastTouchedIndex ? index : self.lastTouchedIndex
             let point2 = index > self.lastTouchedIndex ? index : self.lastTouchedIndex
             
-            self.currentPath.insert(Glyph.Path(point1: point1, point2: point2))
+            self.currentGlyphPath.insert(Glyph.GlyphPath(point1: point1, point2: point2))
             self.lastTouchedIndex = index
         }
         
-        Log.d("touched : \(self.currentPath)")
+        Log.d("touched : \(self.currentGlyphPath)")
     }
     
     private func createTracingParticle(point: CGPoint) {
-        let particlePath = NSBundle.mainBundle().pathForResource("TracingParticle", ofType: "sks")
-        let particle = NSKeyedUnarchiver.unarchiveObjectWithFile(particlePath!) as! SKEmitterNode
+        let particleGlyphPath = NSBundle.mainBundle().pathForResource("TracingParticle", ofType: "sks")
+        let particle = NSKeyedUnarchiver.unarchiveObjectWithFile(particleGlyphPath!) as! SKEmitterNode
         particle.position = point
         self.tracingParticles.append(particle)
         self.addChild(particle)
@@ -106,7 +106,7 @@ class GameScene: SKScene{
         self.clearTracingParticles()
         self.lastTouchedIndex = -1
         
-        let result = GlyphGenerator.createGlyphWithType(GlyphType.UserInteractionResult, path: self.currentPath)
+        let result = GlyphGenerator.createGlyphWithType(GlyphType.UserInteractionResult, path: self.currentGlyphPath)
         
         Log.d("Debug target = \(self.debugTarget.paths)")
         Log.d("Result       = \(result.paths)")
@@ -116,7 +116,7 @@ class GameScene: SKScene{
             Log.d("NG")
         }
         
-        Log.d("touched : \(self.currentPath)")
+        Log.d("touched : \(self.currentGlyphPath)")
     }
     
 }

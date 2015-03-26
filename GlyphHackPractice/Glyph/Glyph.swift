@@ -11,7 +11,7 @@ import UIKit
 public class Glyph: NSObject {
     
     
-    var paths: Set<Path>
+    var paths: Set<GlyphPath>
     let type: GlyphType
     
     init(type: GlyphType) {
@@ -31,8 +31,19 @@ public class Glyph: NSObject {
         return (another.paths.isSubsetOf(self.paths) && (another.paths.isSupersetOf(self.paths)))
     }
     
+    public func extractAllGlyphPaths() {
+        var newGlyphPaths: Set<GlyphPath> = []
+        for path in self.paths {
+            let extracted = path.extract()
+            for extractedGlyphPath in extracted {
+                newGlyphPaths.insert(extractedGlyphPath)
+            }
+        }
+        self.paths = newGlyphPaths
+    }
+    
     /* Internal class */
-    public class Path: NSObject, NSCopying {
+    public class GlyphPath: NSObject, NSCopying {
         
         /* Point2 must be larger than Point1. */
         let point1: Int
@@ -45,11 +56,11 @@ public class Glyph: NSObject {
         }
         
         public func copyWithZone(zone: NSZone) -> AnyObject {
-            return Path(point1: self.point1, point2: self.point2)
+            return GlyphPath(point1: self.point1, point2: self.point2)
         }
         
         override public func isEqual(object: AnyObject?) -> Bool {
-            let another = object as! Path
+            let another = object as! GlyphPath
             let hash = self.hash
             return ((self.point1 == another.point1) && (self.point2 == another.point2));
         }
@@ -64,28 +75,30 @@ public class Glyph: NSObject {
             }
         }
         
-        public func extract() -> Set<Path> {
-            let key = [self.path1, self.path2]
-            let value = self.extractingDictionary[key]
-        }
+        private static let extractingDictionary: Dictionary<GlyphPath, Set<GlyphPath>> =
+            [
+                GlyphPath(point1: 0, point2: 8)    : [GlyphPath(point1: 0, point2: 3), GlyphPath(point1: 3, point2: 8)],
+                GlyphPath(point1: 0, point2: 9)    : [GlyphPath(point1: 0, point2: 4), GlyphPath(point1: 4, point2: 9)],
+                GlyphPath(point1: 0, point2: 10)   : [GlyphPath(point1: 0, point2: 5), GlyphPath(point1: 5, point2: 10)],
+                GlyphPath(point1: 1, point2: 5)    : [GlyphPath(point1: 1, point2: 3), GlyphPath(point1: 3, point2: 5)],
+                GlyphPath(point1: 1, point2: 7)    : [GlyphPath(point1: 1, point2: 3), GlyphPath(point1: 3, point2: 5), GlyphPath(point1: 5, point2: 7)],
+                GlyphPath(point1: 1, point2: 9)    : [GlyphPath(point1: 1, point2: 3), GlyphPath(point1: 3, point2: 5), GlyphPath(point1: 5, point2: 7), GlyphPath(point1: 7, point2: 9)],
+                GlyphPath(point1: 1, point2: 10)   : [GlyphPath(point1: 1, point2: 6), GlyphPath(point1: 6, point2: 10)],
+                GlyphPath(point1: 2, point2: 5)    : [GlyphPath(point1: 2, point2: 4), GlyphPath(point1: 4, point2: 5)],
+                GlyphPath(point1: 2, point2: 6)    : [GlyphPath(point1: 2, point2: 4), GlyphPath(point1: 4, point2: 5), GlyphPath(point1: 5, point2: 6)],
+                GlyphPath(point1: 2, point2: 8)    : [GlyphPath(point1: 2, point2: 4), GlyphPath(point1: 4, point2: 5), GlyphPath(point1: 5, point2: 6), GlyphPath(point1: 6, point2: 8)],
+                GlyphPath(point1: 2, point2: 10)   : [GlyphPath(point1: 2, point2: 7), GlyphPath(point1: 7, point2: 10)],
+                GlyphPath(point1: 3, point2: 7)    : [GlyphPath(point1: 3, point2: 5), GlyphPath(point1: 5, point2: 7)],
+                GlyphPath(point1: 3, point2: 9)    : [GlyphPath(point1: 3, point2: 5), GlyphPath(point1: 5, point2: 7), GlyphPath(point1: 7, point2: 9)],
+                GlyphPath(point1: 4, point2: 6)    : [GlyphPath(point1: 4, point2: 5), GlyphPath(point1: 5, point2: 6)],
+                GlyphPath(point1: 4, point2: 8)    : [GlyphPath(point1: 4, point2: 5), GlyphPath(point1: 5, point2: 6), GlyphPath(point1: 6, point2: 8)],
+                GlyphPath(point1: 5, point2: 9)    : [GlyphPath(point1: 5, point2: 7), GlyphPath(point1: 7, point2: 9)],
+                GlyphPath(point1: 5, point2: 8)    : [GlyphPath(point1: 5, point2: 6), GlyphPath(point1: 6, point2: 8)],
+            ]
         
-        private let extractingDictionary = [[0, 8]  : [[0, 3], [3, 8]],
-                                                   [0, 9]  : [[0, 4], [4, 9]],
-                                                   [0, 10] : [[0, 5], [5, 10]],
-                                                   [1, 5]  : [[1, 3], [3, 5]],
-                                                   [1, 7]  : [[1, 3], [3, 5], [5, 7]],
-                                                   [1, 9]  : [[1, 3], [3, 5], [5, 7], [7, 9]],
-                                                   [1, 10] : [[1, 6], [6, 10]],
-                                                   [2, 5]  : [[2, 4], [4, 5]],
-                                                   [2, 6]  : [[2, 4], [4, 5], [5, 6]],
-                                                   [2, 8]  : [[2, 4], [4, 5], [5, 6], [6, 9]],
-                                                   [2, 10] : [[2, 7], [7, 10]],
-                                                   [3, 7]  : [[3, 5], [5, 7]],
-                                                   [3, 9]  : [[3, 5], [5, 7], [7, 9]],
-                                                   [4, 6]  : [[4, 5], [5, 6]],
-                                                   [4, 8]  : [[4, 5], [5, 6], [6, 8]],
-                                                   [5, 9]  : [[5, 7], [7, 9]],
-                                                   [5, 8]  : [[5, 6], [6, 8]],
-                                                  ]
+        public func extract() -> Set<GlyphPath> {
+            let result = GlyphPath.extractingDictionary[self]
+            return (result != nil) ? result! : [self]
+        }
     }
 }

@@ -10,6 +10,9 @@
 		42165D121AA2F0EB001EC0F5 /* GlyphGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42165D111AA2F0EB001EC0F5 /* GlyphGenerator.swift */; };
 		4217044D1AC0346600969B2D /* TracingParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4217044B1AC0346600969B2D /* TracingParticle.sks */; };
 		4217044E1AC0346600969B2D /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 4217044C1AC0346600969B2D /* spark.png */; };
+		423259E51AC3A4A3004726FF /* Glyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F4FC181A99BA0100833C21 /* Glyph.swift */; };
+		423259E61AC3A878004726FF /* GlyphTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D559A81A9A08C00091A490 /* GlyphTypes.swift */; };
+		423259E71AC3A89F004726FF /* GlyphGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42165D111AA2F0EB001EC0F5 /* GlyphGenerator.swift */; };
 		42CDD0C21A7CFC10001FFC1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDD0C11A7CFC10001FFC1F /* AppDelegate.swift */; };
 		42CDD0C41A7CFC10001FFC1F /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 42CDD0C31A7CFC10001FFC1F /* GameScene.sks */; };
 		42CDD0C61A7CFC10001FFC1F /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDD0C51A7CFC10001FFC1F /* GameScene.swift */; };
@@ -279,6 +282,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				423259E51AC3A4A3004726FF /* Glyph.swift in Sources */,
+				423259E61AC3A878004726FF /* GlyphTypes.swift in Sources */,
+				423259E71AC3A89F004726FF /* GlyphGenerator.swift in Sources */,
 				42CDD0DC1A7CFC11001FFC1F /* GlyphHackPracticeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

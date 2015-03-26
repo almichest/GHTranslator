@@ -21,16 +21,13 @@ class GlyphHackPracticeTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+    func testExtractingPath() {
+        let paths1: Set<Glyph.GlyphPath> = [Glyph.GlyphPath(point1: 0, point2: 10)]
+        let glyph1 = GlyphGenerator.createGlyphWithType(GlyphType.UserInteractionResult, path: paths1)
+        glyph1.extractAllGlyphPaths()
+        
+        XCTAssert(glyph1.paths.contains(Glyph.GlyphPath(point1: 0, point2: 5)), "")
+        XCTAssert(glyph1.paths.contains(Glyph.GlyphPath(point1: 5, point2: 10)), "")
+        XCTAssert(glyph1.paths.count == 2, "")
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
 }
