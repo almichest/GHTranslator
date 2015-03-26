@@ -660,7 +660,7 @@ class GlyphGenerator: NSObject {
                            Glyph.GlyphPath(point1: 6, point2: 7)]
             
         case .UserInteractionResult:
-            glyph.paths = path!
+            glyph.paths = path
         }
         
         return glyph
