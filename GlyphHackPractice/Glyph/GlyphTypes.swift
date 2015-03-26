@@ -13,6 +13,8 @@ enum GlyphType: String {
     
     case Adapt                                          = "ADAPT"
     
+    case Adjust                                         = "ADJUST"
+    
     case Advance                                        = "ADVANCE"
     
     case After                                          = "AFTER"
@@ -53,7 +55,7 @@ enum GlyphType: String {
     
     case Clear                                          = "CLEAR"
     
-    case CloseAll                                       = "CLOSE ALL"
+    case ClearAll                                       = "CLEAR ALL"
     
     case Complex                                        = "COMPLEX"
     
@@ -182,6 +184,8 @@ enum GlyphType: String {
     
     case Lie                                            = "LIE"
     
+    case Live                                           = "LIVE"
+    
     case LiveAgain                                      = "LIVE AGAIN"
     case Reincarnate                                    = "REINCARNATE"
     
@@ -282,7 +286,7 @@ enum GlyphType: String {
     case Shapers                                        = "SHAPERS"
     case Collective                                     = "COLLECTIVE"
     
-    case Shere                                          = "SHARE"
+    case Share                                          = "SHARE"
     
     case Simple                                         = "SIMPLE"
     
@@ -296,6 +300,7 @@ enum GlyphType: String {
     
     case Strong                                         = "STRONG"
     
+    case Them                                           = "THEM"
     case Together                                       = "TOGETHER"
     
     case Truth                                          = "TRUTH"

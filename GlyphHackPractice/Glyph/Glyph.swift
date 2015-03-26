@@ -11,7 +11,7 @@ import UIKit
 public class Glyph: NSObject, NSCopying {
     
     
-    var paths: Set<GlyphPath>
+    var paths: Set<GlyphPath>?
     let type: GlyphType
     
     init(type: GlyphType) {
@@ -22,7 +22,7 @@ public class Glyph: NSObject, NSCopying {
         self.prepare()
     }
     
-    private convenience init(type: GlyphType, paths: Set<GlyphPath>) {
+    private convenience init(type: GlyphType, paths: Set<GlyphPath>?) {
         self.init(type: type)
         self.paths = paths
     }
@@ -38,12 +38,12 @@ public class Glyph: NSObject, NSCopying {
         selfCopy.extractAllGlyphPaths()
         Log.d("self - \(selfCopy)")
         Log.d("another - \(another)")
-        return (selfCopy.paths.isSubsetOf(another.paths) && (selfCopy.paths.isSupersetOf(another.paths)))
+        return (selfCopy.paths!.isSubsetOf(another.paths!) && (selfCopy.paths!.isSupersetOf(another.paths!)))
     }
     
     private func extractAllGlyphPaths() {
         var newGlyphPaths: Set<GlyphPath> = []
-        for path in self.paths {
+        for path in self.paths! {
             let extracted = path.extract()
             for extractedGlyphPath in extracted {
                 newGlyphPaths.insert(extractedGlyphPath)
