@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum GlyphSequenceCount:Int {
+public enum GlyphSequenceCount:Int {
     case One    = 1
     case Two    = 2
     case Three  = 3
@@ -16,34 +16,169 @@ enum GlyphSequenceCount:Int {
     case Five   = 5
 }
 
-class GlyphSequence: NSObject {
-   
-    let count: GlyphSequenceCount
+public class GlyphSequenceProvider: NSObject {
     
-    init(count: GlyphSequenceCount) {
-        self.count = count
-        super.init()
+    public static func provideGlyphSequence(count: GlyphSequenceCount) -> [GlyphType] {
+        let target: [[GlyphType]]?
+        switch count {
+        case .One:
+            target = nil
+        case .Two:
+            target = GlyphSequenceProvider.twoItemsSequences
+        case .Three:
+            target = GlyphSequenceProvider.threeItemsSequences
+        case .Four:
+            target = GlyphSequenceProvider.fourItemsSequences
+        case .Five:
+            target = GlyphSequenceProvider.fiveItemsSequences
+        }
+        
+        var index = Int(arc4random_uniform(UInt32(target!.count)))
+        return target![index]
     }
+   
+    private static let singleItemsSequences:[[GlyphType]] = [[GlyphType.Abandon],
+                                                             [GlyphType.Adapt],
+                                                             [GlyphType.Adjust],
+                                                             [GlyphType.Advance],
+                                                             [GlyphType.After],
+                                                             [GlyphType.Again],
+                                                             [GlyphType.All],
+                                                             [GlyphType.Answer],
+                                                             [GlyphType.Attack],
+                                                             [GlyphType.Avoid],
+                                                             [GlyphType.Barrier],
+                                                             [GlyphType.Begin],
+                                                             [GlyphType.HumanA],
+                                                             [GlyphType.Body],
+                                                             [GlyphType.Breathe],
+                                                             [GlyphType.Capture],
+                                                             [GlyphType.Change],
+                                                             [GlyphType.Chaos],
+                                                             [GlyphType.Clear],
+                                                             [GlyphType.CloseAll],
+                                                             [GlyphType.Complex],
+                                                             [GlyphType.Conflict],
+                                                             [GlyphType.Consequence],
+                                                             [GlyphType.Contemplate],
+                                                             [GlyphType.Contract],
+                                                             [GlyphType.Courage],
+                                                             [GlyphType.Creation],
+                                                             [GlyphType.CreativityB],
+                                                             [GlyphType.Danger],
+                                                             [GlyphType.Data],
+                                                             [GlyphType.Defend],
+                                                             [GlyphType.Destination],
+                                                             [GlyphType.Destiny],
+                                                             [GlyphType.Destruction],
+                                                             [GlyphType.Deteriorate],
+                                                             [GlyphType.Die],
+                                                             [GlyphType.Difficult],
+                                                             [GlyphType.Discover],
+                                                             [GlyphType.Outside],
+                                                             [GlyphType.Easy],
+                                                             [GlyphType.End],
+                                                             [GlyphType.EnlightenedA],
+                                                             [GlyphType.EnlightenedB],
+                                                             [GlyphType.Equal],
+                                                             [GlyphType.Escape],
+                                                             [GlyphType.Evolution],
+                                                             [GlyphType.Failure],
+                                                             [GlyphType.Fear],
+                                                             [GlyphType.Follow],
+                                                             [GlyphType.Forget],
+                                                             [GlyphType.Future],
+                                                             [GlyphType.Gain],
+                                                             [GlyphType.Civilization],
+                                                             [GlyphType.Grow],
+                                                             [GlyphType.Harm],
+                                                             [GlyphType.Harmony],
+                                                             [GlyphType.Have],
+                                                             [GlyphType.Help],
+                                                             [GlyphType.Hide],
+                                                             [GlyphType.Me],
+                                                             [GlyphType.Ignore],
+                                                             [GlyphType.Imperfect],
+                                                             [GlyphType.Improve],
+                                                             [GlyphType.Impure],
+                                                             [GlyphType.Journey],
+                                                             [GlyphType.Knowledge],
+                                                             [GlyphType.Lead],
+                                                             [GlyphType.Legacy],
+                                                             [GlyphType.Less],
+                                                             [GlyphType.Liberate],
+                                                             [GlyphType.Lie],
+                                                             [GlyphType.Live],
+                                                             [GlyphType.Lose],
+                                                             [GlyphType.MessageB],
+                                                             [GlyphType.More],
+                                                             [GlyphType.Mystery],
+                                                             [GlyphType.Nature],
+                                                             [GlyphType.New],
+                                                             [GlyphType.Not],
+                                                             [GlyphType.Nourish],
+                                                             [GlyphType.Old],
+                                                             [GlyphType.Open],
+                                                             [GlyphType.OpenAll],
+                                                             [GlyphType.Portal],
+                                                             [GlyphType.Past],
+                                                             [GlyphType.Path],
+                                                             [GlyphType.Perfection],
+                                                             [GlyphType.Perspective],
+                                                             [GlyphType.Potential],
+                                                             [GlyphType.Presence],
+                                                             [GlyphType.Now],
+                                                             [GlyphType.Purity],
+                                                             [GlyphType.PursueA],
+                                                             [GlyphType.Question],
+                                                             [GlyphType.React],
+                                                             [GlyphType.Rebel],
+                                                             [GlyphType.Recharge],
+                                                             [GlyphType.Resistance],
+                                                             [GlyphType.Restraint],
+                                                             [GlyphType.Retreat],
+                                                             [GlyphType.Safety],
+                                                             [GlyphType.Rescue],
+                                                             [GlyphType.See],
+                                                             [GlyphType.Search],
+                                                             [GlyphType.SelfB],
+                                                             [GlyphType.Separate],
+                                                             [GlyphType.Shapers],
+                                                             [GlyphType.Share],
+                                                             [GlyphType.Simple],
+                                                             [GlyphType.Soul],
+                                                             [GlyphType.Stability],
+                                                             [GlyphType.Strong],
+                                                             [GlyphType.Together],
+                                                             [GlyphType.Truth],
+                                                             [GlyphType.Use],
+                                                             [GlyphType.Victory],
+                                                             [GlyphType.Want],
+                                                             [GlyphType.Us],
+                                                             [GlyphType.Weak],
+                                                             [GlyphType.Worth],
+                                                             [GlyphType.Xm],
+                                                             [GlyphType.You]]
     
-    private static let twoItemsSequences:   [[GlyphType]] = [[GlyphType.Advance, GlyphType.EnlightenedA],
-                                                             [GlyphType.Avoid, GlyphType.Conflict],
-                                                             [GlyphType.Change, GlyphType.Now],
-                                                             [GlyphType.Discover, GlyphType.Portal],
-                                                             [GlyphType.Escape, GlyphType.Together],
-                                                             [GlyphType.Follow, GlyphType.Journey],
-                                                             [GlyphType.Gain, GlyphType.Safety],
-                                                             [GlyphType.Hide, GlyphType.Truth],
-                                                             [GlyphType.Nourish, GlyphType.Journey],
-                                                             [GlyphType.OpenAll, GlyphType.Portal],
-                                                             [GlyphType.Path, GlyphType.Harmony],
-                                                             [GlyphType.Path, GlyphType.Perfection],
-                                                             [GlyphType.Pure, GlyphType.Truth],
-                                                             [GlyphType.Question, GlyphType.All],
-                                                             [GlyphType.Question, GlyphType.Truth],
-                                                             [GlyphType.Question, GlyphType.Attack],
-                                                             [GlyphType.Search, GlyphType.Potential],
-                                                             [GlyphType.Strong, GlyphType.CreativityB],
-                                                             [GlyphType.Strong, GlyphType.Soul]]
+    private static let twoItemsSequences:[[GlyphType]] = [[GlyphType.Advance, GlyphType.EnlightenedA],
+                                                          [GlyphType.Avoid, GlyphType.Conflict],
+                                                          [GlyphType.Change, GlyphType.Now],
+                                                          [GlyphType.Discover, GlyphType.Portal],
+                                                          [GlyphType.Escape, GlyphType.Together],
+                                                          [GlyphType.Follow, GlyphType.Journey],
+                                                          [GlyphType.Gain, GlyphType.Safety],
+                                                          [GlyphType.Hide, GlyphType.Truth],
+                                                          [GlyphType.Nourish, GlyphType.Journey],
+                                                          [GlyphType.OpenAll, GlyphType.Portal],
+                                                          [GlyphType.Path, GlyphType.Harmony],
+                                                          [GlyphType.Path, GlyphType.Perfection],
+                                                          [GlyphType.Pure, GlyphType.Truth],
+                                                          [GlyphType.Question, GlyphType.All],
+                                                          [GlyphType.Question, GlyphType.Truth],
+                                                          [GlyphType.Question, GlyphType.Attack],
+                                                          [GlyphType.Search, GlyphType.Potential],
+                                                          [GlyphType.Strong, GlyphType.CreativityB],
+                                                          [GlyphType.Strong, GlyphType.Soul]]
     
     private static let threeItemsSequences: [[GlyphType]] = [[GlyphType.Adapt, GlyphType.HumanA, GlyphType.Weak],
                                                              [GlyphType.Advance, GlyphType.HumanA, GlyphType.EnlightenedA],

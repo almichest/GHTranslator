@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum GlyphType: String {
+public enum GlyphType: String {
     case Abandon                                        = "ABANDON"
     
     case Adapt                                          = "ADAPT"
