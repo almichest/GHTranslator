@@ -83,7 +83,8 @@ class GlyphGenerator: NSObject {
                            Glyph.GlyphPath(point1: 4, point2: 5)]
 
         case .Breathe:
-            glyph.paths = nil
+            glyph.paths = [Glyph.GlyphPath(point1: 1, point2: 5),
+                           Glyph.GlyphPath(point1: 2, point2: 5)]
 
         case .Capture:
             glyph.paths = [Glyph.GlyphPath(point1: 2, point2: 7),
