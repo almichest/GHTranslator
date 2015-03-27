@@ -55,7 +55,7 @@ enum GlyphType: String {
     
     case Clear                                          = "CLEAR"
     
-    case ClearAll                                       = "CLEAR ALL"
+    case CloseAll                                       = "CLOSE ALL"
     
     case Complex                                        = "COMPLEX"
     
@@ -268,7 +268,7 @@ enum GlyphType: String {
     case Safety                                         = "SAFETY"
     
     case Save                                           = "SAVE"
-    case Rescure                                        = "RESCURE"
+    case Rescue                                         = "RESCUE"
     
     case See                                            = "SEE"
     

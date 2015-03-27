@@ -109,7 +109,7 @@ class GlyphGenerator: NSObject {
         case .Clear:
             glyph.paths = [Glyph.GlyphPath(point1: 0, point2: 10)]
 
-        case .ClearAll:
+        case .CloseAll:
             glyph.paths = [Glyph.GlyphPath(point1: 0, point2: 1),
                            Glyph.GlyphPath(point1: 0, point2: 2),
                            Glyph.GlyphPath(point1: 0, point2: 10),
@@ -544,7 +544,7 @@ class GlyphGenerator: NSObject {
                            Glyph.GlyphPath(point1: 3, point2: 4),
                            Glyph.GlyphPath(point1: 4, point2: 9)]
 
-        case .Save, .Rescure:
+        case .Save, .Rescue:
             glyph.paths = [Glyph.GlyphPath(point1: 1, point2: 7),
                            Glyph.GlyphPath(point1: 5, point2: 6),
                            Glyph.GlyphPath(point1: 5, point2: 7)]
