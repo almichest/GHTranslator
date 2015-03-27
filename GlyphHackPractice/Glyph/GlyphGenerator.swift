@@ -12,6 +12,7 @@ class GlyphGenerator: NSObject {
     
     class func createGlyphWithType(type: GlyphType, path: Set<Glyph.GlyphPath>?) -> Glyph {
         let glyph = Glyph(type: type)
+        Log.d("Type = \(type.rawValue)")
         switch type {
         case .Abandon:
             glyph.paths = [Glyph.GlyphPath(point1: 2, point2: 8),

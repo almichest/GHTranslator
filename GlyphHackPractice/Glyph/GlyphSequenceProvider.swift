@@ -36,7 +36,18 @@ public class GlyphSequenceProvider: NSObject {
         var index = Int(arc4random_uniform(UInt32(target.count)))
         return target[index]
     }
-   
+    
+#if DEBUG
+    // For testing
+    public static func provideAllSequence() -> [[[GlyphType]]] {
+        return [GlyphSequenceProvider.singleItemSequences,
+                GlyphSequenceProvider.twoItemsSequences,
+                GlyphSequenceProvider.threeItemsSequences,
+                GlyphSequenceProvider.fourItemsSequences,
+                GlyphSequenceProvider.fiveItemsSequences]
+    }
+#endif
+    
     private static let singleItemSequences:[[GlyphType]] = [[GlyphType.Abandon],
                                                             [GlyphType.Adapt],
                                                             [GlyphType.Adjust],

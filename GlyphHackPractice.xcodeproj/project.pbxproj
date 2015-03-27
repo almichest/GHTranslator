@@ -15,6 +15,7 @@
 		423259E71AC3A89F004726FF /* GlyphGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42165D111AA2F0EB001EC0F5 /* GlyphGenerator.swift */; };
 		423259E81AC3E4CE004726FF /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D559A21A9895D70091A490 /* Log.swift */; };
 		423259EA1AC42437004726FF /* GlyphSequenceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423259E91AC42437004726FF /* GlyphSequenceProvider.swift */; };
+		426B31491AC5810D003AA565 /* GlyphSequenceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423259E91AC42437004726FF /* GlyphSequenceProvider.swift */; };
 		42CDD0C21A7CFC10001FFC1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDD0C11A7CFC10001FFC1F /* AppDelegate.swift */; };
 		42CDD0C41A7CFC10001FFC1F /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 42CDD0C31A7CFC10001FFC1F /* GameScene.sks */; };
 		42CDD0C61A7CFC10001FFC1F /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDD0C51A7CFC10001FFC1F /* GameScene.swift */; };
@@ -287,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				426B31491AC5810D003AA565 /* GlyphSequenceProvider.swift in Sources */,
 				423259E51AC3A4A3004726FF /* Glyph.swift in Sources */,
 				423259E61AC3A878004726FF /* GlyphTypes.swift in Sources */,
 				423259E81AC3E4CE004726FF /* Log.swift in Sources */,
