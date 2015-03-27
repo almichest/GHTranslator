@@ -19,10 +19,10 @@ public enum GlyphSequenceCount:Int {
 public class GlyphSequenceProvider: NSObject {
     
     public static func provideGlyphSequence(count: GlyphSequenceCount) -> [GlyphType] {
-        let target: [[GlyphType]]?
+        let target: [[GlyphType]]
         switch count {
         case .One:
-            target = nil
+            target = GlyphSequenceProvider.singleItemSequences
         case .Two:
             target = GlyphSequenceProvider.twoItemsSequences
         case .Three:
@@ -33,11 +33,11 @@ public class GlyphSequenceProvider: NSObject {
             target = GlyphSequenceProvider.fiveItemsSequences
         }
         
-        var index = Int(arc4random_uniform(UInt32(target!.count)))
-        return target![index]
+        var index = Int(arc4random_uniform(UInt32(target.count)))
+        return target[index]
     }
    
-    private static let singleItemsSequences:[[GlyphType]] = [[GlyphType.Abandon],
+    private static let singleItemSequences:[[GlyphType]] = [[GlyphType.Abandon],
                                                              [GlyphType.Adapt],
                                                              [GlyphType.Adjust],
                                                              [GlyphType.Advance],
