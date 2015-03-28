@@ -58,7 +58,6 @@ class RootNode: SKSpriteNode{
         for i in 0 ..< vertexes.count {
             let sprite = GlyphHackVertex(index: i)
             sprite.position = vertexCoordinates[i]
-            sprite.setScale(0.5)
             self.addChild(sprite)
             self.vertexes[i] = sprite
         }
