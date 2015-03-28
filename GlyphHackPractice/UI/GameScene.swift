@@ -30,7 +30,7 @@ class GameScene: SKScene{
     }
     
     override func didMoveToView(view: SKView) {
-        let rootNode = RootNode(color: SKColor.redColor(), size: CGSizeMake(self.size.width, self.size.height))
+        let rootNode = RootNode(color: SKColor.blackColor(), size: CGSizeMake(self.size.width, self.size.height))
         self.addChild(rootNode)
         rootNode.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
         self.rootNode = rootNode

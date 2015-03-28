@@ -64,24 +64,29 @@ class RootNode: SKSpriteNode{
         }
     }
     
-    let diffOfParticles:CGFloat = 4
+    let spaceBetweenParticles:CGFloat = 10
     func showPath(from:Int, to:Int) {
         
         let start = self.vertexes[from].position
         let goal = self.vertexes[to].position
         
-        let length = NodeUtility.calculateDistance(start, point2: goal)
-        let arg = atan((goal.y - start.y) / (goal.x - start.x))
+        let distance = NodeUtility.calculateDistance(start, point2: goal)
+        let difX:CGFloat = goal.x - start.x
+        let difY:CGFloat = goal.y - start.y
+        let arg = atan(difY / difX)
         
-        var currentPosition:CGFloat = 0.0
-        var currentIndex:Int = 0
+        var currentOffset:CGFloat = 0.0
         
-        while currentPosition < length {
-            let target = CGPointMake(start.x - currentPosition * cos(arg) * CGFloat(currentIndex), start.y - currentPosition * sin(arg) * CGFloat(currentIndex))
+        while currentOffset < distance + 10 {
+            let target:CGPoint
+            if difX < 0 {
+                target = CGPointMake(start.x - currentOffset * cos(arg), start.y - currentOffset * sin(arg))
+            } else {
+                target = CGPointMake(start.x + currentOffset * cos(arg), start.y + currentOffset * sin(arg))
+            }
             self.showParticle(target)
             
-            currentPosition += diffOfParticles
-            currentIndex += 1
+            currentOffset += spaceBetweenParticles
         }
     }
     
@@ -90,9 +95,9 @@ class RootNode: SKSpriteNode{
         let particle = NSKeyedUnarchiver.unarchiveObjectWithFile(particleGlyphPath!) as! SKEmitterNode
         particle.position = point
         self.addChild(particle)
-        particle.runAction(SKAction.fadeAlphaTo(0.0, duration: 1.0), completion:{() in
-            particle.removeFromParent()
-        })
+//        particle.runAction(SKAction.fadeAlphaTo(0.0, duration: 1.0), completion:{() in
+//            particle.removeFromParent()
+//        })
     }
 }
 
