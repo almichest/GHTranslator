@@ -41,7 +41,9 @@ class GameScene: SKScene{
         self.currentGlyphPath.removeAll(keepCapacity: true)
         self.handleTouches(touches)
         
-        self.rootNode?.showPath(0, to: 1)
+        for i in 0 ..< Glyph.maxGlyphIndex {
+            self.rootNode?.showPath(i, to: i + 1)
+        }
     }
     
     override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {

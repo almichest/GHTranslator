@@ -10,6 +10,7 @@ import UIKit
 
 public class Glyph: NSObject, NSCopying {
     
+    static let maxGlyphIndex = 10
     
     var paths: Set<GlyphPath>?
     let type: GlyphType

@@ -64,7 +64,7 @@ class RootNode: SKSpriteNode{
         }
     }
     
-    let diffOfParticles:CGFloat = 10.0
+    let diffOfParticles:CGFloat = 4
     func showPath(from:Int, to:Int) {
         
         let start = self.vertexes[from].position
@@ -73,7 +73,16 @@ class RootNode: SKSpriteNode{
         let length = NodeUtility.calculateDistance(start, point2: goal)
         let arg = atan((goal.y - start.y) / (goal.x - start.x))
         
-        self.showParticle(CGPointZero)
+        var currentPosition:CGFloat = 0.0
+        var currentIndex:Int = 0
+        
+        while currentPosition < length {
+            let target = CGPointMake(start.x - currentPosition * cos(arg) * CGFloat(currentIndex), start.y - currentPosition * sin(arg) * CGFloat(currentIndex))
+            self.showParticle(target)
+            
+            currentPosition += diffOfParticles
+            currentIndex += 1
+        }
     }
     
     private func showParticle(point: CGPoint) {
@@ -81,7 +90,7 @@ class RootNode: SKSpriteNode{
         let particle = NSKeyedUnarchiver.unarchiveObjectWithFile(particleGlyphPath!) as! SKEmitterNode
         particle.position = point
         self.addChild(particle)
-        particle.runAction(SKAction.fadeAlphaTo(0.0, duration: 1.0), completion: {() -> Void in
+        particle.runAction(SKAction.fadeAlphaTo(0.0, duration: 1.0), completion:{() in
             particle.removeFromParent()
         })
     }
