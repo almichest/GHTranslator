@@ -15,16 +15,16 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
 
         let scene = GameScene(size: self.view.frame.size)
-        let skView = self.view as! SKView
-        skView.showsFPS = true
-        skView.showsNodeCount = true
+        let glyphView = self.view as! GlyphView
+        glyphView.showsFPS = true
+        glyphView.showsNodeCount = true
         
         /* Sprite Kit applies additional optimizations to improve rendering performance */
-        skView.ignoresSiblingOrder = true
+        glyphView.ignoresSiblingOrder = true
         
         /* Set the scale mode to scale to fit the window */
         scene.scaleMode = .AspectFill
-        skView.presentScene(scene)
+        glyphView.presentScene(scene)
     }
 
     override func shouldAutorotate() -> Bool {
