@@ -13,6 +13,7 @@
 		423259E71AC3A89F004726FF /* GlyphGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42165D111AA2F0EB001EC0F5 /* GlyphGenerator.swift */; };
 		423259E81AC3E4CE004726FF /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D559A21A9895D70091A490 /* Log.swift */; };
 		423259EA1AC42437004726FF /* GlyphSequenceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423259E91AC42437004726FF /* GlyphSequenceProvider.swift */; };
+		425882581AC676A200219E0C /* NodeUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425882571AC676A200219E0C /* NodeUtility.swift */; };
 		426B31491AC5810D003AA565 /* GlyphSequenceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423259E91AC42437004726FF /* GlyphSequenceProvider.swift */; };
 		426B31501AC65E23003AA565 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 426B314B1AC65E23003AA565 /* GameScene.sks */; };
 		426B31511AC65E23003AA565 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426B314C1AC65E23003AA565 /* GameScene.swift */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		42165D111AA2F0EB001EC0F5 /* GlyphGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlyphGenerator.swift; sourceTree = "<group>"; };
 		423259E91AC42437004726FF /* GlyphSequenceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlyphSequenceProvider.swift; sourceTree = "<group>"; };
+		425882571AC676A200219E0C /* NodeUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NodeUtility.swift; path = Node/NodeUtility.swift; sourceTree = "<group>"; };
 		426B314B1AC65E23003AA565 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		426B314C1AC65E23003AA565 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		426B314D1AC65E23003AA565 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			children = (
 				426B31571AC65EFA003AA565 /* RootNode.swift */,
 				42CDD0E51A7CFEA0001FFC1F /* GlyphHackVertex.swift */,
+				425882571AC676A200219E0C /* NodeUtility.swift */,
 			);
 			name = Node;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				426B31581AC65EFA003AA565 /* RootNode.swift in Sources */,
 				42D559A91A9A08C00091A490 /* GlyphTypes.swift in Sources */,
 				42CDD0C21A7CFC10001FFC1F /* AppDelegate.swift in Sources */,
+				425882581AC676A200219E0C /* NodeUtility.swift in Sources */,
 				426B31561AC65E39003AA565 /* GlyphView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

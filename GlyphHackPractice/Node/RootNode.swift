@@ -64,7 +64,15 @@ class RootNode: SKSpriteNode{
         }
     }
     
+    let diffOfParticles:CGFloat = 10.0
     func showPath(from:Int, to:Int) {
+        
+        let start = self.vertexes[from].position
+        let goal = self.vertexes[to].position
+        
+        let length = NodeUtility.calculateDistance(start, point2: goal)
+        let arg = atan((goal.y - start.y) / (goal.x - start.x))
+        
         self.showParticle(CGPointZero)
     }
     
