@@ -14,7 +14,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let scene = GameScene(size: self.view.frame.size)
+        let scene = GlyphScene(size: self.view.frame.size)
         let glyphView = self.view as! GlyphView
         glyphView.showsFPS = true
         glyphView.showsNodeCount = true

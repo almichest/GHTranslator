@@ -46,6 +46,10 @@ public class GlyphSequenceProvider: NSObject {
                 GlyphSequenceProvider.fourItemsSequences,
                 GlyphSequenceProvider.fiveItemsSequences]
     }
+    
+    public static func provideAllSingleSequence() -> [[[GlyphType]]] {
+        return [GlyphSequenceProvider.singleItemSequences]
+    }
 #endif
     
     private static let singleItemSequences:[[GlyphType]] = [[GlyphType.Abandon],
@@ -70,7 +74,7 @@ public class GlyphSequenceProvider: NSObject {
                                                             [GlyphType.CloseAll],
                                                             [GlyphType.Complex],
                                                             [GlyphType.Conflict],
-                                                            [GlyphType.Consequence],
+//                                                            [GlyphType.Consequence],
                                                             [GlyphType.Contemplate],
                                                             [GlyphType.Contract],
                                                             [GlyphType.Courage],
@@ -79,7 +83,7 @@ public class GlyphSequenceProvider: NSObject {
                                                             [GlyphType.Danger],
                                                             [GlyphType.Data],
                                                             [GlyphType.Defend],
-                                                            [GlyphType.Destination],
+//                                                            [GlyphType.Destination],
                                                             [GlyphType.Destiny],
                                                             [GlyphType.Destruction],
                                                             [GlyphType.Deteriorate],
@@ -115,7 +119,7 @@ public class GlyphSequenceProvider: NSObject {
                                                             [GlyphType.Journey],
                                                             [GlyphType.Knowledge],
                                                             [GlyphType.Lead],
-                                                            [GlyphType.Legacy],
+//                                                            [GlyphType.Legacy],
                                                             [GlyphType.Less],
                                                             [GlyphType.Liberate],
                                                             [GlyphType.Lie],
@@ -123,7 +127,7 @@ public class GlyphSequenceProvider: NSObject {
                                                             [GlyphType.Lose],
                                                             [GlyphType.MessageB],
                                                             [GlyphType.More],
-                                                            [GlyphType.Mystery],
+//                                                            [GlyphType.Mystery],
                                                             [GlyphType.Nature],
                                                             [GlyphType.New],
                                                             [GlyphType.Not],
@@ -135,9 +139,9 @@ public class GlyphSequenceProvider: NSObject {
                                                             [GlyphType.Past],
                                                             [GlyphType.Path],
                                                             [GlyphType.Perfection],
-                                                            [GlyphType.Perspective],
+//                                                            [GlyphType.Perspective],
                                                             [GlyphType.Potential],
-                                                            [GlyphType.Presence],
+//                                                            [GlyphType.Presence],
                                                             [GlyphType.Now],
                                                             [GlyphType.Purity],
                                                             [GlyphType.PursueA],
@@ -167,7 +171,7 @@ public class GlyphSequenceProvider: NSObject {
                                                             [GlyphType.Want],
                                                             [GlyphType.Us],
                                                             [GlyphType.Weak],
-                                                            [GlyphType.Worth],
+//                                                            [GlyphType.Worth],
                                                             [GlyphType.Xm],
                                                             [GlyphType.You]]
     
@@ -445,8 +449,8 @@ public class GlyphSequenceProvider: NSObject {
                                                            [GlyphType.Attack, GlyphType.Purity, GlyphType.Future, GlyphType.HumanA, GlyphType.Civilization],
                                                            [GlyphType.Attack, GlyphType.Purity, GlyphType.Future, GlyphType.Not, GlyphType.Attack],
                                                            [GlyphType.Attack, GlyphType.Separate, GlyphType.Path, GlyphType.End, GlyphType.Journey],
-                                                           [GlyphType.Avoid, GlyphType.Chaos, GlyphType.Avoid, GlyphType.Shapers, GlyphType.Lie],
-                                                           [GlyphType.Avoid, GlyphType.Chaos, GlyphType.Recharge, GlyphType.Potential, GlyphType.Attack],
+                                                           [GlyphType.Avoid, GlyphType.Chaos, GlyphType.Avoid, GlyphType.Shapers, GlyphType.Lie], //
+                                                           [GlyphType.Avoid, GlyphType.Chaos, GlyphType.Recharge, GlyphType.Potential, GlyphType.Attack], //
                                                            [GlyphType.Avoid, GlyphType.Perfection, GlyphType.Stability, GlyphType.HumanA, GlyphType.Me],
                                                            [GlyphType.Breathe, GlyphType.Not, GlyphType.Xm, GlyphType.Lose, GlyphType.Me],
                                                            [GlyphType.Capture, GlyphType.Portal, GlyphType.Defend, GlyphType.Portal, GlyphType.Courage],
@@ -497,14 +501,14 @@ public class GlyphSequenceProvider: NSObject {
                                                            [GlyphType.More, GlyphType.Data, GlyphType.Gain, GlyphType.Portal, GlyphType.Advance],
                                                            [GlyphType.Old, GlyphType.Nature, GlyphType.Less, GlyphType.Strong, GlyphType.Now],
                                                            [GlyphType.Past, GlyphType.Barrier, GlyphType.Creation, GlyphType.Future, GlyphType.Journey],
-                                                           [GlyphType.Past, GlyphType.Chaos, GlyphType.Creation, GlyphType.Future, GlyphType.Harmony],
+                                                           [GlyphType.Past, GlyphType.Chaos, GlyphType.Creation, GlyphType.Future, GlyphType.Harmony], //
                                                            [GlyphType.Past, GlyphType.Path, GlyphType.Creation, GlyphType.Future, GlyphType.Journey],
                                                            [GlyphType.Portal, GlyphType.Attack, GlyphType.Danger, GlyphType.PursueA, GlyphType.Safety],
                                                            [GlyphType.Portal, GlyphType.Barrier, GlyphType.Defend, GlyphType.HumanA, GlyphType.Shapers],
                                                            [GlyphType.Portal, GlyphType.Creation, GlyphType.Danger, GlyphType.PursueA, GlyphType.Safety],
                                                            [GlyphType.Portal, GlyphType.Improve, GlyphType.HumanA, GlyphType.Future, GlyphType.Civilization],
                                                            [GlyphType.Portal, GlyphType.Potential, GlyphType.Help, GlyphType.HumanA, GlyphType.Future],
-                                                           [GlyphType.Now, GlyphType.Chaos, GlyphType.Creation, GlyphType.Future, GlyphType.Civilization],
+                                                           [GlyphType.Now, GlyphType.Chaos, GlyphType.Creation, GlyphType.Future, GlyphType.Civilization], //
                                                            [GlyphType.PursueA, GlyphType.Conflict, GlyphType.Advance, GlyphType.Attack, GlyphType.Chaos],
                                                            [GlyphType.PursueA, GlyphType.Conflict, GlyphType.Attack, GlyphType.Advance, GlyphType.Chaos],
                                                            [GlyphType.PursueA, GlyphType.Path, GlyphType.Outside, GlyphType.Shapers, GlyphType.Lie],

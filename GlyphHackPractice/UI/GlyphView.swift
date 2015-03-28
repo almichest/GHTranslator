@@ -10,8 +10,4 @@ import UIKit
 import SpriteKit
 
 public class GlyphView: SKView {
-    
-    public func showGlyph(glyph:Glyph) {
-        
-    }
 }

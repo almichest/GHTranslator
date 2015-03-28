@@ -11,6 +11,7 @@ import SpriteKit
 class RootNode: SKSpriteNode{
     
     private var vertexes:[GlyphHackVertex]
+    private let syncQueue = dispatch_queue_create("hira.root.node", DISPATCH_QUEUE_SERIAL)
     
     override init(texture: SKTexture!, color: UIColor!, size: CGSize) {
         self.vertexes = [GlyphHackVertex](count: 11, repeatedValue: GlyphHackVertex(index: 0))
@@ -64,7 +65,9 @@ class RootNode: SKSpriteNode{
     }
     
     let spaceBetweenParticles:CGFloat = 15
-    func showPath(from:Int, to:Int) {
+    var waiting = false
+    func showPath(from:Int, to:Int, completion:() -> Void) {
+        
         Log.d("showPath \(from) - \(to)")
         
         let start = self.vertexes[from].position
@@ -84,19 +87,28 @@ class RootNode: SKSpriteNode{
             } else {
                 target = CGPointMake(start.x + currentOffset * cos(arg), start.y + currentOffset * sin(arg))
             }
-            self.showParticle(target)
+            self.showParticle(target, completion:completion)
             
             currentOffset += spaceBetweenParticles
         }
     }
     
-    private func showParticle(point: CGPoint) {
+    var mainParticle:SKEmitterNode? = nil
+    private func showParticle(point: CGPoint, completion:(() -> Void)? = nil) {
         let particleGlyphPath = NSBundle.mainBundle().pathForResource("TracingParticle", ofType: "sks")
         let particle = NSKeyedUnarchiver.unarchiveObjectWithFile(particleGlyphPath!) as! SKEmitterNode
         particle.position = point
         self.addChild(particle)
+        if self.mainParticle == nil {
+            self.mainParticle = particle
+        }
         particle.runAction(SKAction.fadeAlphaTo(0.0, duration: 1.0), completion:{() in
             particle.removeFromParent()
+            if completion != nil && particle == self.mainParticle {
+                Log.d("Completion");
+                self.mainParticle = nil
+                completion!()
+            }
         })
     }
 }
