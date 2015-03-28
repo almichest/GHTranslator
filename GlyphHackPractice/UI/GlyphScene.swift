@@ -128,10 +128,12 @@ class GlyphScene: SKScene{
         self.showNextGlyph()
     }
     
+    private var showingGlyph:Glyph? = nil
     private func showNextGlyph() {
         Log.d("")
-        if self.glyphQueue.count != 0 {
+        if self.glyphQueue.count != 0  && showingGlyph == nil {
             let target = self.glyphQueue[0]
+            self.showingGlyph = target
             Log.d("target = \(target)")
             self.showGlyph(target)
             self.glyphQueue.removeAtIndex(0)
@@ -146,6 +148,7 @@ class GlyphScene: SKScene{
     
     internal func showPath(from:Int, to:Int) {
         self.rootNode?.showPath(from, to:to, completion:{
+            self.showingGlyph = nil
             self.showNextGlyph()
         })
     }
