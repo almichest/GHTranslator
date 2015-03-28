@@ -51,7 +51,7 @@ class GlyphHackPracticeTests: XCTestCase {
         for sequence1:[[GlyphType]] in allGlyphSequences {
             for sequence2:[GlyphType] in sequence1 {
                 for type in sequence2 {
-                    let glyph: Glyph? = GlyphGenerator.createGlyphWithType(type, path: nil)
+                    let glyph: Glyph? = GlyphGenerator.createGlyphWithType(type)
                     XCTAssert(glyph != nil, "")
                 }
             }

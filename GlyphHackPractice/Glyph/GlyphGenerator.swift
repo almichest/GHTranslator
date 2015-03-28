@@ -10,9 +10,10 @@ import UIKit
 
 class GlyphGenerator: NSObject {
     
-    class func createGlyphWithType(type: GlyphType, path: Set<Glyph.GlyphPath>?) -> Glyph {
+    static func createGlyphWithType(type: GlyphType, path: Set<Glyph.GlyphPath>? = nil) -> Glyph {
         let glyph = Glyph(type: type)
         Log.d("Type = \(type.rawValue)")
+        assert(type != GlyphType.UserInteractionResult || path != nil, "")
         switch type {
         case .Abandon:
             glyph.paths = [Glyph.GlyphPath(point1: 2, point2: 8),
