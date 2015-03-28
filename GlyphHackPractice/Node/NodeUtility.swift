@@ -11,7 +11,7 @@ import UIKit
 class NodeUtility: NSObject {
     static func calculateDistance(point1:CGPoint, point2:CGPoint) -> CGFloat {
         let xDiff = point1.x - point2.x
-        let yDiff = point2.y - point2.y
+        let yDiff = point1.y - point2.y
         let squared = xDiff * xDiff + yDiff * yDiff
         
         return sqrt(squared)

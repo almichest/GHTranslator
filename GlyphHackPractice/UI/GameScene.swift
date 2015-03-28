@@ -41,8 +41,10 @@ class GameScene: SKScene{
         self.currentGlyphPath.removeAll(keepCapacity: true)
         self.handleTouches(touches)
         
-        for i in 0 ..< Glyph.maxGlyphIndex {
-            self.rootNode?.showPath(i, to: i + 1)
+        let glyph:Glyph = GlyphGenerator.createGlyphWithType(GlyphType.Truth)
+        Log.d("path = \(glyph.paths)")
+        for path in glyph.paths! {
+            self.showPath(path.point1, to: path.point2)
         }
     }
     
@@ -106,14 +108,14 @@ class GameScene: SKScene{
         self.clearTracingParticles()
         self.lastTouchedIndex = -1
         
-        let result = GlyphGenerator.createGlyphWithType(GlyphType.UserInteractionResult, path: self.currentGlyphPath)
-        
-        Log.d("Result       = \(result.paths)")
-        Log.d("touched : \(self.currentGlyphPath)")
+//        let result = GlyphGenerator.createGlyphWithType(GlyphType.UserInteractionResult, path: self.currentGlyphPath)
+//        
+//        Log.d("Result       = \(result.paths)")
+//        Log.d("touched : \(self.currentGlyphPath)")
     }
     
     //MARK: - Showing supplied path
     internal func showPath(from:Int, to:Int) {
-        
+        self.rootNode?.showPath(from, to: to)
     }
 }

@@ -63,8 +63,9 @@ class RootNode: SKSpriteNode{
         }
     }
     
-    let spaceBetweenParticles:CGFloat = 10
+    let spaceBetweenParticles:CGFloat = 15
     func showPath(from:Int, to:Int) {
+        Log.d("showPath \(from) - \(to)")
         
         let start = self.vertexes[from].position
         let goal = self.vertexes[to].position
@@ -94,9 +95,9 @@ class RootNode: SKSpriteNode{
         let particle = NSKeyedUnarchiver.unarchiveObjectWithFile(particleGlyphPath!) as! SKEmitterNode
         particle.position = point
         self.addChild(particle)
-//        particle.runAction(SKAction.fadeAlphaTo(0.0, duration: 1.0), completion:{() in
-//            particle.removeFromParent()
-//        })
+        particle.runAction(SKAction.fadeAlphaTo(0.0, duration: 1.0), completion:{() in
+            particle.removeFromParent()
+        })
     }
 }
 
