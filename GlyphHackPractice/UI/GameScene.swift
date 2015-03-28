@@ -44,6 +44,8 @@ class GameScene: SKScene{
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.currentGlyphPath.removeAll(keepCapacity: true)
         self.handleTouches(touches)
+        
+        self.rootNode?.showPath(0, to: 1)
     }
     
     override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -119,4 +121,8 @@ class GameScene: SKScene{
         Log.d("touched : \(self.currentGlyphPath)")
     }
     
+    //MARK: - Showing supplied path
+    internal func showPath(from:Int, to:Int) {
+        
+    }
 }

@@ -10,6 +10,17 @@ import SpriteKit
 
 class RootNode: SKSpriteNode{
     
+    private var vertexes:[GlyphHackVertex]
+    
+    override init(texture: SKTexture!, color: UIColor!, size: CGSize) {
+        self.vertexes = [GlyphHackVertex](count: 11, repeatedValue: GlyphHackVertex(index: 0))
+        super.init(texture: texture, color: color, size: size)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func prepare() {
         self.name = "RootNode"
         
@@ -38,19 +49,33 @@ class RootNode: SKSpriteNode{
                                  CGFloat(M_PI) * (11.0 / 6.0),
                                  CGFloat(M_PI) * (3.0 / 2.0)]
         
-        var vertexes:[CGPoint] = []
+        var vertexCoordinates:[CGPoint] = [CGPoint](count: 11, repeatedValue: CGPointZero)
         
         for i in 0 ..< radiuses.count {
-            vertexes.append(CGPointMake(radiuses[i] * cos(radians[i]), radiuses[i] * sin(radians[i])))
+            vertexCoordinates[i] = (CGPointMake(radiuses[i] * cos(radians[i]), radiuses[i] * sin(radians[i])))
         }
         
         for i in 0 ..< vertexes.count {
             let sprite = GlyphHackVertex(index: i)
-            sprite.position = vertexes[i]
+            sprite.position = vertexCoordinates[i]
             sprite.setScale(0.5)
             self.addChild(sprite)
+            self.vertexes[i] = sprite
         }
     }
     
+    func showPath(from:Int, to:Int) {
+        self.showParticle(CGPointZero)
+    }
+    
+    private func showParticle(point: CGPoint) {
+        let particleGlyphPath = NSBundle.mainBundle().pathForResource("TracingParticle", ofType: "sks")
+        let particle = NSKeyedUnarchiver.unarchiveObjectWithFile(particleGlyphPath!) as! SKEmitterNode
+        particle.position = point
+        self.addChild(particle)
+        particle.runAction(SKAction.fadeAlphaTo(0.0, duration: 1.0), completion: {() -> Void in
+            particle.removeFromParent()
+        })
+    }
 }
 
