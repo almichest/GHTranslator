@@ -15,13 +15,10 @@ class GameScene: SKScene{
     private var lastTouchedIndex: Int
     private var tracingParticles: [SKEmitterNode]
     
-    private let debugTarget: Glyph
-    
     override init(size: CGSize) {
         self.currentGlyphPath = []
         self.lastTouchedIndex = -1
         self.tracingParticles = []
-        self.debugTarget = GlyphGenerator.createGlyphWithType(GlyphType.Truth, path: [])
         super.init(size: size)
     }
 
@@ -29,7 +26,6 @@ class GameScene: SKScene{
         self.currentGlyphPath = []
         self.lastTouchedIndex = -1
         self.tracingParticles = []
-        self.debugTarget = GlyphGenerator.createGlyphWithType(GlyphType.Truth, path: [])
         super.init(coder: aDecoder)
     }
     
@@ -110,14 +106,7 @@ class GameScene: SKScene{
         
         let result = GlyphGenerator.createGlyphWithType(GlyphType.UserInteractionResult, path: self.currentGlyphPath)
         
-        Log.d("Debug target = \(self.debugTarget.paths)")
         Log.d("Result       = \(result.paths)")
-        if  result.isEqual(self.debugTarget) {
-            Log.d("OK")
-        } else {
-            Log.d("NG")
-        }
-        
         Log.d("touched : \(self.currentGlyphPath)")
     }
     
