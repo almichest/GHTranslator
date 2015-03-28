@@ -77,7 +77,7 @@ class RootNode: SKSpriteNode{
         
         var currentOffset:CGFloat = 0.0
         
-        while currentOffset < distance + 10 {
+        while currentOffset < distance {
             let target:CGPoint
             if difX < 0 {
                 target = CGPointMake(start.x - currentOffset * cos(arg), start.y - currentOffset * sin(arg))

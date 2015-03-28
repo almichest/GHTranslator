@@ -41,7 +41,7 @@ class GameScene: SKScene{
         self.currentGlyphPath.removeAll(keepCapacity: true)
         self.handleTouches(touches)
         
-        let glyph:Glyph = GlyphGenerator.createGlyphWithType(GlyphType.Truth)
+        let glyph:Glyph = GlyphGenerator.createGlyphWithType(GlyphType.Chaos)
         Log.d("path = \(glyph.paths)")
         for path in glyph.paths! {
             self.showPath(path.point1, to: path.point2)
