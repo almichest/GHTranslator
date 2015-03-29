@@ -8,24 +8,29 @@
 
 import UIKit
 import SpriteKit
+import iAd
 
 class GlyphViewController: UIViewController, UIActionSheetDelegate, GlyphViewDelegate {
 
+    var glyphView:GlyphView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.glyphView = self.view as? GlyphView
 
         let scene = GlyphScene(size: self.view.frame.size)
-        let glyphView = self.view as! GlyphView
-        glyphView.showsFPS = true
-        glyphView.showsNodeCount = true
-        glyphView.glyphDelegate = self
+        self.glyphView!.showsFPS = true
+        self.glyphView!.showsNodeCount = true
+        self.glyphView!.glyphDelegate = self
         
         /* Sprite Kit applies additional optimizations to improve rendering performance */
-        glyphView.ignoresSiblingOrder = true
+        self.glyphView!.ignoresSiblingOrder = true
         
         /* Set the scale mode to scale to fit the window */
         scene.scaleMode = .AspectFill
-        glyphView.presentScene(scene)
+        self.glyphView!.presentScene(scene)
+        
+//        self.canDisplayBannerAds = true
     }
 
     override func shouldAutorotate() -> Bool {
@@ -43,6 +48,10 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, GlyphViewDel
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
     
     //MARK: - GlyphViewDelegate
@@ -71,7 +80,6 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, GlyphViewDel
         }
         
         GlyphConfiguration.currentLevel = GlyphSequenceCount(rawValue: buttonIndex + 1)!
-        let glyphView = self.view as! GlyphView
-        glyphView.updateLevel(GlyphConfiguration.currentLevel)
+        self.glyphView!.updateLevel(GlyphConfiguration.currentLevel)
     }
 }

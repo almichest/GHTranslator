@@ -63,7 +63,7 @@ class GlyphScene: SKScene{
     
     private func prepareGlyphNameNode() {
         self.glyphNameNode = SKLabelNode(text: "")
-        self.glyphNameNode!.position = CGPointMake(self.size.width / 2, 70)
+        self.glyphNameNode!.position = CGPointMake(self.size.width / 2, 40)
         self.glyphNameNode!.fontSize = 20.0
         self.addChild(self.glyphNameNode!)
     }

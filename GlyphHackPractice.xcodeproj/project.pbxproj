@@ -23,6 +23,7 @@
 		426B31561AC65E39003AA565 /* GlyphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426B31551AC65E39003AA565 /* GlyphView.swift */; };
 		426B31581AC65EFA003AA565 /* RootNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426B31571AC65EFA003AA565 /* RootNode.swift */; };
 		4276E9891AC79C6400F3DFB2 /* GlyphConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4276E9881AC79C6400F3DFB2 /* GlyphConfiguration.swift */; };
+		4276E98B1AC7BBC300F3DFB2 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4276E98A1AC7BBC300F3DFB2 /* iAd.framework */; };
 		42CDD0C21A7CFC10001FFC1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDD0C11A7CFC10001FFC1F /* AppDelegate.swift */; };
 		42CDD0CB1A7CFC10001FFC1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42CDD0C91A7CFC10001FFC1F /* Main.storyboard */; };
 		42CDD0CD1A7CFC10001FFC1F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42CDD0CC1A7CFC10001FFC1F /* Images.xcassets */; };
@@ -56,6 +57,7 @@
 		426B31551AC65E39003AA565 /* GlyphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlyphView.swift; sourceTree = "<group>"; };
 		426B31571AC65EFA003AA565 /* RootNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootNode.swift; path = Node/RootNode.swift; sourceTree = "<group>"; };
 		4276E9881AC79C6400F3DFB2 /* GlyphConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlyphConfiguration.swift; sourceTree = "<group>"; };
+		4276E98A1AC7BBC300F3DFB2 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		42CDD0BC1A7CFC10001FFC1F /* GlyphHackPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlyphHackPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42CDD0C01A7CFC10001FFC1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42CDD0C11A7CFC10001FFC1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4276E98B1AC7BBC300F3DFB2 /* iAd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +108,7 @@
 		42CDD0B31A7CFC10001FFC1F = {
 			isa = PBXGroup;
 			children = (
+				4276E98A1AC7BBC300F3DFB2 /* iAd.framework */,
 				42CDD0BE1A7CFC10001FFC1F /* GlyphHackPractice */,
 				42CDD0D81A7CFC10001FFC1F /* GlyphHackPracticeTests */,
 				42CDD0BD1A7CFC10001FFC1F /* Products */,
