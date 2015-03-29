@@ -22,6 +22,11 @@ public class GlyphView: SKView, GlyphSceneDelegate {
         let scene = self.scene as! GlyphScene
         scene.glyphDelegate = self
     }
+    
+    func updateLevel(level:GlyphSequenceCount) {
+        let scene = self.scene as! GlyphScene
+        scene.level = level
+    }
 }
 
 protocol GlyphViewDelegate:class {

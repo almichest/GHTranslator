@@ -11,6 +11,11 @@ import SpriteKit
 class GlyphScene: SKScene{
     
     weak var glyphDelegate:GlyphSceneDelegate?
+    var level:GlyphSequenceCount = GlyphSequenceCount.One {
+        didSet {
+            self.updateLevelNode()
+        }
+    }
     
     private var rootNode: RootNode?
     private var currentGlyphPath:Set<Glyph.GlyphPath>
@@ -19,6 +24,7 @@ class GlyphScene: SKScene{
     private var startButtonNode:SKLabelNode?
     private var glyphNameNode:SKLabelNode?
     private var levelSelectionNode:SKLabelNode?
+    private var levelNode:SKLabelNode?
     
     override init(size: CGSize) {
         self.currentGlyphPath = []
@@ -43,6 +49,7 @@ class GlyphScene: SKScene{
         self.prepareStartButton()
         self.prepareGlyphNameNode()
         self.prepareLevelSelectNode()
+        self.prepareLevelNode()
     }
     
     private func prepareStartButton() {
@@ -68,6 +75,20 @@ class GlyphScene: SKScene{
         self.levelSelectionNode!.position = CGPointMake(self.size.width - xMargin, self.size.height - 40)
         self.levelSelectionNode!.userInteractionEnabled = false
         self.addChild(self.levelSelectionNode!)
+    }
+    
+    private func prepareLevelNode() {
+        self.levelNode = SKLabelNode()
+        self.levelNode!.text = "Level: \(self.level.rawValue)"
+        self.levelNode!.fontSize = 20.0
+        let xMargin = CGFloat(self.levelNode!.frame.size.width)
+        self.levelNode!.position = CGPointMake(xMargin, self.size.height - 40)
+        self.levelNode!.userInteractionEnabled = false
+        self.addChild(self.levelNode!)
+    }
+    
+    private func updateLevelNode() {
+        self.levelNode!.text = "Level: \(self.level.rawValue)"
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {

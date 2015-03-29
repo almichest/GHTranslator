@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-class GlyphViewController: UIViewController, GlyphViewDelegate {
+class GlyphViewController: UIViewController, UIActionSheetDelegate, GlyphViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +52,7 @@ class GlyphViewController: UIViewController, GlyphViewDelegate {
     
     private func showLevelSelectActionSheet() {
         let actionSheet = UIActionSheet()
+        actionSheet.delegate = self
         actionSheet.title = "Select Level"
         actionSheet.addButtonWithTitle("1")
         actionSheet.addButtonWithTitle("2")
@@ -61,5 +62,16 @@ class GlyphViewController: UIViewController, GlyphViewDelegate {
         actionSheet.addButtonWithTitle("Cancel")
         actionSheet.cancelButtonIndex = 5
         actionSheet.showInView(self.view)
+    }
+    
+    //MARK: - UIActionSheetDelegate
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+        if(buttonIndex >= GlyphSequenceCount.Five.rawValue) {
+            return
+        }
+        
+        GlyphConfiguration.currentLevel = GlyphSequenceCount(rawValue: buttonIndex + 1)!
+        let glyphView = self.view as! GlyphView
+        glyphView.updateLevel(GlyphConfiguration.currentLevel)
     }
 }
