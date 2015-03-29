@@ -54,9 +54,9 @@ class GlyphScene: SKScene{
     
     private func prepareStartButton() {
         self.startButtonNode = SKLabelNode(text: "Start")
-        self.startButtonNode!.fontSize = 30.0
+        self.startButtonNode!.fontSize = 25.0
         self.startButtonNode?.fontColor = SKColor(red: 157.0 / 255.0, green: 204.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
-        self.startButtonNode!.position = CGPointMake(self.size.width / 2, self.size.height - 80)
+        self.startButtonNode!.position = CGPointMake(self.size.width / 4.0, self.size.height - 80)
         self.startButtonNode!.userInteractionEnabled = false
         self.addChild(self.startButtonNode!)
     }
@@ -70,9 +70,9 @@ class GlyphScene: SKScene{
     
     private func prepareLevelSelectNode() {
         self.levelSelectionNode = SKLabelNode(text: "Select Level")
-        self.levelSelectionNode!.fontSize = 20.0
-        let xMargin = self.levelSelectionNode!.frame.size.width / 2.0 + CGFloat(15)
-        self.levelSelectionNode!.position = CGPointMake(self.size.width - xMargin, self.size.height - 40)
+        self.levelSelectionNode!.fontSize = 25.0
+        self.levelSelectionNode!.fontColor = SKColor(red: 157.0 / 255.0, green: 204.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
+        self.levelSelectionNode!.position = CGPointMake(self.size.width * 3.0 / 4.0, self.size.height - 80)
         self.levelSelectionNode!.userInteractionEnabled = false
         self.addChild(self.levelSelectionNode!)
     }
@@ -81,8 +81,7 @@ class GlyphScene: SKScene{
         self.levelNode = SKLabelNode()
         self.levelNode!.text = "Level: \(self.level.rawValue)"
         self.levelNode!.fontSize = 20.0
-        let xMargin = CGFloat(self.levelNode!.frame.size.width)
-        self.levelNode!.position = CGPointMake(xMargin, self.size.height - 40)
+        self.levelNode!.position = CGPointMake(self.size.width / 2.0, self.size.height - 40)
         self.levelNode!.userInteractionEnabled = false
         self.addChild(self.levelNode!)
     }
