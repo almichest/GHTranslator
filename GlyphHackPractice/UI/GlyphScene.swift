@@ -16,6 +16,8 @@ class GlyphScene: SKScene{
     private var tracingParticles:[SKEmitterNode]
     private var startButtonNode:SKLabelNode?
     
+    private var glyphNameNode:SKLabelNode?
+    
     override init(size: CGSize) {
         self.currentGlyphPath = []
         self.lastTouchedIndex = -1
@@ -36,14 +38,21 @@ class GlyphScene: SKScene{
         rootNode.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
         self.rootNode = rootNode
         rootNode.prepare()
-        self.prepareStartButtn()
+        self.prepareStartButton()
+        self.prepareGlyphNameNode()
     }
     
-    private func prepareStartButtn() {
+    private func prepareStartButton() {
         self.startButtonNode = SKLabelNode(text: "Start")
         self.startButtonNode!.position = CGPointMake(self.size.width / 2, self.size.height - 50)
         self.startButtonNode!.userInteractionEnabled = false
         self.addChild(self.startButtonNode!)
+    }
+    
+    private func prepareGlyphNameNode() {
+        self.glyphNameNode = SKLabelNode(text: "Hoge")
+        self.glyphNameNode?.position = CGPointMake(self.size.width / 2, 50)
+        self.addChild(glyphNameNode!)
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -135,9 +144,14 @@ class GlyphScene: SKScene{
             let target = self.glyphQueue[0]
             self.showingGlyph = target
             Log.d("target = \(target)")
+            self.setGlyphName(target.type)
             self.showGlyph(target)
             self.glyphQueue.removeAtIndex(0)
         }
+    }
+    
+    private func setGlyphName(type:GlyphType) {
+        self.glyphNameNode?.text = type.rawValue
     }
     
     private func showGlyph(glyph:Glyph) {
