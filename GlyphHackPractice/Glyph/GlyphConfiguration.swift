@@ -10,6 +10,12 @@ import UIKit
 
 class GlyphConfiguration: NSObject {
     
-    static var currentLevel:GlyphSequenceCount = GlyphSequenceCount.One
-   
+    static let GlyphConfigurationChangeCurrentLevelNotification = "GlyphConfigurationChangeCurrentLevelNotification"
+    
+    static var currentLevel:GlyphSequenceCount = GlyphSequenceCount.One {
+        didSet {
+            let notificationCenter = NSNotificationCenter.defaultCenter()
+            notificationCenter.postNotificationName(GlyphConfigurationChangeCurrentLevelNotification, object: nil)
+        }
+    }
 }

@@ -21,15 +21,32 @@ class HomeScene: SKScene {
         self.prepareStartNode()
         self.prepareSelectLevelNode()
         self.prepareResultNode()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateLevel:", name: GlyphConfiguration.GlyphConfigurationChangeCurrentLevelNotification, object: nil)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    @objc
+    private func updateLevel(notification:NSNotification?) {
+        self.updateStartNode()
     }
     
     private func prepareStartNode() {
-        self.startNode = SKLabelNode(text: "Start")
+        self.startNode = SKLabelNode()
         self.startNode!.fontSize = 25.0
         self.startNode!.fontColor = SKColor(red: 157.0 / 255.0, green: 204.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
         self.startNode!.position = CGPointMake(self.size.width / 2.0, self.size.height / 2.0 + 100)
         self.startNode!.userInteractionEnabled = false
         self.addChild(self.startNode!)
+        
+        self.updateStartNode()
+    }
+    
+    private func updateStartNode() {
+        self.startNode?.text = "Start (Level: \(GlyphConfiguration.currentLevel.rawValue))"
     }
     
     private func prepareSelectLevelNode() {

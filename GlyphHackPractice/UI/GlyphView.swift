@@ -14,15 +14,13 @@ public class GlyphView: SKView, HomeSceneDelegate, GlyphSceneDelegate {
     weak var glyphViewDelegate:GlyphViewDelegate?
     
     func presentHomeScene(scene:HomeScene) {
-        scene.homeSceneDelegate = self
         super.presentScene(scene, transition:SKTransition.fadeWithDuration(1.0))
+        scene.homeSceneDelegate = self
     }
     
     func presentGlyphScene(scene:GlyphScene) {
         super.presentScene(scene, transition:SKTransition.fadeWithDuration(1.0))
-        
         scene.glyphSceneDelegate = self
-        scene.level = GlyphConfiguration.currentLevel
     }
     
     //MARK: - HomeSceneDelegate

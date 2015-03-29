@@ -12,12 +12,6 @@ class GlyphScene: SKScene{
     
     weak var glyphSceneDelegate:GlyphSceneDelegate?
     
-    var level:GlyphSequenceCount = GlyphSequenceCount.One {
-        didSet {
-            self.updateLevelNode()
-        }
-    }
-    
     private var rootNode: RootNode?
     private var currentGlyphPath:Set<Glyph.GlyphPath>
     private var lastTouchedIndex:Int
@@ -71,7 +65,7 @@ class GlyphScene: SKScene{
     
     private func prepareLevelNode() {
         self.levelNode = SKLabelNode()
-        self.levelNode!.text = "Level: \(self.level.rawValue)"
+        self.levelNode!.text = "Level: \(GlyphConfiguration.currentLevel.rawValue)"
         self.levelNode!.fontSize = 20.0
         self.levelNode!.position = CGPointMake(self.size.width / 2.0, self.size.height - 40)
         self.levelNode!.userInteractionEnabled = false
@@ -85,10 +79,6 @@ class GlyphScene: SKScene{
         self.homeNode!.position = CGPointMake(self.size.width * 3.0 / 4.0, self.size.height - 80)
         self.homeNode!.userInteractionEnabled = false
         self.addChild(self.homeNode!)
-    }
-    
-    private func updateLevelNode() {
-        self.levelNode!.text = "Level: \(self.level.rawValue)"
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -149,7 +139,7 @@ class GlyphScene: SKScene{
     }
     
     private func handleTappingStartButton() {
-        let sequence = GlyphSequenceProvider.provideGlyphSequence(self.level)
+        let sequence = GlyphSequenceProvider.provideGlyphSequence(GlyphConfiguration.currentLevel)
         self.enqueueGlyphSequence(sequence)
     }
     
