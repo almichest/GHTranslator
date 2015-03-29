@@ -10,7 +10,8 @@ import SpriteKit
 
 class GlyphScene: SKScene{
     
-    weak var glyphDelegate:GlyphSceneDelegate?
+    weak var glyphSceneDelegate:GlyphSceneDelegate?
+    
     var level:GlyphSequenceCount = GlyphSequenceCount.One {
         didSet {
             self.updateLevelNode()
@@ -23,8 +24,8 @@ class GlyphScene: SKScene{
     private var tracingParticles:[SKEmitterNode]
     private var startButtonNode:SKLabelNode?
     private var glyphNameNode:SKLabelNode?
-    private var levelSelectionNode:SKLabelNode?
     private var levelNode:SKLabelNode?
+    private var homeNode:SKLabelNode?
     
     override init(size: CGSize) {
         self.currentGlyphPath = []
@@ -48,8 +49,8 @@ class GlyphScene: SKScene{
         rootNode.prepare()
         self.prepareStartButton()
         self.prepareGlyphNameNode()
-        self.prepareLevelSelectNode()
         self.prepareLevelNode()
+        self.prepareHomeNode()
     }
     
     private func prepareStartButton() {
@@ -68,15 +69,6 @@ class GlyphScene: SKScene{
         self.addChild(self.glyphNameNode!)
     }
     
-    private func prepareLevelSelectNode() {
-        self.levelSelectionNode = SKLabelNode(text: "Select Level")
-        self.levelSelectionNode!.fontSize = 25.0
-        self.levelSelectionNode!.fontColor = SKColor(red: 157.0 / 255.0, green: 204.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
-        self.levelSelectionNode!.position = CGPointMake(self.size.width * 3.0 / 4.0, self.size.height - 80)
-        self.levelSelectionNode!.userInteractionEnabled = false
-        self.addChild(self.levelSelectionNode!)
-    }
-    
     private func prepareLevelNode() {
         self.levelNode = SKLabelNode()
         self.levelNode!.text = "Level: \(self.level.rawValue)"
@@ -84,6 +76,15 @@ class GlyphScene: SKScene{
         self.levelNode!.position = CGPointMake(self.size.width / 2.0, self.size.height - 40)
         self.levelNode!.userInteractionEnabled = false
         self.addChild(self.levelNode!)
+    }
+    
+    private func prepareHomeNode() {
+        self.homeNode = SKLabelNode(text: "Home")
+        self.homeNode!.fontSize = 25.0
+        self.homeNode?.fontColor = SKColor(red: 157.0 / 255.0, green: 204.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
+        self.homeNode!.position = CGPointMake(self.size.width * 3.0 / 4.0, self.size.height - 80)
+        self.homeNode!.userInteractionEnabled = false
+        self.addChild(self.homeNode!)
     }
     
     private func updateLevelNode() {
@@ -110,17 +111,7 @@ class GlyphScene: SKScene{
         let location = touch.locationInNode(self)
         let node = self.nodeAtPoint(location)
         
-        if node == self.startButtonNode && type == TouchType.Began {
-            self.handleTappingStartButton()
-        } else if(node == self.levelSelectionNode) {
-            self.handleTappingLevelSelectButton()
-        } else {
-            self.handleNodeTouch(node, type:type)
-        }
-    }
-    
-    private func handleTappingLevelSelectButton() {
-        self.glyphDelegate?.didTapLevelSelectionLabel(self)
+        self.handleNodeTouch(node, type:type)
     }
     
     private func clearTracingParticles() {
@@ -158,14 +149,8 @@ class GlyphScene: SKScene{
     }
     
     private func handleTappingStartButton() {
-//        let sequence = GlyphSequenceProvider.provideGlyphSequence(GlyphSequenceCount.Five)
-        let sequence = GlyphSequenceProvider.provideAllSingleSequence()
-        for singleSequence in sequence {
-            for single in singleSequence {
-                self.enqueueGlyphSequence(single)
-            }
-        }
-//        self.enqueueGlyphSequence(sequence)
+        let sequence = GlyphSequenceProvider.provideGlyphSequence(self.level)
+        self.enqueueGlyphSequence(sequence)
     }
     
     //MARK: - Showing supplied path
@@ -205,6 +190,7 @@ class GlyphScene: SKScene{
     internal func showPath(from:Int, to:Int) {
         self.rootNode?.showPath(from, to:to, completion:{
             self.showingGlyph = nil
+            self.glyphNameNode?.text = ""
             self.showNextGlyph()
         })
     }
@@ -222,13 +208,19 @@ class GlyphScene: SKScene{
         let location = touch.locationInNode(self)
         let node = self.nodeAtPoint(location)
         
+        if node == self.homeNode {
+            self.glyphSceneDelegate?.didSelectHomeNodeInScene(self)
+            return
+        } else if node == self.startButtonNode {
+            self.handleTappingStartButton()
+            return
+        }
+        
         self.clearTracingParticles()
         self.lastTouchedIndex = -1
-        
     }
-    
 }
 
-protocol GlyphSceneDelegate:class {
-    func didTapLevelSelectionLabel(scene:GlyphScene)
+protocol GlyphSceneDelegate: class {
+    func didSelectHomeNodeInScene(scene:GlyphScene)
 }

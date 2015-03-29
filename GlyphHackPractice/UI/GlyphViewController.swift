@@ -12,25 +12,9 @@ import iAd
 
 class GlyphViewController: UIViewController, UIActionSheetDelegate, GlyphViewDelegate {
 
-    var glyphView:GlyphView?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.glyphView = self.view as? GlyphView
-
-        let scene = GlyphScene(size: self.view.frame.size)
-        self.glyphView!.showsFPS = true
-        self.glyphView!.showsNodeCount = true
-        self.glyphView!.glyphDelegate = self
-        
-        /* Sprite Kit applies additional optimizations to improve rendering performance */
-        self.glyphView!.ignoresSiblingOrder = true
-        
-        /* Set the scale mode to scale to fit the window */
-        scene.scaleMode = .AspectFill
-        self.glyphView!.presentScene(scene)
-        
-//        self.canDisplayBannerAds = true
+        self.showHomeScene()
     }
 
     override func shouldAutorotate() -> Bool {
@@ -51,14 +35,58 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, GlyphViewDel
     }
     
     override func prefersStatusBarHidden() -> Bool {
-        return true
+        return false
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
     
     //MARK: - GlyphViewDelegate
-    func didSelectLevelSelectButton(view: GlyphView) {
+    func didSelectStartItemInView(view: GlyphView) {
+        let glyphView = self.view as? GlyphView
+
+        let scene = GlyphScene(size: self.view.frame.size)
+        glyphView!.glyphViewDelegate = self
+        
+        /* Sprite Kit applies additional optimizations to improve rendering performance */
+        glyphView!.ignoresSiblingOrder = true
+        
+        /* Set the scale mode to scale to fit the window */
+        scene.scaleMode = .AspectFill
+        glyphView!.presentGlyphScene(scene)
+        
+//        self.canDisplayBannerAds = true
+    }
+    
+    func didSelectSelectLevelItemInView(view: GlyphView) {
         self.showLevelSelectActionSheet()
     }
     
+    func didSelectResultItemInView(view: GlyphView) {
+        
+    }
+    
+    func didSelectHomeItemInView(view: GlyphView) {
+        self.showHomeScene()
+    }
+    
+    private func showHomeScene() {
+        let glyphView = self.view as? GlyphView
+
+        let scene = HomeScene(size: self.view.frame.size)
+        glyphView!.glyphViewDelegate = self
+        
+        /* Sprite Kit applies additional optimizations to improve rendering performance */
+        glyphView!.ignoresSiblingOrder = true
+        
+        /* Set the scale mode to scale to fit the window */
+        scene.scaleMode = .AspectFill
+        glyphView!.presentHomeScene(scene)
+//        self.canDisplayBannerAds = true
+    }
+    
+    //MARK - Select Level
     private func showLevelSelectActionSheet() {
         let actionSheet = UIActionSheet()
         actionSheet.delegate = self
@@ -80,6 +108,5 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, GlyphViewDel
         }
         
         GlyphConfiguration.currentLevel = GlyphSequenceCount(rawValue: buttonIndex + 1)!
-        self.glyphView!.updateLevel(GlyphConfiguration.currentLevel)
     }
 }

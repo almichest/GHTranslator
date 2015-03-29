@@ -9,26 +9,45 @@
 import UIKit
 import SpriteKit
 
-public class GlyphView: SKView, GlyphSceneDelegate {
+public class GlyphView: SKView, HomeSceneDelegate, GlyphSceneDelegate {
     
-    weak var glyphDelegate:GlyphViewDelegate?
+    weak var glyphViewDelegate:GlyphViewDelegate?
     
-    func didTapLevelSelectionLabel(scene: GlyphScene) {
-        self.glyphDelegate?.didSelectLevelSelectButton(self)
+    func presentHomeScene(scene:HomeScene) {
+        scene.homeSceneDelegate = self
+        super.presentScene(scene, transition:SKTransition.fadeWithDuration(1.0))
     }
     
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        let scene = self.scene as! GlyphScene
-        scene.glyphDelegate = self
+    func presentGlyphScene(scene:GlyphScene) {
+        super.presentScene(scene, transition:SKTransition.fadeWithDuration(1.0))
+        
+        scene.glyphSceneDelegate = self
+        scene.level = GlyphConfiguration.currentLevel
     }
     
-    func updateLevel(level:GlyphSequenceCount) {
-        let scene = self.scene as! GlyphScene
-        scene.level = level
+    //MARK: - HomeSceneDelegate
+    
+    func didTapStartNodeInScene(scene: HomeScene) {
+        self.glyphViewDelegate?.didSelectStartItemInView(self)
+    }
+    
+    func didTapSelectLevelNodeInScene(scene: HomeScene) {
+        self.glyphViewDelegate?.didSelectSelectLevelItemInView(self)
+    }
+    
+    func didTapResultNodeInScene(scene: HomeScene) {
+        self.glyphViewDelegate?.didSelectResultItemInView(self)
+    }
+    
+    //MARK: - GlyphSceneDelegate
+    func didSelectHomeNodeInScene(scene: GlyphScene) {
+        self.glyphViewDelegate?.didSelectHomeItemInView(self)
     }
 }
 
-protocol GlyphViewDelegate:class {
-    func didSelectLevelSelectButton(view:GlyphView)
+public protocol GlyphViewDelegate: class {
+    func didSelectStartItemInView(view:GlyphView)
+    func didSelectSelectLevelItemInView(view:GlyphView)
+    func didSelectResultItemInView(view:GlyphView)
+    func didSelectHomeItemInView(view:GlyphView)
 }
