@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-class GameViewController: UIViewController {
+class GlyphViewController: UIViewController, GlyphViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +18,7 @@ class GameViewController: UIViewController {
         let glyphView = self.view as! GlyphView
         glyphView.showsFPS = true
         glyphView.showsNodeCount = true
+        glyphView.glyphDelegate = self
         
         /* Sprite Kit applies additional optimizations to improve rendering performance */
         glyphView.ignoresSiblingOrder = true
@@ -43,8 +44,22 @@ class GameViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
     }
-
-    override func prefersStatusBarHidden() -> Bool {
-        return true
+    
+    //MARK: - GlyphViewDelegate
+    func didSelectLevelSelectButton(view: GlyphView) {
+        self.showLevelSelectActionSheet()
+    }
+    
+    private func showLevelSelectActionSheet() {
+        let actionSheet = UIActionSheet()
+        actionSheet.title = "Select Level"
+        actionSheet.addButtonWithTitle("1")
+        actionSheet.addButtonWithTitle("2")
+        actionSheet.addButtonWithTitle("3")
+        actionSheet.addButtonWithTitle("4")
+        actionSheet.addButtonWithTitle("5")
+        actionSheet.addButtonWithTitle("Cancel")
+        actionSheet.cancelButtonIndex = 5
+        actionSheet.showInView(self.view)
     }
 }
