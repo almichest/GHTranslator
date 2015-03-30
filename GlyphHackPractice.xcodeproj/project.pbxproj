@@ -24,6 +24,7 @@
 		4276E98B1AC7BBC300F3DFB2 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4276E98A1AC7BBC300F3DFB2 /* iAd.framework */; };
 		4276E9901AC8035600F3DFB2 /* GlyphScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4276E98E1AC8035600F3DFB2 /* GlyphScene.swift */; };
 		4276E9921AC803BB00F3DFB2 /* HomeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4276E9911AC803BB00F3DFB2 /* HomeScene.swift */; };
+		4276E9941AC9571D00F3DFB2 /* ResultScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4276E9931AC9571D00F3DFB2 /* ResultScene.swift */; };
 		42CDD0C21A7CFC10001FFC1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDD0C11A7CFC10001FFC1F /* AppDelegate.swift */; };
 		42CDD0CB1A7CFC10001FFC1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42CDD0C91A7CFC10001FFC1F /* Main.storyboard */; };
 		42CDD0CD1A7CFC10001FFC1F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42CDD0CC1A7CFC10001FFC1F /* Images.xcassets */; };
@@ -58,6 +59,7 @@
 		4276E98A1AC7BBC300F3DFB2 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		4276E98E1AC8035600F3DFB2 /* GlyphScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlyphScene.swift; sourceTree = "<group>"; };
 		4276E9911AC803BB00F3DFB2 /* HomeScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScene.swift; sourceTree = "<group>"; };
+		4276E9931AC9571D00F3DFB2 /* ResultScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultScene.swift; sourceTree = "<group>"; };
 		42CDD0BC1A7CFC10001FFC1F /* GlyphHackPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlyphHackPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42CDD0C01A7CFC10001FFC1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42CDD0C11A7CFC10001FFC1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			children = (
 				4276E98E1AC8035600F3DFB2 /* GlyphScene.swift */,
 				4276E9911AC803BB00F3DFB2 /* HomeScene.swift */,
+				4276E9931AC9571D00F3DFB2 /* ResultScene.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				42D559A91A9A08C00091A490 /* GlyphTypes.swift in Sources */,
 				42CDD0C21A7CFC10001FFC1F /* AppDelegate.swift in Sources */,
 				425882581AC676A200219E0C /* NodeUtility.swift in Sources */,
+				4276E9941AC9571D00F3DFB2 /* ResultScene.swift in Sources */,
 				426B31561AC65E39003AA565 /* GlyphView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
