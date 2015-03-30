@@ -20,6 +20,10 @@ class GlyphScene: SKScene{
     private var glyphNameNode:SKLabelNode?
     private var levelNode:SKLabelNode?
     private var homeNode:SKLabelNode?
+    private var countDownNode:CountDownLabelNode?
+    private var messageNode:SKLabelNode?
+    
+    private var isInInputMode:Bool = false
     
     override init(size: CGSize) {
         self.currentGlyphPath = []
@@ -45,6 +49,7 @@ class GlyphScene: SKScene{
         self.prepareGlyphNameNode()
         self.prepareLevelNode()
         self.prepareHomeNode()
+        self.prepareMessageNode()
     }
     
     private func prepareStartButton() {
@@ -81,6 +86,17 @@ class GlyphScene: SKScene{
         self.addChild(self.homeNode!)
     }
     
+    private func prepareMessageNode() {
+        self.messageNode = SKLabelNode()
+        self.messageNode!.fontSize = 20.0
+        self.messageNode!.fontColor = SKColor.whiteColor()
+        self.messageNode!.position = CGPointMake(self.size.width / 2.0, self.rootNode!.position.y + self.rootNode!.size.height / 8 + 30)
+        self.messageNode!.userInteractionEnabled = false
+        self.addChild(self.messageNode!)
+    }
+    
+    
+    //MARK: - Touch
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.currentGlyphPath.removeAll(keepCapacity: true)
         self.handleTouches(touches, type:TouchType.Began)
@@ -101,7 +117,10 @@ class GlyphScene: SKScene{
         let location = touch.locationInNode(self)
         let node = self.nodeAtPoint(location)
         
-        self.handleNodeTouch(node, type:type)
+        if self.isInInputMode {
+            self.createTracingParticle(location)
+            self.handleNodeTouch(node, type:type)
+        }
     }
     
     private func clearTracingParticles() {
@@ -139,8 +158,23 @@ class GlyphScene: SKScene{
     }
     
     private func handleTappingStartButton() {
-        let sequence = GlyphSequenceProvider.provideGlyphSequence(GlyphConfiguration.currentLevel)
-        self.enqueueGlyphSequence(sequence)
+        self.prepareCountDownNode()
+        self.messageNode!.text = "Glyph(s) will be shown ..."
+        self.countDownNode!.startCountDown { () -> Void in
+            self.messageNode!.text = ""
+            self.countDownNode?.removeFromParent()
+            let sequence = GlyphSequenceProvider.provideGlyphSequence(GlyphConfiguration.currentLevel)
+            self.enqueueGlyphSequence(sequence)
+        }
+    }
+    
+    private func prepareCountDownNode() {
+        self.countDownNode = CountDownLabelNode(initialValue: 3, targetValue: 1)
+        self.countDownNode!.fontSize = 20.0
+        self.countDownNode?.fontColor = SKColor.whiteColor()
+        self.countDownNode!.position = CGPointMake(self.size.width / 2.0, self.rootNode!.position.y + self.rootNode!.size.height / 8)
+        self.countDownNode!.userInteractionEnabled = false
+        self.addChild(self.countDownNode!)
     }
     
     //MARK: - Showing supplied path
@@ -157,7 +191,7 @@ class GlyphScene: SKScene{
     private var showingGlyph:Glyph? = nil
     private func showNextGlyph() {
         Log.d("")
-        if self.glyphQueue.count != 0  && showingGlyph == nil {
+        if self.glyphQueue.count != 0  && self.showingGlyph == nil {
             let target = self.glyphQueue[0]
             self.showingGlyph = target
             Log.d("target = \(target)")
@@ -165,6 +199,28 @@ class GlyphScene: SKScene{
             self.showGlyph(target)
             self.glyphQueue.removeAtIndex(0)
         }
+        
+        if self.glyphQueue.count == 0 && self.showingGlyph == nil {
+            self.showDrawingGlyphMessage()
+        }
+    }
+    
+    private func showDrawingGlyphMessage() {
+        let delay = 0.5 * Double(NSEC_PER_SEC)
+        let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue(), {
+            self.messageNode!.text = "Draw Glyph(s) as shown ..."
+            self.prepareCountDownNode()
+            self.countDownNode!.startCountDown({ () -> Void in
+                self.countDownNode!.removeFromParent()
+                self.messageNode!.text = ""
+                self.startDrawingGlyph()
+            })
+        })
+    }
+    
+    private func startDrawingGlyph() {
+        self.isInInputMode = true
     }
     
     private func setGlyphName(type:GlyphType) {
@@ -206,7 +262,11 @@ class GlyphScene: SKScene{
             return
         }
         
-        self.clearTracingParticles()
+        let delay = 0.2 * Double(NSEC_PER_SEC)
+        let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue(), {
+            self.clearTracingParticles()
+        })
         self.lastTouchedIndex = -1
     }
 }

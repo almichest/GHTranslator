@@ -25,6 +25,7 @@
 		4276E9901AC8035600F3DFB2 /* GlyphScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4276E98E1AC8035600F3DFB2 /* GlyphScene.swift */; };
 		4276E9921AC803BB00F3DFB2 /* HomeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4276E9911AC803BB00F3DFB2 /* HomeScene.swift */; };
 		4276E9941AC9571D00F3DFB2 /* ResultScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4276E9931AC9571D00F3DFB2 /* ResultScene.swift */; };
+		4276E9981AC959BD00F3DFB2 /* CountDownLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4276E9971AC959BD00F3DFB2 /* CountDownLabelNode.swift */; };
 		42CDD0C21A7CFC10001FFC1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDD0C11A7CFC10001FFC1F /* AppDelegate.swift */; };
 		42CDD0CB1A7CFC10001FFC1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42CDD0C91A7CFC10001FFC1F /* Main.storyboard */; };
 		42CDD0CD1A7CFC10001FFC1F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42CDD0CC1A7CFC10001FFC1F /* Images.xcassets */; };
@@ -60,6 +61,7 @@
 		4276E98E1AC8035600F3DFB2 /* GlyphScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlyphScene.swift; sourceTree = "<group>"; };
 		4276E9911AC803BB00F3DFB2 /* HomeScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScene.swift; sourceTree = "<group>"; };
 		4276E9931AC9571D00F3DFB2 /* ResultScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultScene.swift; sourceTree = "<group>"; };
+		4276E9971AC959BD00F3DFB2 /* CountDownLabelNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CountDownLabelNode.swift; path = Node/CountDownLabelNode.swift; sourceTree = "<group>"; };
 		42CDD0BC1A7CFC10001FFC1F /* GlyphHackPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlyphHackPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42CDD0C01A7CFC10001FFC1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42CDD0C11A7CFC10001FFC1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 		42CDD0E71A7D052C001FFC1F /* Node */ = {
 			isa = PBXGroup;
 			children = (
+				4276E9971AC959BD00F3DFB2 /* CountDownLabelNode.swift */,
 				426B31571AC65EFA003AA565 /* RootNode.swift */,
 				42CDD0E51A7CFEA0001FFC1F /* GlyphHackVertex.swift */,
 				425882571AC676A200219E0C /* NodeUtility.swift */,
@@ -312,6 +315,7 @@
 				42D559A31A9895D70091A490 /* Log.swift in Sources */,
 				42165D121AA2F0EB001EC0F5 /* GlyphGenerator.swift in Sources */,
 				426B31581AC65EFA003AA565 /* RootNode.swift in Sources */,
+				4276E9981AC959BD00F3DFB2 /* CountDownLabelNode.swift in Sources */,
 				42D559A91A9A08C00091A490 /* GlyphTypes.swift in Sources */,
 				42CDD0C21A7CFC10001FFC1F /* AppDelegate.swift in Sources */,
 				425882581AC676A200219E0C /* NodeUtility.swift in Sources */,
