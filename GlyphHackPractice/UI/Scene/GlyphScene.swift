@@ -242,7 +242,7 @@ class GlyphScene: SKScene{
     }
     
     private func createTracingParticle(point: CGPoint) {
-        let particleGlyphPath = NSBundle.mainBundle().pathForResource("TracingParticle", ofType: "sks")
+        let particleGlyphPath = NSBundle.mainBundle().pathForResource("DrawingParticle", ofType: "sks")
         let particle = NSKeyedUnarchiver.unarchiveObjectWithFile(particleGlyphPath!) as! SKEmitterNode
         particle.position = point
         self.tracingParticles.append(particle)
