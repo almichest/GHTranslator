@@ -11,15 +11,17 @@ import SpriteKit
 
 class ResultScene: SKScene {
     
-    let level:GlyphSequenceCount
-    let correctGlyphs:[Glyph]
+    let answerGlyphs:[Glyph]
     let inputGlyphs:[Glyph]
     
-    init(size:CGSize, level:GlyphSequenceCount, correctGlyphs:[Glyph], inputGlyphs:[Glyph]) {
-        self.level = level
-        self.correctGlyphs = correctGlyphs
+    init(size:CGSize, answerGlyphs:[Glyph], inputGlyphs:[Glyph]) {
+        self.answerGlyphs = answerGlyphs
         self.inputGlyphs = inputGlyphs
         super.init(size: size)
+    }
+    
+    override func didMoveToView(view: SKView) {
+        self.backgroundColor = SKColor.blackColor()
     }
 
     required init?(coder aDecoder: NSCoder) {

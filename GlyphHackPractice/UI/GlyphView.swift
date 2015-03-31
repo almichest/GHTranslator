@@ -23,6 +23,10 @@ public class GlyphView: SKView, HomeSceneDelegate, GlyphSceneDelegate {
         scene.glyphSceneDelegate = self
     }
     
+    func presentResultScene(scene:ResultScene) {
+        super.presentScene(scene)
+    }
+    
     //MARK: - HomeSceneDelegate
     
     func didTapStartNodeInScene(scene: HomeScene) {
@@ -43,8 +47,7 @@ public class GlyphView: SKView, HomeSceneDelegate, GlyphSceneDelegate {
     }
     
     func didCompleteUserInputs(answer:[GlyphType], userInputs:[Set<GlyphPath>?]) {
-        let alert = UIAlertView(title: "hoge", message: "hoge", delegate: nil, cancelButtonTitle: "hoge")
-        alert.show()
+        self.glyphViewDelegate?.didCompleteUserInput(answer, userInputs: userInputs)
     }
 }
 
@@ -53,4 +56,6 @@ public protocol GlyphViewDelegate: class {
     func didSelectSelectLevelItemInView(view:GlyphView)
     func didSelectResultItemInView(view:GlyphView)
     func didSelectHomeItemInView(view:GlyphView)
+    
+    func didCompleteUserInput(answer:[GlyphType], userInputs:[Set<GlyphPath>?])
 }

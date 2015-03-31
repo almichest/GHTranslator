@@ -18,6 +18,7 @@ class HomeScene: SKScene {
     weak var homeSceneDelegate:HomeSceneDelegate?
     
     override func didMoveToView(view: SKView) {
+        self.backgroundColor = SKColor.blackColor()
         self.prepareStartNode()
         self.prepareSelectLevelNode()
         self.prepareResultNode()

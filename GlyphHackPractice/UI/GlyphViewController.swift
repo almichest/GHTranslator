@@ -71,6 +71,25 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, GlyphViewDel
         self.showHomeScene()
     }
     
+    func didCompleteUserInput(answer: [GlyphType], userInputs: [Set<GlyphPath>?]) {
+        self.showResultScene(answer, userInputs: userInputs)
+    }
+    
+    private func showResultScene(answer: [GlyphType], userInputs: [Set<GlyphPath>?]) {
+        var answerGlyphs = [Glyph]()
+        for type in answer {
+            answerGlyphs.append(GlyphGenerator.createGlyphWithType(type))
+        }
+        var userInputGlyphs = [Glyph]()
+        for userInput in userInputs {
+            userInputGlyphs.append(GlyphGenerator.createGlyphWithType(GlyphType.UserInteractionResult, path: userInput))
+        }
+        
+        let glyphView = self.view as? GlyphView
+        let scene = ResultScene(size: glyphView!.frame.size, answerGlyphs: answerGlyphs, inputGlyphs: userInputGlyphs)
+        glyphView!.presentResultScene(scene)
+    }
+    
     private func showHomeScene() {
         let glyphView = self.view as? GlyphView
 

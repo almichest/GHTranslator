@@ -272,7 +272,9 @@ class GlyphScene: SKScene{
         
         if self.userInputs.count == self.currentQuestions.count && self.isInInputMode {
             self.isInInputMode = false
-            self.glyphSceneDelegate?.didCompleteUserInputs(self.currentQuestions, userInputs: self.userInputs)
+            doActionAfterSeconds({ () -> Void in
+                self.glyphSceneDelegate?.didCompleteUserInputs(self.currentQuestions, userInputs: self.userInputs)
+            }, after: 0.3)
         }
     }
     
