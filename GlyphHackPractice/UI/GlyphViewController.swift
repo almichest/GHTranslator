@@ -44,6 +44,10 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, GlyphViewDel
     
     //MARK: - GlyphViewDelegate
     func didSelectStartItemInView(view: GlyphView) {
+        self.showGlyphScene()
+    }
+    
+    private func showGlyphScene() {
         let glyphView = self.view as? GlyphView
 
         let scene = GlyphScene(size: self.view.frame.size)
@@ -103,6 +107,10 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, GlyphViewDel
         scene.scaleMode = .AspectFill
         glyphView!.presentHomeScene(scene)
 //        self.canDisplayBannerAds = true
+    }
+    
+    func didConfirmResultInView(view: GlyphView) {
+        self.showGlyphScene()
     }
     
     //MARK - Select Level

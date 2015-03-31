@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-public class GlyphView: SKView, HomeSceneDelegate, GlyphSceneDelegate {
+public class GlyphView: SKView, HomeSceneDelegate, GlyphSceneDelegate, ResultSceneDelegate {
     
     weak var glyphViewDelegate:GlyphViewDelegate?
     
@@ -25,6 +25,7 @@ public class GlyphView: SKView, HomeSceneDelegate, GlyphSceneDelegate {
     
     func presentResultScene(scene:ResultScene) {
         super.presentScene(scene)
+        scene.resultSceneDelegate = self
     }
     
     //MARK: - HomeSceneDelegate
@@ -49,6 +50,11 @@ public class GlyphView: SKView, HomeSceneDelegate, GlyphSceneDelegate {
     func didCompleteUserInputs(answer:[GlyphType], userInputs:[Set<GlyphPath>?]) {
         self.glyphViewDelegate?.didCompleteUserInput(answer, userInputs: userInputs)
     }
+    
+    //MARK: - ResultSceneDelegate
+    func didTapOKButtonOfScene(scene: ResultScene) {
+        self.glyphViewDelegate?.didConfirmResultInView(self)
+    }
 }
 
 public protocol GlyphViewDelegate: class {
@@ -58,4 +64,6 @@ public protocol GlyphViewDelegate: class {
     func didSelectHomeItemInView(view:GlyphView)
     
     func didCompleteUserInput(answer:[GlyphType], userInputs:[Set<GlyphPath>?])
+    
+    func didConfirmResultInView(view:GlyphView)
 }

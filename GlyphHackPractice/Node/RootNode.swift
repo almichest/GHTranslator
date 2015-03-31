@@ -10,8 +10,10 @@ import SpriteKit
 
 class RootNode: SKSpriteNode{
     
+    var particleScale:CGFloat = 1.0
+    var particleColor:UIColor?
+    
     private var vertexes:[GlyphHackVertex]
-    private let syncQueue = dispatch_queue_create("hira.root.node", DISPATCH_QUEUE_SERIAL)
     
     override init(texture: SKTexture!, color: UIColor!, size: CGSize) {
         self.vertexes = [GlyphHackVertex](count: 11, repeatedValue: GlyphHackVertex(index: 0))
@@ -97,7 +99,15 @@ class RootNode: SKSpriteNode{
     private func showParticle(point: CGPoint, autoRemove:Bool, completion:(() -> Void)? = nil) {
         let particleGlyphPath = NSBundle.mainBundle().pathForResource("GlyphParticle", ofType: "sks")
         let particle = NSKeyedUnarchiver.unarchiveObjectWithFile(particleGlyphPath!) as! SKEmitterNode
+        
         particle.position = point
+        particle.setScale(self.particleScale)
+        if(self.particleColor != nil) {
+            particle.particleColorSequence = nil
+            particle.particleColorBlendFactor = 1.0
+            particle.particleColor = self.particleColor
+        }
+        
         self.addChild(particle)
         if self.mainParticle == nil {
             self.mainParticle = particle
