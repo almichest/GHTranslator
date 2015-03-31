@@ -22,6 +22,34 @@ class ResultScene: SKScene {
     
     override func didMoveToView(view: SKView) {
         self.backgroundColor = SKColor.blackColor()
+        self.prepareResultNodes()
+    }
+    
+    private func prepareResultNodes() {
+        self.prepareAnswerNodes()
+        self.prepareUserInputResultNodes()
+    }
+    
+    private func prepareAnswerNodes() {
+        
+        for i in 0 ..< self.answerGlyphs.count {
+            let glyph = self.answerGlyphs[i]
+        }
+    }
+    
+    private func prepareUserInputResultNodes() {
+        let rootNode = RootNode(color: SKColor.blackColor(), size: CGSizeMake(self.size.width, self.size.height))
+        rootNode.position = CGPointMake(self.size.width / 2.0, self.size.height / 2.0)
+        rootNode.setScale(0.4)
+        self.addChild(rootNode)
+        rootNode.prepare()
+        for path in self.answerGlyphs[0].paths! {
+            rootNode.showPath(path.point1, to: path.point2, autoRemove: false, completion: nil)
+        }
+    }
+    
+    private func showGlyph(glyph:Glyph, position:CGPoint) {
+        
     }
 
     required init?(coder aDecoder: NSCoder) {

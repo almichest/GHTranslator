@@ -66,7 +66,7 @@ class RootNode: SKSpriteNode{
     
     let spaceBetweenParticles:CGFloat = 15
     var waiting = false
-    func showPath(from:Int, to:Int, completion:() -> Void) {
+    func showPath(from:Int, to:Int, autoRemove:Bool? = true, completion:(() -> Void)?) {
         
         Log.d("showPath \(from) - \(to)")
         
@@ -87,14 +87,14 @@ class RootNode: SKSpriteNode{
             } else {
                 target = CGPointMake(start.x + currentOffset * cos(arg), start.y + currentOffset * sin(arg))
             }
-            self.showParticle(target, completion:completion)
+            self.showParticle(target, autoRemove:autoRemove!, completion:completion)
             
             currentOffset += spaceBetweenParticles
         }
     }
     
     var mainParticle:SKEmitterNode? = nil
-    private func showParticle(point: CGPoint, completion:(() -> Void)? = nil) {
+    private func showParticle(point: CGPoint, autoRemove:Bool, completion:(() -> Void)? = nil) {
         let particleGlyphPath = NSBundle.mainBundle().pathForResource("GlyphParticle", ofType: "sks")
         let particle = NSKeyedUnarchiver.unarchiveObjectWithFile(particleGlyphPath!) as! SKEmitterNode
         particle.position = point
@@ -102,14 +102,17 @@ class RootNode: SKSpriteNode{
         if self.mainParticle == nil {
             self.mainParticle = particle
         }
-        particle.runAction(SKAction.fadeAlphaTo(0.0, duration: 1.0), completion:{() in
-            particle.removeFromParent()
-            if completion != nil && particle == self.mainParticle {
-                Log.d("Completion");
-                self.mainParticle = nil
-                completion!()
-            }
-        })
+        
+        if(autoRemove) {
+            particle.runAction(SKAction.fadeAlphaTo(0.0, duration: 1.0), completion:{() in
+                particle.removeFromParent()
+                if completion != nil && particle == self.mainParticle {
+                    Log.d("Completion");
+                    self.mainParticle = nil
+                    completion!()
+                }
+            })
+        }
     }
 }
 
