@@ -17,7 +17,7 @@
 		426B31491AC5810D003AA565 /* GlyphSequenceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423259E91AC42437004726FF /* GlyphSequenceProvider.swift */; };
 		426B31521AC65E23003AA565 /* GlyphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426B314D1AC65E23003AA565 /* GlyphViewController.swift */; };
 		426B31531AC65E23003AA565 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 426B314E1AC65E23003AA565 /* spark.png */; };
-		426B31541AC65E23003AA565 /* TracingParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 426B314F1AC65E23003AA565 /* TracingParticle.sks */; };
+		426B31541AC65E23003AA565 /* GlyphParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 426B314F1AC65E23003AA565 /* GlyphParticle.sks */; };
 		426B31561AC65E39003AA565 /* GlyphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426B31551AC65E39003AA565 /* GlyphView.swift */; };
 		426B31581AC65EFA003AA565 /* RootNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426B31571AC65EFA003AA565 /* RootNode.swift */; };
 		4276E9891AC79C6400F3DFB2 /* GlyphConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4276E9881AC79C6400F3DFB2 /* GlyphConfiguration.swift */; };
@@ -53,7 +53,7 @@
 		425882571AC676A200219E0C /* NodeUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NodeUtility.swift; path = Node/NodeUtility.swift; sourceTree = "<group>"; };
 		426B314D1AC65E23003AA565 /* GlyphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlyphViewController.swift; sourceTree = "<group>"; };
 		426B314E1AC65E23003AA565 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
-		426B314F1AC65E23003AA565 /* TracingParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TracingParticle.sks; sourceTree = "<group>"; };
+		426B314F1AC65E23003AA565 /* GlyphParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GlyphParticle.sks; sourceTree = "<group>"; };
 		426B31551AC65E39003AA565 /* GlyphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlyphView.swift; sourceTree = "<group>"; };
 		426B31571AC65EFA003AA565 /* RootNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootNode.swift; path = Node/RootNode.swift; sourceTree = "<group>"; };
 		4276E9881AC79C6400F3DFB2 /* GlyphConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlyphConfiguration.swift; sourceTree = "<group>"; };
@@ -102,7 +102,7 @@
 				4276E98C1AC8035600F3DFB2 /* Scene */,
 				426B314D1AC65E23003AA565 /* GlyphViewController.swift */,
 				426B314E1AC65E23003AA565 /* spark.png */,
-				426B314F1AC65E23003AA565 /* TracingParticle.sks */,
+				426B314F1AC65E23003AA565 /* GlyphParticle.sks */,
 				426B31551AC65E39003AA565 /* GlyphView.swift */,
 			);
 			path = UI;
@@ -284,7 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				426B31531AC65E23003AA565 /* spark.png in Resources */,
-				426B31541AC65E23003AA565 /* TracingParticle.sks in Resources */,
+				426B31541AC65E23003AA565 /* GlyphParticle.sks in Resources */,
 				42CDD0D01A7CFC10001FFC1F /* LaunchScreen.xib in Resources */,
 				42CDD0CD1A7CFC10001FFC1F /* Images.xcassets in Resources */,
 				42CDD0CB1A7CFC10001FFC1F /* Main.storyboard in Resources */,

@@ -95,7 +95,7 @@ class RootNode: SKSpriteNode{
     
     var mainParticle:SKEmitterNode? = nil
     private func showParticle(point: CGPoint, completion:(() -> Void)? = nil) {
-        let particleGlyphPath = NSBundle.mainBundle().pathForResource("TracingParticle", ofType: "sks")
+        let particleGlyphPath = NSBundle.mainBundle().pathForResource("GlyphParticle", ofType: "sks")
         let particle = NSKeyedUnarchiver.unarchiveObjectWithFile(particleGlyphPath!) as! SKEmitterNode
         particle.position = point
         self.addChild(particle)
