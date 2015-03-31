@@ -13,7 +13,7 @@ class GlyphScene: SKScene{
     weak var glyphSceneDelegate:GlyphSceneDelegate?
     
     private var rootNode: RootNode?
-    private var currentGlyphPath:Set<Glyph.GlyphPath>
+    private var currentGlyphPath:Set<GlyphPath>
     private var lastTouchedIndex:Int
     private var tracingParticles:[SKEmitterNode]
     private var startButtonNode:SKLabelNode?
@@ -24,6 +24,9 @@ class GlyphScene: SKScene{
     private var messageNode:SKLabelNode?
     
     private var isInInputMode:Bool = false
+    
+    private var currentQuestions = Array<GlyphType>(count:GlyphConfiguration.currentLevel.rawValue, repeatedValue:GlyphType.UserInteractionResult)
+    private var userInputs = Array<Set<GlyphPath>?>(count:GlyphConfiguration.currentLevel.rawValue, repeatedValue:nil)
     
     override init(size: CGSize) {
         self.currentGlyphPath = []
@@ -123,11 +126,22 @@ class GlyphScene: SKScene{
         }
     }
     
-    private func clearTracingParticles() {
+    private func clearTracingParticles(completion:(() -> Void)? = nil) {
         for particle in self.tracingParticles {
-            particle.removeFromParent()
+            self.removeParticle(particle, completion:completion)
         }
-        self.tracingParticles.removeAll(keepCapacity: true)
+    }
+    
+    private func removeParticle(particle:SKEmitterNode, completion:(() -> Void)?) {
+        particle.runAction(SKAction.fadeAlphaTo(0.0, duration: 0.05), completion:{
+            particle.removeFromParent()
+            self.tracingParticles.removeAtIndex(find(self.tracingParticles, particle)!)
+            if self.tracingParticles.count == 0 {
+                if completion != nil {
+                    completion!()
+                }
+            }
+        })
     }
     
     private func handleNodeTouch(node: SKNode?, type:TouchType) {
@@ -150,7 +164,7 @@ class GlyphScene: SKScene{
             let point1 = index < self.lastTouchedIndex ? index : self.lastTouchedIndex
             let point2 = index > self.lastTouchedIndex ? index : self.lastTouchedIndex
             
-            self.currentGlyphPath.insert(Glyph.GlyphPath(point1: point1, point2: point2))
+            self.currentGlyphPath.insert(GlyphPath(point1: point1, point2: point2))
             self.lastTouchedIndex = index
         }
         
@@ -158,18 +172,22 @@ class GlyphScene: SKScene{
     }
     
     private func handleTappingStartButton() {
+        self.currentQuestions.removeAll(keepCapacity: true)
+        self.userInputs.removeAll(keepCapacity: true)
+        
         self.prepareCountDownNode()
         self.messageNode!.text = "Glyph(s) will be shown ..."
         self.countDownNode!.startCountDown { () -> Void in
             self.messageNode!.text = ""
             self.countDownNode?.removeFromParent()
             let sequence = GlyphSequenceProvider.provideGlyphSequence(GlyphConfiguration.currentLevel)
+            self.currentQuestions = sequence
             self.enqueueGlyphSequence(sequence)
         }
     }
     
     private func prepareCountDownNode() {
-        self.countDownNode = CountDownLabelNode(initialValue: 3, targetValue: 1)
+        self.countDownNode = CountDownLabelNode(initialValue: 2, targetValue: 1)
         self.countDownNode!.fontSize = 20.0
         self.countDownNode?.fontColor = SKColor.whiteColor()
         self.countDownNode!.position = CGPointMake(self.size.width / 2.0, self.rootNode!.position.y + self.rootNode!.size.height / 8)
@@ -206,9 +224,7 @@ class GlyphScene: SKScene{
     }
     
     private func showDrawingGlyphMessage() {
-        let delay = 0.5 * Double(NSEC_PER_SEC)
-        let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-        dispatch_after(time, dispatch_get_main_queue(), {
+        self.doActionAfterSeconds({ () -> Void in
             self.messageNode!.text = "Draw Glyph(s) as shown ..."
             self.prepareCountDownNode()
             self.countDownNode!.startCountDown({ () -> Void in
@@ -216,7 +232,7 @@ class GlyphScene: SKScene{
                 self.messageNode!.text = ""
                 self.startDrawingGlyph()
             })
-        })
+        }, after: 0.5)
     }
     
     private func startDrawingGlyph() {
@@ -229,16 +245,35 @@ class GlyphScene: SKScene{
     
     private func showGlyph(glyph:Glyph) {
         for path in glyph.paths! {
-            self.showPath(path.point1, to: path.point2)
+            self.showPath(path.point1, to: path.point2, type: GlyphShownType.Question)
         }
     }
     
-    internal func showPath(from:Int, to:Int) {
+    private enum GlyphShownType {
+        case Question
+        case UserInput
+    }
+    
+    private func showPath(from:Int, to:Int, type:GlyphShownType) {
         self.rootNode?.showPath(from, to:to, completion:{
             self.showingGlyph = nil
             self.glyphNameNode?.text = ""
-            self.showNextGlyph()
+            
+            switch type {
+            case .Question :
+                self.showNextGlyph()
+            case .UserInput :
+                self.notifyUserInterInputCompleteIfPossible()
+            }
         })
+    }
+    
+    private func notifyUserInterInputCompleteIfPossible() {
+        
+        if self.userInputs.count == self.currentQuestions.count && self.isInInputMode {
+            self.isInInputMode = false
+            self.glyphSceneDelegate?.didCompleteUserInputs(self.currentQuestions, userInputs: self.userInputs)
+        }
     }
     
     private func createTracingParticle(point: CGPoint) {
@@ -262,15 +297,29 @@ class GlyphScene: SKScene{
             return
         }
         
-        let delay = 0.2 * Double(NSEC_PER_SEC)
+        self.doActionAfterSeconds({ () -> Void in
+            self.clearTracingParticles(completion: {
+                for path in self.currentGlyphPath {
+                    self.showPath(path.point1, to: path.point2, type:GlyphShownType.UserInput)
+                }
+            })
+        }, after: 0.0)
+        
+        self.userInputs.append(self.currentGlyphPath)
+        self.lastTouchedIndex = -1
+        
+    }
+    
+    private func doActionAfterSeconds(action:() -> Void, after:NSTimeInterval) {
+        let delay = after * Double(NSEC_PER_SEC)
         let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
         dispatch_after(time, dispatch_get_main_queue(), {
-            self.clearTracingParticles()
+            action()
         })
-        self.lastTouchedIndex = -1
     }
 }
 
 protocol GlyphSceneDelegate: class {
     func didSelectHomeNodeInScene(scene:GlyphScene)
+    func didCompleteUserInputs(answer:[GlyphType], userInputs:[Set<GlyphPath>?])
 }

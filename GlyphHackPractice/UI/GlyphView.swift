@@ -41,6 +41,11 @@ public class GlyphView: SKView, HomeSceneDelegate, GlyphSceneDelegate {
     func didSelectHomeNodeInScene(scene: GlyphScene) {
         self.glyphViewDelegate?.didSelectHomeItemInView(self)
     }
+    
+    func didCompleteUserInputs(answer:[GlyphType], userInputs:[Set<GlyphPath>?]) {
+        let alert = UIAlertView(title: "hoge", message: "hoge", delegate: nil, cancelButtonTitle: "hoge")
+        alert.show()
+    }
 }
 
 public protocol GlyphViewDelegate: class {

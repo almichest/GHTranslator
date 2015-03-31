@@ -22,11 +22,11 @@ class GlyphHackPracticeTests: XCTestCase {
     }
     
     func testEqual() {
-        let paths1: Set<Glyph.GlyphPath> = [Glyph.GlyphPath(point1: 0, point2: 10)]
+        let paths1: Set<GlyphPath> = [GlyphPath(point1: 0, point2: 10)]
         let glyph1 = GlyphGenerator.createGlyphWithType(GlyphType.UserInteractionResult, path: paths1)
         
-        let paths2: Set<Glyph.GlyphPath> = [Glyph.GlyphPath(point1: 0, point2: 5),
-                                            Glyph.GlyphPath(point1: 5, point2: 10)]
+        let paths2: Set<GlyphPath> = [GlyphPath(point1: 0, point2: 5),
+                                            GlyphPath(point1: 5, point2: 10)]
         let glyph2 = GlyphGenerator.createGlyphWithType(GlyphType.UserInteractionResult, path: paths2)
         
         XCTAssert(glyph1.isEqual(glyph2), "")
@@ -35,12 +35,12 @@ class GlyphHackPracticeTests: XCTestCase {
     func testCreatingChaosGlyph() {
         let chaos = GlyphGenerator.createGlyphWithType(GlyphType.Chaos, path: nil)
         
-        let inputPath: Set<Glyph.GlyphPath> = [
-                                               Glyph.GlyphPath(point1: 0, point2: 1),
-                                               Glyph.GlyphPath(point1: 1, point2: 8),
-                                               Glyph.GlyphPath(point1: 0, point2: 2),
-                                               Glyph.GlyphPath(point1: 2, point2: 6),
-                                               Glyph.GlyphPath(point1: 6, point2: 10),
+        let inputPath: Set<GlyphPath> = [
+                                               GlyphPath(point1: 0, point2: 1),
+                                               GlyphPath(point1: 1, point2: 8),
+                                               GlyphPath(point1: 0, point2: 2),
+                                               GlyphPath(point1: 2, point2: 6),
+                                               GlyphPath(point1: 6, point2: 10),
                                               ]
         let inputGlyph = GlyphGenerator.createGlyphWithType(GlyphType.UserInteractionResult, path: inputPath)
         XCTAssert(chaos.isEqual(inputGlyph), "")
