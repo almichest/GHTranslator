@@ -76,6 +76,18 @@ class ResultScene: SKScene {
             
             self.bottomLabelsOffset = offsetY + resultNode.size.height
         }
+        
+        if okCount == GlyphConfiguration.currentLevel.rawValue {
+            let currentScore = GlyphScore.currentScore(GlyphConfiguration.currentLevel)
+            GlyphScore.saveCurrentScore(currentScore + 1, level: GlyphConfiguration.currentLevel)
+            
+            let bestScore = GlyphScore.bestScore(GlyphConfiguration.currentLevel)
+            if currentScore > bestScore {
+                GlyphScore.saveBestScore(bestScore, level: GlyphConfiguration.currentLevel)
+            }
+        } else {
+            GlyphScore.saveCurrentScore(0, level: GlyphConfiguration.currentLevel)
+        }
     }
     
     private func prepareBackButton() {

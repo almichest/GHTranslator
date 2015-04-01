@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		42165D121AA2F0EB001EC0F5 /* GlyphGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42165D111AA2F0EB001EC0F5 /* GlyphGenerator.swift */; };
+		421D401F1ACBE921001FDB41 /* ScoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421D401E1ACBE921001FDB41 /* ScoreScene.swift */; };
+		421D40211ACBF239001FDB41 /* GlyphScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421D40201ACBF239001FDB41 /* GlyphScore.swift */; };
 		423259E51AC3A4A3004726FF /* Glyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F4FC181A99BA0100833C21 /* Glyph.swift */; };
 		423259E61AC3A878004726FF /* GlyphTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D559A81A9A08C00091A490 /* GlyphTypes.swift */; };
 		423259E71AC3A89F004726FF /* GlyphGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42165D111AA2F0EB001EC0F5 /* GlyphGenerator.swift */; };
@@ -51,6 +53,8 @@
 
 /* Begin PBXFileReference section */
 		42165D111AA2F0EB001EC0F5 /* GlyphGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlyphGenerator.swift; sourceTree = "<group>"; };
+		421D401E1ACBE921001FDB41 /* ScoreScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreScene.swift; sourceTree = "<group>"; };
+		421D40201ACBF239001FDB41 /* GlyphScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlyphScore.swift; sourceTree = "<group>"; };
 		423259E91AC42437004726FF /* GlyphSequenceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlyphSequenceProvider.swift; sourceTree = "<group>"; };
 		425882571AC676A200219E0C /* NodeUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NodeUtility.swift; path = Node/NodeUtility.swift; sourceTree = "<group>"; };
 		426B314D1AC65E23003AA565 /* GlyphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlyphViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +123,7 @@
 				4276E98E1AC8035600F3DFB2 /* GlyphScene.swift */,
 				4276E9911AC803BB00F3DFB2 /* HomeScene.swift */,
 				4276E9931AC9571D00F3DFB2 /* ResultScene.swift */,
+				421D401E1ACBE921001FDB41 /* ScoreScene.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -203,6 +208,7 @@
 				42165D111AA2F0EB001EC0F5 /* GlyphGenerator.swift */,
 				423259E91AC42437004726FF /* GlyphSequenceProvider.swift */,
 				4276E9881AC79C6400F3DFB2 /* GlyphConfiguration.swift */,
+				421D40201ACBF239001FDB41 /* GlyphScore.swift */,
 			);
 			path = Glyph;
 			sourceTree = "<group>";
@@ -316,6 +322,7 @@
 				423259EA1AC42437004726FF /* GlyphSequenceProvider.swift in Sources */,
 				42CDD0E61A7CFEA0001FFC1F /* GlyphHackVertex.swift in Sources */,
 				4276E9891AC79C6400F3DFB2 /* GlyphConfiguration.swift in Sources */,
+				421D40211ACBF239001FDB41 /* GlyphScore.swift in Sources */,
 				4276E9921AC803BB00F3DFB2 /* HomeScene.swift in Sources */,
 				42F4FC191A99BA0100833C21 /* Glyph.swift in Sources */,
 				4276E9901AC8035600F3DFB2 /* GlyphScene.swift in Sources */,
@@ -327,6 +334,7 @@
 				42D559A91A9A08C00091A490 /* GlyphTypes.swift in Sources */,
 				42CDD0C21A7CFC10001FFC1F /* AppDelegate.swift in Sources */,
 				425882581AC676A200219E0C /* NodeUtility.swift in Sources */,
+				421D401F1ACBE921001FDB41 /* ScoreScene.swift in Sources */,
 				4276E9941AC9571D00F3DFB2 /* ResultScene.swift in Sources */,
 				426B31561AC65E39003AA565 /* GlyphView.swift in Sources */,
 			);
