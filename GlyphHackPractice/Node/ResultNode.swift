@@ -45,7 +45,7 @@ class ResultNode: SKSpriteNode {
     
     private func prepareOKorNGNode() {
         let resultText = self.answerGlyph.isEqual(self.inputGlyph) ? "○" : "×"
-        let resultLabel = SKLabelNode(text: resultText)
+        let resultLabel = GeneralLabelNode(text: resultText)
         resultLabel.position = CGPointMake(self.size.width / 2.0, -self.size.height / 5)
         resultLabel.fontSize = 20.0
         self.addChild(resultLabel)
@@ -54,7 +54,7 @@ class ResultNode: SKSpriteNode {
     private func prepareGlyphNameNode() {
         Log.d("self.size = \(self.size)")
         let glyphName = self.answerGlyph.type.rawValue
-        let glyphNameLabel = SKLabelNode(text: glyphName)
+        let glyphNameLabel = GeneralLabelNode(text: glyphName)
         glyphNameLabel.position = CGPointMake(self.size.width / 2.0, self.size.height / 6)
         glyphNameLabel.fontColor = SKColor.cyanColor()
         glyphNameLabel.fontName = "ArialHebrew-Bold"

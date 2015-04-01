@@ -16,12 +16,12 @@ class GlyphScene: SKScene{
     private var currentGlyphPath:Set<GlyphPath>
     private var lastTouchedIndex:Int
     private var tracingParticles:[SKEmitterNode]
-    private var startButtonNode:SKLabelNode?
-    private var glyphNameNode:SKLabelNode?
-    private var levelNode:SKLabelNode?
-    private var homeNode:SKLabelNode?
+    private var startButtonNode:GeneralLabelNode?
+    private var glyphNameNode:GeneralLabelNode?
+    private var levelNode:GeneralLabelNode?
+    private var homeNode:GeneralLabelNode?
     private var countDownNode:CountDownLabelNode?
-    private var messageNode:SKLabelNode?
+    private var messageNode:GeneralLabelNode?
     
     private var isInInputMode:Bool = false
     
@@ -56,7 +56,7 @@ class GlyphScene: SKScene{
     }
     
     private func prepareStartButton() {
-        self.startButtonNode = SKLabelNode(text: "Start")
+        self.startButtonNode = GeneralLabelNode(text: "Start")
         self.startButtonNode!.fontSize = 25.0
         self.startButtonNode?.fontColor = SKColor(red: 157.0 / 255.0, green: 204.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
         self.startButtonNode!.position = CGPointMake(self.size.width / 4.0, self.size.height - 80)
@@ -65,14 +65,14 @@ class GlyphScene: SKScene{
     }
     
     private func prepareGlyphNameNode() {
-        self.glyphNameNode = SKLabelNode(text: "")
+        self.glyphNameNode = GeneralLabelNode(text: "")
         self.glyphNameNode!.position = CGPointMake(self.size.width / 2, 40)
         self.glyphNameNode!.fontSize = 20.0
         self.addChild(self.glyphNameNode!)
     }
     
     private func prepareLevelNode() {
-        self.levelNode = SKLabelNode()
+        self.levelNode = GeneralLabelNode()
         self.levelNode!.text = "Level: \(GlyphConfiguration.currentLevel.rawValue)"
         self.levelNode!.fontSize = 20.0
         self.levelNode!.position = CGPointMake(self.size.width / 2.0, self.size.height - 40)
@@ -81,7 +81,7 @@ class GlyphScene: SKScene{
     }
     
     private func prepareHomeNode() {
-        self.homeNode = SKLabelNode(text: "Home")
+        self.homeNode = GeneralLabelNode(text: "Home")
         self.homeNode!.fontSize = 25.0
         self.homeNode?.fontColor = SKColor(red: 157.0 / 255.0, green: 204.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
         self.homeNode!.position = CGPointMake(self.size.width * 3.0 / 4.0, self.size.height - 80)
@@ -90,7 +90,7 @@ class GlyphScene: SKScene{
     }
     
     private func prepareMessageNode() {
-        self.messageNode = SKLabelNode()
+        self.messageNode = GeneralLabelNode()
         self.messageNode!.fontSize = 20.0
         self.messageNode!.fontColor = SKColor.whiteColor()
         self.messageNode!.position = CGPointMake(self.size.width / 2.0, self.rootNode!.position.y + self.rootNode!.size.height / 8 + 30)

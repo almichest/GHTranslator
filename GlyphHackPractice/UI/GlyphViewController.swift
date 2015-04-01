@@ -67,8 +67,8 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, GlyphViewDel
         self.showLevelSelectActionSheet()
     }
     
-    func didSelectResultItemInView(view: GlyphView) {
-        
+    func didSelectScoreItemInView(view: GlyphView) {
+        self.showScoreScene()
     }
     
     func didSelectHomeItemInView(view: GlyphView) {
@@ -106,11 +106,24 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, GlyphViewDel
         /* Set the scale mode to scale to fit the window */
         scene.scaleMode = .AspectFill
         glyphView!.presentHomeScene(scene)
-//        self.canDisplayBannerAds = true
+    }
+    
+    private func showScoreScene() {
+        
+        let glyphView = self.view as? GlyphView
+        let scene = ScoreScene(size: self.view.frame.size)
+        glyphView!.glyphViewDelegate = self
+        glyphView!.ignoresSiblingOrder = true
+        scene.scaleMode = .AspectFill
+        glyphView?.presentScoreScene(scene)
     }
     
     func didConfirmResultInView(view: GlyphView) {
         self.showGlyphScene()
+    }
+    
+    func didSelectBackButton(view: GlyphView) {
+        self.showHomeScene()
     }
     
     //MARK - Select Level

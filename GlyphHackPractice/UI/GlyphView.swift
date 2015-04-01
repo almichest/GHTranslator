@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-public class GlyphView: SKView, HomeSceneDelegate, GlyphSceneDelegate, ResultSceneDelegate {
+public class GlyphView: SKView, HomeSceneDelegate, GlyphSceneDelegate, ResultSceneDelegate, ScoreSceneDelegate {
     
     weak var glyphViewDelegate:GlyphViewDelegate?
     
@@ -24,8 +24,13 @@ public class GlyphView: SKView, HomeSceneDelegate, GlyphSceneDelegate, ResultSce
     }
     
     func presentResultScene(scene:ResultScene) {
-        super.presentScene(scene)
+        super.presentScene(scene, transition:SKTransition.fadeWithDuration(1.0))
         scene.resultSceneDelegate = self
+    }
+    
+    func presentScoreScene(scene:ScoreScene) {
+        scene.scoreSceneDelegate = self
+        super.presentScene(scene, transition:SKTransition.fadeWithDuration(1.0))
     }
     
     //MARK: - HomeSceneDelegate
@@ -38,8 +43,8 @@ public class GlyphView: SKView, HomeSceneDelegate, GlyphSceneDelegate, ResultSce
         self.glyphViewDelegate?.didSelectSelectLevelItemInView(self)
     }
     
-    func didTapResultNodeInScene(scene: HomeScene) {
-        self.glyphViewDelegate?.didSelectResultItemInView(self)
+    func didTapScoreNodeInScene(scene: HomeScene) {
+        self.glyphViewDelegate?.didSelectScoreItemInView(self)
     }
     
     //MARK: - GlyphSceneDelegate
@@ -55,15 +60,22 @@ public class GlyphView: SKView, HomeSceneDelegate, GlyphSceneDelegate, ResultSce
     func didTapOKButtonOfScene(scene: ResultScene) {
         self.glyphViewDelegate?.didConfirmResultInView(self)
     }
+    
+    //MARK - ScoreSceneDelegate
+    func didTapBackButton(scece: ScoreScene) {
+        self.glyphViewDelegate?.didSelectBackButton(self)
+    }
 }
 
 public protocol GlyphViewDelegate: class {
     func didSelectStartItemInView(view:GlyphView)
     func didSelectSelectLevelItemInView(view:GlyphView)
-    func didSelectResultItemInView(view:GlyphView)
+    func didSelectScoreItemInView(view:GlyphView)
     func didSelectHomeItemInView(view:GlyphView)
     
     func didCompleteUserInput(answer:[GlyphType], userInputs:[Set<GlyphPath>?])
     
     func didConfirmResultInView(view:GlyphView)
+    
+    func didSelectBackButton(view:GlyphView)
 }

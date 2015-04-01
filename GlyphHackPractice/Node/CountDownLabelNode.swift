@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-class CountDownLabelNode: SKLabelNode {
+class CountDownLabelNode: GeneralLabelNode {
     
     private let initialValue:Int
     private let targetValue:Int

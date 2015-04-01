@@ -11,9 +11,9 @@ import SpriteKit
 
 class HomeScene: SKScene {
     
-    private var startNode:SKLabelNode?
-    private var selectLevelNode:SKLabelNode?
-    private var resultNode:SKLabelNode?
+    private var startNode:GeneralLabelNode?
+    private var selectLevelNode:GeneralLabelNode?
+    private var scoreNode:GeneralLabelNode?
     
     weak var homeSceneDelegate:HomeSceneDelegate?
     
@@ -36,11 +36,12 @@ class HomeScene: SKScene {
     }
     
     private func prepareStartNode() {
-        self.startNode = SKLabelNode()
+        self.startNode = GeneralLabelNode()
         self.startNode!.fontSize = 25.0
         self.startNode!.fontColor = SKColor(red: 157.0 / 255.0, green: 204.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
-        self.startNode!.position = CGPointMake(self.size.width / 2.0, self.size.height / 2.0 + 100)
+        self.startNode!.position = CGPointMake(25, self.size.height / 2.0 + 100)
         self.startNode!.userInteractionEnabled = false
+        self.startNode!.horizontalAlignmentMode = .Left
         self.addChild(self.startNode!)
         
         self.updateStartNode()
@@ -51,22 +52,24 @@ class HomeScene: SKScene {
     }
     
     private func prepareSelectLevelNode() {
-        self.selectLevelNode = SKLabelNode(text: "Select Level")
+        self.selectLevelNode = GeneralLabelNode(text: "Select Level")
         self.selectLevelNode!.fontSize = 25.0
         self.selectLevelNode!.fontColor = SKColor(red: 157.0 / 255.0, green: 204.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
-        self.selectLevelNode!.position = CGPointMake(self.size.width / 2.0, self.size.height / 2.0)
+        self.selectLevelNode!.position = CGPointMake(25, self.size.height / 2.0)
         self.selectLevelNode!.userInteractionEnabled = false
+        self.selectLevelNode!.horizontalAlignmentMode = .Left
         self.addChild(self.selectLevelNode!)
     }
     
     
     private func prepareResultNode() {
-        self.resultNode = SKLabelNode(text: "Show Result")
-        self.resultNode!.fontSize = 25.0
-        self.resultNode!.fontColor = SKColor(red: 157.0 / 255.0, green: 204.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
-        self.resultNode!.position = CGPointMake(self.size.width / 2.0, self.size.height / 2.0 - 100)
-        self.resultNode!.userInteractionEnabled = false
-        self.addChild(self.resultNode!)
+        self.scoreNode = GeneralLabelNode(text: "Show Result")
+        self.scoreNode!.fontSize = 25.0
+        self.scoreNode!.fontColor = SKColor(red: 157.0 / 255.0, green: 204.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
+        self.scoreNode!.position = CGPointMake(25, self.size.height / 2.0 - 100)
+        self.scoreNode!.userInteractionEnabled = false
+        self.scoreNode!.horizontalAlignmentMode = .Left
+        self.addChild(self.scoreNode!)
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -78,8 +81,8 @@ class HomeScene: SKScene {
             self.homeSceneDelegate?.didTapStartNodeInScene(self)
         } else if node == self.selectLevelNode {
             self.homeSceneDelegate?.didTapSelectLevelNodeInScene(self)
-        } else if node == self.resultNode {
-            self.homeSceneDelegate?.didTapResultNodeInScene(self)
+        } else if node == self.scoreNode {
+            self.homeSceneDelegate?.didTapScoreNodeInScene(self)
         }
     }
 }
@@ -87,5 +90,5 @@ class HomeScene: SKScene {
 protocol HomeSceneDelegate:class {
     func didTapStartNodeInScene(scene:HomeScene)
     func didTapSelectLevelNodeInScene(scene:HomeScene)
-    func didTapResultNodeInScene(scene:HomeScene)
+    func didTapScoreNodeInScene(scene:HomeScene)
 }

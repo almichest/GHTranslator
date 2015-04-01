@@ -20,7 +20,7 @@ class ResultScene: SKScene {
     
     private var okCount:Int = 0
     
-    private var backButton:SKLabelNode?
+    private var backButton:GeneralLabelNode?
     
     init(size:CGSize, answerGlyphs:[Glyph], inputGlyphs:[Glyph]) {
         self.answerGlyphs = answerGlyphs
@@ -37,13 +37,13 @@ class ResultScene: SKScene {
     }
     
     private func prepareTextNodes() {
-        let correctLabel = SKLabelNode(text: "Correct Answer")
+        let correctLabel = GeneralLabelNode(text: "Correct Answer")
         correctLabel.position = CGPointMake(self.size.width * 3.0 / 4.0, self.size.height - 50)
         correctLabel.fontColor = SKColor.whiteColor()
         correctLabel.fontSize = 18.0
         self.addChild(correctLabel)
         
-        let yourLabel = SKLabelNode(text: "Your Answer")
+        let yourLabel = GeneralLabelNode(text: "Your Answer")
         yourLabel.position = CGPointMake(self.size.width / 4.0, self.size.height - 50)
         yourLabel.fontColor = SKColor.whiteColor()
         yourLabel.fontSize = 18.0
@@ -82,8 +82,8 @@ class ResultScene: SKScene {
             GlyphScore.saveCurrentScore(currentScore + 1, level: GlyphConfiguration.currentLevel)
             
             let bestScore = GlyphScore.bestScore(GlyphConfiguration.currentLevel)
-            if currentScore > bestScore {
-                GlyphScore.saveBestScore(bestScore, level: GlyphConfiguration.currentLevel)
+            if currentScore + 1 > bestScore {
+                GlyphScore.saveBestScore(currentScore + 1, level: GlyphConfiguration.currentLevel)
             }
         } else {
             GlyphScore.saveCurrentScore(0, level: GlyphConfiguration.currentLevel)
@@ -91,17 +91,16 @@ class ResultScene: SKScene {
     }
     
     private func prepareBackButton() {
-        let backLabel = SKLabelNode(text: "Try again")
+        let backLabel = GeneralLabelNode(text: "Try again")
         backLabel.position = CGPointMake(self.size.width / 2.0, self.size.height - self.bottomLabelsOffset - 30)
         backLabel.fontColor = SKColor.whiteColor()
         backLabel.fontSize = 20
-        backLabel.fontName = "ArialHebrew-Bold"
         self.addChild(backLabel)
         self.backButton = backLabel
     }
     
     private func prepareCorrectAnswerCountNode() {
-        let okCountLabel = SKLabelNode(text: "\(self.okCount) / \(GlyphConfiguration.currentLevel.rawValue)")
+        let okCountLabel = GeneralLabelNode(text: "\(self.okCount) / \(GlyphConfiguration.currentLevel.rawValue)")
         okCountLabel.position = CGPointMake(self.size.width / 2.0, self.size.height - self.bottomLabelsOffset)
         okCountLabel.fontColor = SKColor.whiteColor()
         okCountLabel.fontSize = 18.0

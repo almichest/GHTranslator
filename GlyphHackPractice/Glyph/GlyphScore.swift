@@ -11,7 +11,7 @@ import UIKit
 class GlyphScore: NSObject {
     
     private static let GlyphScoreBestScoreKey = "GlyphScoreBestScore"
-    private static let GlyphScoreCurrentScoreKey = "GlyphScoreBestScore"
+    private static let GlyphScoreCurrentScoreKey = "GlyphScoreCurrentScore"
     
     static func bestScore(level: GlyphSequenceCount) -> Int {
         let userDefaults = NSUserDefaults.standardUserDefaults()
@@ -26,11 +26,13 @@ class GlyphScore: NSObject {
     static func saveBestScore(score:Int, level:GlyphSequenceCount) {
         let userDefaults = NSUserDefaults.standardUserDefaults()
         userDefaults.setInteger(score, forKey: self.createBestScoreKey(level))
+        userDefaults.synchronize()
     }
     
     static func saveCurrentScore(score:Int, level:GlyphSequenceCount) {
         let userDefaults = NSUserDefaults.standardUserDefaults()
         userDefaults.setInteger(score, forKey: self.createCurrentScoreKey(level))
+        userDefaults.synchronize()
     }
     
     private static func createBestScoreKey(level: GlyphSequenceCount) -> String {
