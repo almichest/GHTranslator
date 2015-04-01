@@ -93,7 +93,7 @@ class GlyphScene: SKScene{
         self.messageNode = GeneralLabelNode()
         self.messageNode!.fontSize = 20.0
         self.messageNode!.fontColor = SKColor.whiteColor()
-        self.messageNode!.position = CGPointMake(self.size.width / 2.0, self.rootNode!.position.y + self.rootNode!.size.height / 8 + 30)
+        self.messageNode!.position = CGPointMake(self.size.width / 2.0, self.startButtonNode!.position.y)
         self.messageNode!.userInteractionEnabled = false
         self.addChild(self.messageNode!)
     }
@@ -172,6 +172,10 @@ class GlyphScene: SKScene{
     }
     
     private func handleTappingStartButton() {
+        
+        self.startButtonNode!.alpha = 0.0
+        self.homeNode!.alpha = 0.0
+        
         self.currentQuestions.removeAll(keepCapacity: true)
         self.userInputs.removeAll(keepCapacity: true)
         
@@ -237,6 +241,7 @@ class GlyphScene: SKScene{
     
     private func startDrawingGlyph() {
         self.isInInputMode = true
+        self.messageNode!.text = "Let's draw !"
     }
     
     private func setGlyphName(type:GlyphType) {

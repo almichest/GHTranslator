@@ -88,7 +88,7 @@ class ScoreScene: SKScene {
     private func prepareBackNode() {
         let backButtonNode = GeneralLabelNode(text: "Back")
         backButtonNode.fontColor = SKColor.whiteColor()
-        backButtonNode.position = CGPointMake(self.size.width / 2.0, self.size.height - self.backButtonOffsetY)
+        backButtonNode.position = CGPointMake(self.size.width / 2.0, self.size.height - (self.backButtonOffsetY + 30))
         backButtonNode.fontSize = 20
         self.backButtonNode = backButtonNode
         self.addChild(backButtonNode)

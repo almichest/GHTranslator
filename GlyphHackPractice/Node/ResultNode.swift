@@ -44,7 +44,7 @@ class ResultNode: SKSpriteNode {
     }
     
     private func prepareOKorNGNode() {
-        let resultText = self.answerGlyph.isEqual(self.inputGlyph) ? "○" : "×"
+        let resultText = self.answerGlyph.isEqual(self.inputGlyph) ? "OK" : "NG"
         let resultLabel = GeneralLabelNode(text: resultText)
         resultLabel.position = CGPointMake(self.size.width / 2.0, -self.size.height / 5)
         resultLabel.fontSize = 20.0
