@@ -63,7 +63,7 @@ class HomeScene: SKScene {
     
     
     private func prepareResultNode() {
-        self.scoreNode = GeneralLabelNode(text: "Show Result")
+        self.scoreNode = GeneralLabelNode(text: "Show Score")
         self.scoreNode!.fontSize = 25.0
         self.scoreNode!.fontColor = SKColor(red: 157.0 / 255.0, green: 204.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
         self.scoreNode!.position = CGPointMake(25, self.size.height / 2.0 - 100)
