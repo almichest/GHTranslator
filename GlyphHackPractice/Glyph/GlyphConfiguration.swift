@@ -12,8 +12,20 @@ class GlyphConfiguration: NSObject {
     
     static let GlyphConfigurationChangeCurrentLevelNotification = "GlyphConfigurationChangeCurrentLevelNotification"
     
-    static var currentLevel:GlyphSequenceCount = GlyphSequenceCount.One {
-        didSet {
+    private static let GlyphConfigurationCurrentLevelKey = "GlyphConfigurationCurrentLevel"
+    
+    static var currentLevel:GlyphSequenceCount {
+        get {
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            var integerValue = userDefaults.integerForKey(GlyphConfigurationCurrentLevelKey)
+            if integerValue == 0 {
+                integerValue = 1
+            }
+            return GlyphSequenceCount(rawValue: integerValue)!
+        }
+        set {
+            let userDefaults = NSUserDefaults.standardUserDefaults()
+            userDefaults.setInteger(newValue.rawValue, forKey: GlyphConfigurationCurrentLevelKey)
             let notificationCenter = NSNotificationCenter.defaultCenter()
             notificationCenter.postNotificationName(GlyphConfigurationChangeCurrentLevelNotification, object: nil)
         }

@@ -11,6 +11,7 @@ import SpriteKit
 class RootNode: SKSpriteNode{
     
     var particleScale:CGFloat = 1.0
+    var vertexScale:CGFloat = 1.0
     var particleColor:UIColor?
     
     private var vertexes:[GlyphHackVertex]
@@ -61,12 +62,13 @@ class RootNode: SKSpriteNode{
         for i in 0 ..< vertexes.count {
             let sprite = GlyphHackVertex(index: i)
             sprite.position = vertexCoordinates[i]
+            sprite.setScale(self.vertexScale)
             self.addChild(sprite)
             self.vertexes[i] = sprite
         }
     }
     
-    let spaceBetweenParticles:CGFloat = 15
+    var spaceBetweenParticles:CGFloat = 15
     var waiting = false
     func showPath(from:Int, to:Int, autoRemove:Bool? = true, completion:(() -> Void)?) {
         

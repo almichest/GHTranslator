@@ -31,8 +31,8 @@ class ResultScene: SKScene {
         self.backgroundColor = SKColor.blackColor()
         self.prepareResultNodes()
         self.prepareTextNodes()
-        self.prepareOKorNG()
-        self.prepareBackButton()
+//        self.prepareOKorNG()
+//        self.prepareBackButton()
     }
     
     private func prepareTextNodes() {
@@ -50,39 +50,13 @@ class ResultScene: SKScene {
     }
     
     private func prepareResultNodes() {
-        self.prepareAnswerNodes()
-        self.prepareUserInputResultNodes()
-    }
-    
-    private func prepareAnswerNodes() {
         
-        for i in 0 ..< self.answerGlyphs.count {
-            let glyphNode = self.createGlyphNode()
-            let offsetY = 100 + (glyphNode.size.height * glyphNode.yScale + 15) * CGFloat(i)
-            let position = CGPointMake(self.size.width / 4.0, self.size.height - (offsetY))
-            glyphNode.position = position
-            self.addChild(glyphNode)
-            
-            self.correctAnswerNodePositions.append(position)
-            
-            let paths = self.answerGlyphs[i].paths!
-            for path in paths {
-                glyphNode.showPath(path.point1, to: path.point2, autoRemove: false, completion: nil)
-            }
-        }
-    }
-    
-    private func prepareUserInputResultNodes() {
-        for i in 0 ..< self.inputGlyphs.count {
-            let glyphNode = self.createGlyphNode()
-            let offsetY = 100 + (glyphNode.size.height * glyphNode.yScale + 15) * CGFloat(i)
-            let position = CGPointMake(self.size.width * 3.0 / 4.0, self.size.height - (offsetY))
-            glyphNode.position = position
-            self.addChild(glyphNode)
-            let paths = self.inputGlyphs[i].paths!
-            for path in paths {
-                glyphNode.showPath(path.point1, to: path.point2, autoRemove: false, completion: nil)
-            }
+        for i in 0 ..< GlyphConfiguration.currentLevel.rawValue {
+            let size = CGSizeMake(self.size.width, 0.8 * (self.size.height / 7.0))
+            let resultNode = ResultNode(texture: nil, color: UIColor.blackColor(), size:size, answerGlyph: self.answerGlyphs[i], inputGlyph: self.inputGlyphs[i])
+            let offsetY = (self.size.height / 6.0 + 10) * CGFloat(i) + 100
+            resultNode.position = CGPointMake(0, self.size.height - offsetY)
+            self.addChild(resultNode)
         }
     }
     
@@ -97,15 +71,6 @@ class ResultScene: SKScene {
             resultLabel.position = CGPointMake(self.size.width / 2.0, position.y - 20)
             self.addChild(resultLabel)
         }
-    }
-    
-    private func createGlyphNode() -> RootNode {
-        let rootNode = RootNode(color: SKColor.blackColor(), size: CGSizeMake(self.size.width, self.size.width))
-        rootNode.setScale(0.4)
-        rootNode.particleScale = 0.5
-        rootNode.particleColor = UIColor.redColor()
-        rootNode.prepare()
-        return rootNode
     }
     
     private func prepareBackButton() {
