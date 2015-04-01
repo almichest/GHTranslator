@@ -30,7 +30,7 @@ class ResultNode: SKSpriteNode {
         for path in self.answerGlyph.paths! {
             node.showPath(path.point1, to: path.point2, autoRemove: false, completion: nil)
         }
-        node.position = CGPointMake(self.size.width / 4.0, 0)
+        node.position = CGPointMake(self.size.width * 3.0 / 4.0, 0)
         self.addChild(node)
     }
     
@@ -39,7 +39,7 @@ class ResultNode: SKSpriteNode {
         for path in self.inputGlyph.paths! {
             node.showPath(path.point1, to: path.point2, autoRemove: false, completion: nil)
         }
-        node.position = CGPointMake(self.size.width * 3.0 / 4.0, 0)
+        node.position = CGPointMake(self.size.width / 4.0, 0)
         self.addChild(node)
     }
     
@@ -57,7 +57,7 @@ class ResultNode: SKSpriteNode {
         let glyphNameLabel = SKLabelNode(text: glyphName)
         glyphNameLabel.position = CGPointMake(self.size.width / 2.0, self.size.height / 6)
         glyphNameLabel.fontColor = SKColor.cyanColor()
-        glyphNameLabel.fontName = "Arial-BoldMT"
+        glyphNameLabel.fontName = "ArialHebrew-Bold"
         glyphNameLabel.fontSize = 20.0
         glyphNameLabel.alpha = 0.5
         self.addChild(glyphNameLabel)
