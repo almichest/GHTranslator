@@ -47,6 +47,7 @@ class ResultNode: SKSpriteNode {
         let resultText = self.answerGlyph.isEqual(self.inputGlyph) ? "○" : "×"
         let resultLabel = SKLabelNode(text: resultText)
         resultLabel.position = CGPointMake(self.size.width / 2.0, -self.size.height / 5)
+        resultLabel.fontSize = 20.0
         self.addChild(resultLabel)
     }
     
@@ -56,6 +57,7 @@ class ResultNode: SKSpriteNode {
         let glyphNameLabel = SKLabelNode(text: glyphName)
         glyphNameLabel.position = CGPointMake(self.size.width / 2.0, self.size.height / 6)
         glyphNameLabel.fontColor = SKColor.cyanColor()
+        glyphNameLabel.fontName = "Arial-BoldMT"
         glyphNameLabel.fontSize = 20.0
         glyphNameLabel.alpha = 0.5
         self.addChild(glyphNameLabel)
