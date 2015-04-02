@@ -1,26 +1,21 @@
 //
-//  GeneralLabelNode.swift
+//  SelectableLabelNode.swift
 //  GlyphHackPractice
 //
-//  Created by OhnoHiraku on 2015/04/01.
+//  Created by OhnoHiraku on 2015/04/02.
 //  Copyright (c) 2015年 Hiraku Ohno. All rights reserved.
 //
 
 import UIKit
 import SpriteKit
 
-class GeneralLabelNode: SKLabelNode {
+class SelectableLabelNode: GeneralLabelNode {
     
-    private static let fontNameCourier = "Courier"
+    static let selectableFontColor = SKColor(red: 157.0 / 255.0, green: 204.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
     
     override init() {
         super.init()
-        self.fontName = GeneralLabelNode.fontNameCourier
-        self.fontColor = SKColor.whiteColor()
-    }
-    
-    convenience override init(fontNamed fontName: String!) {
-        self.init()
+        self.fontColor = SelectableLabelNode.selectableFontColor
     }
     
     convenience init(text: String) {

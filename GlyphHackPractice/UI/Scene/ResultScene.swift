@@ -20,7 +20,7 @@ class ResultScene: SKScene {
     
     private var okCount:Int = 0
     
-    private var backButton:GeneralLabelNode?
+    private var backButton:SelectableLabelNode?
     
     init(size:CGSize, answerGlyphs:[Glyph], inputGlyphs:[Glyph]) {
         self.answerGlyphs = answerGlyphs
@@ -91,9 +91,8 @@ class ResultScene: SKScene {
     }
     
     private func prepareBackButton() {
-        let backLabel = GeneralLabelNode(text: "Try again")
+        let backLabel = SelectableLabelNode(text: "Try again")
         backLabel.position = CGPointMake(self.size.width / 2.0, self.size.height - self.bottomLabelsOffset - 30)
-        backLabel.fontColor = SKColor.whiteColor()
         backLabel.fontSize = 20
         self.addChild(backLabel)
         self.backButton = backLabel

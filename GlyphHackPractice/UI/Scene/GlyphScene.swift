@@ -16,10 +16,10 @@ class GlyphScene: SKScene{
     private var currentGlyphPath:Set<GlyphPath>
     private var lastTouchedIndex:Int
     private var tracingParticles:[SKEmitterNode]
-    private var startButtonNode:GeneralLabelNode?
+    private var startButtonNode:SelectableLabelNode?
     private var glyphNameNode:GeneralLabelNode?
     private var levelNode:GeneralLabelNode?
-    private var homeNode:GeneralLabelNode?
+    private var homeNode:SelectableLabelNode?
     private var countDownNode:CountDownLabelNode?
     private var messageNode:GeneralLabelNode?
     
@@ -67,9 +67,8 @@ class GlyphScene: SKScene{
     }
     
     private func prepareStartButton() {
-        self.startButtonNode = GeneralLabelNode(text: "Start")
+        self.startButtonNode = SelectableLabelNode(text: "Start")
         self.startButtonNode!.fontSize = 25.0
-        self.startButtonNode?.fontColor = SKColor(red: 157.0 / 255.0, green: 204.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
         self.startButtonNode!.position = CGPointMake(self.size.width / 4.0, self.size.height - 80)
         self.startButtonNode!.userInteractionEnabled = false
         self.addChild(self.startButtonNode!)
@@ -92,9 +91,8 @@ class GlyphScene: SKScene{
     }
     
     private func prepareHomeNode() {
-        self.homeNode = GeneralLabelNode(text: "Home")
+        self.homeNode = SelectableLabelNode(text: "Home")
         self.homeNode!.fontSize = 25.0
-        self.homeNode?.fontColor = SKColor(red: 157.0 / 255.0, green: 204.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
         self.homeNode!.position = CGPointMake(self.size.width * 3.0 / 4.0, self.size.height - 80)
         self.homeNode!.userInteractionEnabled = false
         self.addChild(self.homeNode!)

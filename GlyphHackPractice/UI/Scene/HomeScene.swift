@@ -11,9 +11,9 @@ import SpriteKit
 
 class HomeScene: SKScene {
     
-    private var startNode:GeneralLabelNode?
-    private var selectLevelNode:GeneralLabelNode?
-    private var scoreNode:GeneralLabelNode?
+    private var startNode:SelectableLabelNode?
+    private var selectLevelNode:SelectableLabelNode?
+    private var scoreNode:SelectableLabelNode?
     
     weak var homeSceneDelegate:HomeSceneDelegate?
     
@@ -36,9 +36,8 @@ class HomeScene: SKScene {
     }
     
     private func prepareStartNode() {
-        self.startNode = GeneralLabelNode()
+        self.startNode = SelectableLabelNode()
         self.startNode!.fontSize = 25.0
-        self.startNode!.fontColor = SKColor(red: 157.0 / 255.0, green: 204.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
         self.startNode!.position = CGPointMake(25, self.size.height / 2.0 + 100)
         self.startNode!.userInteractionEnabled = false
         self.startNode!.horizontalAlignmentMode = .Left
@@ -52,9 +51,8 @@ class HomeScene: SKScene {
     }
     
     private func prepareSelectLevelNode() {
-        self.selectLevelNode = GeneralLabelNode(text: "Select Level")
+        self.selectLevelNode = SelectableLabelNode(text: "Select Level")
         self.selectLevelNode!.fontSize = 25.0
-        self.selectLevelNode!.fontColor = SKColor(red: 157.0 / 255.0, green: 204.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
         self.selectLevelNode!.position = CGPointMake(25, self.size.height / 2.0)
         self.selectLevelNode!.userInteractionEnabled = false
         self.selectLevelNode!.horizontalAlignmentMode = .Left
@@ -63,9 +61,8 @@ class HomeScene: SKScene {
     
     
     private func prepareResultNode() {
-        self.scoreNode = GeneralLabelNode(text: "Show Score")
+        self.scoreNode = SelectableLabelNode(text: "Show Score")
         self.scoreNode!.fontSize = 25.0
-        self.scoreNode!.fontColor = SKColor(red: 157.0 / 255.0, green: 204.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
         self.scoreNode!.position = CGPointMake(25, self.size.height / 2.0 - 100)
         self.scoreNode!.userInteractionEnabled = false
         self.scoreNode!.horizontalAlignmentMode = .Left

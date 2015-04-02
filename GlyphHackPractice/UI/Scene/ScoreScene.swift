@@ -13,8 +13,8 @@ class ScoreScene: SKScene {
     
     weak var scoreSceneDelegate:ScoreSceneDelegate?
     private var backButtonOffsetY:CGFloat = 0
-    private var backButtonNode:GeneralLabelNode?
-    private var gamecenterNode:GeneralLabelNode?
+    private var backButtonNode:SelectableLabelNode?
+    private var gamecenterNode:SelectableLabelNode?
     
     override func didMoveToView(view: SKView) {
         self.prepareLabelNodes()
@@ -89,8 +89,7 @@ class ScoreScene: SKScene {
     }
     
     private func prepareGameCenterNode() {
-        let gamecenterNode = GeneralLabelNode(text: "Open gamecenter")
-        gamecenterNode.fontColor = SKColor(red: 157.0 / 255.0, green: 204.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
+        let gamecenterNode = SelectableLabelNode(text: "Open gamecenter")
         gamecenterNode.position = CGPointMake(self.size.width / 2.0, self.size.height - (self.backButtonOffsetY + 30))
         gamecenterNode.fontSize = 20
         self.gamecenterNode = gamecenterNode
@@ -98,8 +97,7 @@ class ScoreScene: SKScene {
     }
     
     private func prepareBackNode() {
-        let backButtonNode = GeneralLabelNode(text: "Back")
-        backButtonNode.fontColor = SKColor(red: 157.0 / 255.0, green: 204.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
+        let backButtonNode = SelectableLabelNode(text: "Back")
         backButtonNode.position = CGPointMake(self.size.width / 2.0, self.size.height - (self.backButtonOffsetY + 80))
         backButtonNode.fontSize = 20
         self.backButtonNode = backButtonNode
