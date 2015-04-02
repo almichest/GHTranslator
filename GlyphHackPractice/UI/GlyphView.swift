@@ -14,18 +14,18 @@ public class GlyphView: SKView, HomeSceneDelegate, GlyphSceneDelegate, ResultSce
     weak var glyphViewDelegate:GlyphViewDelegate?
     
     func presentHomeScene(scene:HomeScene) {
-        super.presentScene(scene, transition:SKTransition.fadeWithDuration(1.0))
         scene.homeSceneDelegate = self
+        super.presentScene(scene, transition:SKTransition.fadeWithDuration(1.0))
     }
     
     func presentGlyphScene(scene:GlyphScene) {
-        super.presentScene(scene, transition:SKTransition.fadeWithDuration(1.0))
         scene.glyphSceneDelegate = self
+        super.presentScene(scene, transition:SKTransition.fadeWithDuration(1.0))
     }
     
     func presentResultScene(scene:ResultScene) {
-        super.presentScene(scene, transition:SKTransition.fadeWithDuration(1.0))
         scene.resultSceneDelegate = self
+        super.presentScene(scene, transition:SKTransition.fadeWithDuration(1.0))
     }
     
     func presentScoreScene(scene:ScoreScene) {
@@ -56,6 +56,9 @@ public class GlyphView: SKView, HomeSceneDelegate, GlyphSceneDelegate, ResultSce
         self.glyphViewDelegate?.didCompleteUserInput(answer, userInputs: userInputs)
     }
     
+    func didDetectPreparingAd(scene: GlyphScene) {
+        self.glyphViewDelegate?.didDetectPreparingAd(self)
+    }
     //MARK: - ResultSceneDelegate
     func didTapOKButtonOfScene(scene: ResultScene) {
         self.glyphViewDelegate?.didConfirmResultInView(self)
@@ -74,8 +77,10 @@ public protocol GlyphViewDelegate: class {
     func didSelectHomeItemInView(view:GlyphView)
     
     func didCompleteUserInput(answer:[GlyphType], userInputs:[Set<GlyphPath>?])
+    func didDetectPreparingAd(view:GlyphView)
     
     func didConfirmResultInView(view:GlyphView)
     
     func didSelectBackButton(view:GlyphView)
+    
 }

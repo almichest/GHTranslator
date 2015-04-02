@@ -48,6 +48,9 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, GlyphViewDel
     }
     
     private func showGlyphScene() {
+        
+        self.adView = nil
+        
         let glyphView = self.view as? GlyphView
 
         let scene = GlyphScene(size: self.view.frame.size)
@@ -59,8 +62,6 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, GlyphViewDel
         /* Set the scale mode to scale to fit the window */
         scene.scaleMode = .AspectFill
         glyphView!.presentGlyphScene(scene)
-        
-//        self.canDisplayBannerAds = true
     }
     
     func didSelectSelectLevelItemInView(view: GlyphView) {
@@ -94,6 +95,18 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, GlyphViewDel
         glyphView!.presentResultScene(scene)
     }
     
+    func didDetectPreparingAd(view: GlyphView) {
+        self.prepareAdView()
+    }
+    
+    private var adView:ADBannerView? = nil
+    private func prepareAdView() {
+        self.adView = ADBannerView(adType: ADAdType.MediumRectangle)
+        let diffWidth = self.view.frame.size.width - self.adView!.frame.size.width
+        let diffHeight = self.view.frame.size.height - self.adView!.frame.size.height
+        self.adView!.frame = CGRectMake(diffWidth / 2.0, diffHeight / 2.0, self.adView!.frame.size.width, self.adView!.frame.size.height)
+    }
+    
     private func showHomeScene() {
         let glyphView = self.view as? GlyphView
 
@@ -119,17 +132,16 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, GlyphViewDel
     }
     
     func didConfirmResultInView(view: GlyphView) {
-        self.showGlyphScene()
+        if(self.adView != nil) {
+            self.showAdView()
+        } else {
+            self.showGlyphScene()
+        }
+    }
+    private func showAdView() {
+        self.view!.addSubview(self.adView!)
     }
     
-    private func showAd() {
-        let bannerView = ADBannerView(adType: ADAdType.MediumRectangle)
-        let diffWidth = self.view.frame.size.width - bannerView.frame.size.width
-        let diffHeight = self.view.frame.size.height - bannerView.frame.size.height
-        bannerView.frame = CGRectMake(diffWidth / 2.0, diffHeight / 2.0, bannerView.frame.size.width, bannerView.frame.size.height)
-        self.view!.addSubview(bannerView)
-    }
-        
     func didSelectBackButton(view: GlyphView) {
         self.showHomeScene()
     }

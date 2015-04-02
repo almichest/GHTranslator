@@ -53,6 +53,17 @@ class GlyphScene: SKScene{
         self.prepareLevelNode()
         self.prepareHomeNode()
         self.prepareMessageNode()
+        self.notifyAdPreparationIfNeeded()
+    }
+    
+    static var adCount = 0
+    private func notifyAdPreparationIfNeeded() {
+        GlyphScene.adCount++
+        
+//        if GlyphScene.adCount % 3 == 0 {
+//            self.glyphSceneDelegate?.didDetectPreparingAd(self)
+//        }
+        self.glyphSceneDelegate?.didDetectPreparingAd(self)
     }
     
     private func prepareStartButton() {
@@ -329,4 +340,5 @@ class GlyphScene: SKScene{
 protocol GlyphSceneDelegate: class {
     func didSelectHomeNodeInScene(scene:GlyphScene)
     func didCompleteUserInputs(answer:[GlyphType], userInputs:[Set<GlyphPath>?])
+    func didDetectPreparingAd(scene:GlyphScene)
 }
