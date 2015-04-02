@@ -68,6 +68,10 @@ public class GlyphView: SKView, HomeSceneDelegate, GlyphSceneDelegate, ResultSce
     func didTapBackButton(scece: ScoreScene) {
         self.glyphViewDelegate?.didSelectBackButton(self)
     }
+    
+    func didTapGamecenterButton(scene: ScoreScene) {
+        self.glyphViewDelegate?.didSelectGamecenterButton(self)
+    }
 }
 
 public protocol GlyphViewDelegate: class {
@@ -82,5 +86,5 @@ public protocol GlyphViewDelegate: class {
     func didConfirmResultInView(view:GlyphView)
     
     func didSelectBackButton(view:GlyphView)
-    
+    func didSelectGamecenterButton(view:GlyphView)
 }

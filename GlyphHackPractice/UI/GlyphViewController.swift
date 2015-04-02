@@ -9,8 +9,9 @@
 import UIKit
 import SpriteKit
 import iAd
+import GameKit
 
-class GlyphViewController: UIViewController, UIActionSheetDelegate, ADBannerViewDelegate, GlyphViewDelegate {
+class GlyphViewController: UIViewController, UIActionSheetDelegate, ADBannerViewDelegate, GKGameCenterControllerDelegate, GlyphViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -181,7 +182,13 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, ADBannerView
         self.showHomeScene()
     }
     
-    //MARK - Select Level
+    func didSelectGamecenterButton(view: GlyphView) {
+        let gameCenterViewController = GKGameCenterViewController()
+        gameCenterViewController.gameCenterDelegate = self
+        self.presentViewController(gameCenterViewController, animated: true, completion: nil)
+    }
+    
+    //MARK: - Select Level
     private func showLevelSelectActionSheet() {
         let actionSheet = UIActionSheet()
         actionSheet.delegate = self
@@ -205,7 +212,7 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, ADBannerView
         GlyphConfiguration.currentLevel = GlyphSequenceCount(rawValue: buttonIndex + 1)!
     }
     
-    //MARK - ADBannerViewDelegate
+    //MARK: - ADBannerViewDelegate
     func bannerViewActionShouldBegin(banner: ADBannerView!, willLeaveApplication willLeave: Bool) -> Bool {
         return true
     }
@@ -217,5 +224,10 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, ADBannerView
     func bannerViewActionDidFinish(banner: ADBannerView!) {
         self.adBackgroundView!.removeFromSuperview()
         self.showGlyphScene()
+    }
+    
+    //MARK: - GKGameCenterControllerDelegate
+    func gameCenterViewControllerDidFinish(gameCenterViewController: GKGameCenterViewController!) {
+        gameCenterViewController.dismissViewControllerAnimated(true, completion: nil)
     }
 }

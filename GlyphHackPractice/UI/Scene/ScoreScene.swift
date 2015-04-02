@@ -14,11 +14,14 @@ class ScoreScene: SKScene {
     weak var scoreSceneDelegate:ScoreSceneDelegate?
     private var backButtonOffsetY:CGFloat = 0
     private var backButtonNode:GeneralLabelNode?
+    private var gamecenterNode:GeneralLabelNode?
     
     override func didMoveToView(view: SKView) {
         self.prepareLabelNodes()
         self.prepareScoreNodes()
         self.prepareBackNode()
+        self.prepareGameCenterNode()
+        self.prepareHintNodes()
         self.backgroundColor = SKColor.blackColor()
     }
     
@@ -85,13 +88,45 @@ class ScoreScene: SKScene {
         self.backButtonOffsetY = offsetY
     }
     
+    private func prepareGameCenterNode() {
+        let gamecenterNode = GeneralLabelNode(text: "Open gamecenter")
+        gamecenterNode.fontColor = SKColor(red: 157.0 / 255.0, green: 204.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
+        gamecenterNode.position = CGPointMake(self.size.width / 2.0, self.size.height - (self.backButtonOffsetY + 30))
+        gamecenterNode.fontSize = 20
+        self.gamecenterNode = gamecenterNode
+        self.addChild(gamecenterNode)
+    }
+    
     private func prepareBackNode() {
         let backButtonNode = GeneralLabelNode(text: "Back")
-        backButtonNode.fontColor = SKColor.whiteColor()
-        backButtonNode.position = CGPointMake(self.size.width / 2.0, self.size.height - (self.backButtonOffsetY + 30))
+        backButtonNode.fontColor = SKColor(red: 157.0 / 255.0, green: 204.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
+        backButtonNode.position = CGPointMake(self.size.width / 2.0, self.size.height - (self.backButtonOffsetY + 80))
         backButtonNode.fontSize = 20
         self.backButtonNode = backButtonNode
         self.addChild(backButtonNode)
+    }
+    
+    private func prepareHintNodes() {
+        let hintNode1 = GeneralLabelNode(text: "Score is : ")
+        hintNode1.fontColor = SKColor.lightGrayColor()
+        hintNode1.position = CGPointMake(30, self.size.height - (self.backButtonOffsetY + 140))
+        hintNode1.fontSize = 20
+        hintNode1.horizontalAlignmentMode = .Left
+        self.addChild(hintNode1)
+        
+        let hintNode2 = GeneralLabelNode(text: "Continous success count")
+        hintNode2.fontColor = SKColor.lightGrayColor()
+        hintNode2.position = CGPointMake(30, self.size.height - (self.backButtonOffsetY + 160))
+        hintNode2.fontSize = 16
+        hintNode2.horizontalAlignmentMode = .Left
+        self.addChild(hintNode2)
+        
+        let hintNode3 = GeneralLabelNode(text: "without failure")
+        hintNode3.fontColor = SKColor.lightGrayColor()
+        hintNode3.position = CGPointMake(30, self.size.height - (self.backButtonOffsetY + 180))
+        hintNode3.fontSize = 16
+        hintNode3.horizontalAlignmentMode = .Left
+        self.addChild(hintNode3)
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -101,10 +136,13 @@ class ScoreScene: SKScene {
         
         if node == self.backButtonNode {
             self.scoreSceneDelegate?.didTapBackButton(self)
+        } else if node == self.gamecenterNode {
+            self.scoreSceneDelegate?.didTapGamecenterButton(self)
         }
     }
 }
 
 protocol ScoreSceneDelegate: class {
     func didTapBackButton(scece:ScoreScene)
+    func didTapGamecenterButton(scene:ScoreScene)
 }
