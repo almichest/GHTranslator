@@ -118,7 +118,7 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, GlyphViewDel
         glyphView?.presentScoreScene(scene)
     }
     
-    func didConfirmResultInView(view: GlyphView) {
+    func didConfirmResultInView(view: GlyphView, shouldShowAd: Bool) {
         self.showGlyphScene()
     }
     

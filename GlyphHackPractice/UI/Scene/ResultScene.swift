@@ -107,13 +107,15 @@ class ResultScene: SKScene {
         self.addChild(okCountLabel)
     }
     
+    static var adCount = 0
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         let touch: UITouch = touches.first as! UITouch
         let location = touch.locationInNode(self)
         let node = self.nodeAtPoint(location)
         
         if node == self.backButton {
-            self.resultSceneDelegate?.didTapOKButtonOfScene(self)
+            ResultScene.adCount++
+            self.resultSceneDelegate?.didTapOKButtonOfScene(self, shouldShowAd:ResultScene.adCount % 3 == 0)
         }
     }
 
@@ -123,5 +125,5 @@ class ResultScene: SKScene {
 }
 
 protocol ResultSceneDelegate: class {
-    func didTapOKButtonOfScene(scene:ResultScene)
+    func didTapOKButtonOfScene(scene:ResultScene, shouldShowAd:Bool)
 }
