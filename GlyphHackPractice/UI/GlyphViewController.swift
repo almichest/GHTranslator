@@ -148,7 +148,8 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, ADBannerView
         self.adBackgroundView!.addSubview(self.adView!)
         
         let dismissButton = self.createAdDismissButton()
-        dismissButton.frame = CGRectMake(self.view.frame.size.width - 50, 100, 30, 30)
+        let positionY = self.view.frame.size.height / 2.0 - self.adView!.frame.size.height / 2.0 - 30
+        dismissButton.frame = CGRectMake(self.view.frame.size.width - 50, positionY, 30, 30)
         self.adBackgroundView?.addSubview(dismissButton)
         
         self.view!.addSubview(self.adBackgroundView!)
