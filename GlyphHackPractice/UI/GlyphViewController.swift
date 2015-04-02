@@ -209,6 +209,10 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, ADBannerView
         return true
     }
     
+    func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
+        self.adView = nil
+    }
+    
     func bannerViewActionDidFinish(banner: ADBannerView!) {
         self.adBackgroundView!.removeFromSuperview()
         self.showGlyphScene()

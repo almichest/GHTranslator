@@ -11,6 +11,7 @@
 		421D401F1ACBE921001FDB41 /* ScoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421D401E1ACBE921001FDB41 /* ScoreScene.swift */; };
 		421D40211ACBF239001FDB41 /* GlyphScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421D40201ACBF239001FDB41 /* GlyphScore.swift */; };
 		421D40231ACBFF90001FDB41 /* GeneralLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421D40221ACBFF90001FDB41 /* GeneralLabelNode.swift */; };
+		421D40251ACCF9E5001FDB41 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 421D40241ACCF9E5001FDB41 /* GameKit.framework */; };
 		423259E51AC3A4A3004726FF /* Glyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F4FC181A99BA0100833C21 /* Glyph.swift */; };
 		423259E61AC3A878004726FF /* GlyphTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D559A81A9A08C00091A490 /* GlyphTypes.swift */; };
 		423259E71AC3A89F004726FF /* GlyphGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42165D111AA2F0EB001EC0F5 /* GlyphGenerator.swift */; };
@@ -57,6 +58,7 @@
 		421D401E1ACBE921001FDB41 /* ScoreScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreScene.swift; sourceTree = "<group>"; };
 		421D40201ACBF239001FDB41 /* GlyphScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlyphScore.swift; sourceTree = "<group>"; };
 		421D40221ACBFF90001FDB41 /* GeneralLabelNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneralLabelNode.swift; path = Node/GeneralLabelNode.swift; sourceTree = "<group>"; };
+		421D40241ACCF9E5001FDB41 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		423259E91AC42437004726FF /* GlyphSequenceProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlyphSequenceProvider.swift; sourceTree = "<group>"; };
 		425882571AC676A200219E0C /* NodeUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NodeUtility.swift; path = Node/NodeUtility.swift; sourceTree = "<group>"; };
 		426B314D1AC65E23003AA565 /* GlyphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlyphViewController.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				421D40251ACCF9E5001FDB41 /* GameKit.framework in Frameworks */,
 				4276E98B1AC7BBC300F3DFB2 /* iAd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -133,6 +136,7 @@
 		42CDD0B31A7CFC10001FFC1F = {
 			isa = PBXGroup;
 			children = (
+				421D40241ACCF9E5001FDB41 /* GameKit.framework */,
 				4276E98A1AC7BBC300F3DFB2 /* iAd.framework */,
 				42CDD0BE1A7CFC10001FFC1F /* GlyphHackPractice */,
 				42CDD0D81A7CFC10001FFC1F /* GlyphHackPracticeTests */,
@@ -468,14 +472,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = GlyphHackPractice/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "402a38b5-7ef0-4bee-90d7-c43f521c1a71";
 			};
 			name = Debug;
 		};
@@ -483,13 +487,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = GlyphHackPractice/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "402a38b5-7ef0-4bee-90d7-c43f521c1a71";
 			};
 			name = Release;
 		};

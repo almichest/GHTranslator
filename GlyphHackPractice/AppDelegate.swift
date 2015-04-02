@@ -7,16 +7,51 @@
 //
 
 import UIKit
+import GameKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var localPlayer: GKLocalPlayer?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        self.authenticateGamePlayer()
         return true
+    }
+    
+    private func authenticateGamePlayer() {
+        self.localPlayer = GKLocalPlayer()
+        self.localPlayer!.authenticateHandler = {(viewController, error) -> Void in
+            if (viewController != nil) {
+                self.window!.rootViewController!.presentViewController(viewController, animated: true, completion: nil)
+            } else {
+                if (error == nil) {
+                    Log.d("authentication completed")
+                    self.loadBestScores()
+                } else {
+                    Log.d("authentication failed")
+                }
+            }
+        }
+    }
+    
+    private func loadBestScores() {
+        GKLeaderboard.loadLeaderboardsWithCompletionHandler { (leaderBoards, error) -> Void in
+            if error == nil {
+                Log.d("\(leaderBoards)")
+                let loadedLeaderboards:[GKLeaderboard] = leaderBoards as! [GKLeaderboard]
+                for leaderBoard:GKLeaderboard in loadedLeaderboards {
+                    leaderBoard.loadScoresWithCompletionHandler({ (scores, error) -> Void in
+                        let score = scores[0] as! GKScore
+                        GlyphScore.overwriteLocalScore(score.leaderboardIdentifier, value: (Int)(score.value))
+                        Log.d("\(scores)")
+                    })
+                }
+            } else {
+                Log.d("\(error)")
+            }
+        }
     }
 
     func applicationWillResignActive(application: UIApplication) {
