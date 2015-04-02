@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 import iAd
 
-class GlyphViewController: UIViewController, UIActionSheetDelegate, GlyphViewDelegate {
+class GlyphViewController: UIViewController, UIActionSheetDelegate, ADBannerViewDelegate, GlyphViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,6 +102,7 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, GlyphViewDel
     private var adView:ADBannerView? = nil
     private func prepareAdView() {
         self.adView = ADBannerView(adType: ADAdType.MediumRectangle)
+        self.adView!.delegate = self
         let diffWidth = self.view.frame.size.width - self.adView!.frame.size.width
         let diffHeight = self.view.frame.size.height - self.adView!.frame.size.height
         self.adView!.frame = CGRectMake(-adView!.frame.size.width, diffHeight / 2.0, self.adView!.frame.size.width, self.adView!.frame.size.height)
@@ -173,5 +174,15 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, GlyphViewDel
         }
         
         GlyphConfiguration.currentLevel = GlyphSequenceCount(rawValue: buttonIndex + 1)!
+    }
+    
+    //MARK - ADBannerViewDelegate
+    func bannerViewActionShouldBegin(banner: ADBannerView!, willLeaveApplication willLeave: Bool) -> Bool {
+        return true
+    }
+    
+    func bannerViewActionDidFinish(banner: ADBannerView!) {
+        self.adView!.removeFromSuperview()
+        self.showGlyphScene()
     }
 }
