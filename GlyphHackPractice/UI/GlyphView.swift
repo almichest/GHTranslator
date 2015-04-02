@@ -57,8 +57,8 @@ public class GlyphView: SKView, HomeSceneDelegate, GlyphSceneDelegate, ResultSce
     }
     
     //MARK: - ResultSceneDelegate
-    func didTapOKButtonOfScene(shouldShowAd: Bool, scene: ResultScene) {
-        self.glyphViewDelegate?.didConfirmResultInView(self, shouldShowAd:shouldShowAd)
+    func didTapOKButtonOfScene(scene: ResultScene) {
+        self.glyphViewDelegate?.didConfirmResultInView(self)
     }
     
     //MARK - ScoreSceneDelegate
@@ -75,7 +75,7 @@ public protocol GlyphViewDelegate: class {
     
     func didCompleteUserInput(answer:[GlyphType], userInputs:[Set<GlyphPath>?])
     
-    func didConfirmResultInView(view:GlyphView, shouldShowAd:Bool)
+    func didConfirmResultInView(view:GlyphView)
     
     func didSelectBackButton(view:GlyphView)
 }
