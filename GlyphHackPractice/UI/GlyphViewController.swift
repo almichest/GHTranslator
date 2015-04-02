@@ -139,13 +139,41 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, ADBannerView
             self.showGlyphScene()
         }
     }
+    
+    private var adBackgroundView:UIView?
     private func showAdView() {
-        self.view!.addSubview(self.adView!)
+        
+        self.adBackgroundView = UIView(frame: CGRectMake(0, 0, self.view!.frame.size.width, self.view!.frame.size.height))
+        self.adBackgroundView!.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+        self.adBackgroundView!.addSubview(self.adView!)
+        
+        let dismissButton = self.createAdDismissButton()
+        dismissButton.frame = CGRectMake(self.view.frame.size.width - 50, 100, 30, 30)
+        self.adBackgroundView?.addSubview(dismissButton)
+        
+        self.view!.addSubview(self.adBackgroundView!)
+        
         UIView.animateWithDuration(0.5, animations: { () -> Void in
             let diffWidth = self.view.frame.size.width - self.adView!.frame.size.width
             let diffHeight = self.view.frame.size.height - self.adView!.frame.size.height
             self.adView!.frame = CGRectMake(diffWidth / 2.0, diffHeight / 2.0, self.adView!.frame.size.width, self.adView!.frame.size.height)
         })
+    }
+    
+    private func createAdDismissButton() -> UIImageView {
+        let dismissButtonImage = UIImage(named: "DismissButton")
+        let dismissButton = UIImageView(image: dismissButtonImage)
+        let dismissRecognizer = UITapGestureRecognizer(target: self, action: "didTapDismissButton:")
+        dismissButton.addGestureRecognizer(dismissRecognizer)
+        dismissButton.userInteractionEnabled = true
+        
+        return dismissButton
+    }
+    
+    @objc
+    private func didTapDismissButton(sender:AnyObject?) {
+        self.adBackgroundView?.removeFromSuperview()
+        self.showGlyphScene()
     }
     
     func didSelectBackButton(view: GlyphView) {
@@ -182,7 +210,7 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, ADBannerView
     }
     
     func bannerViewActionDidFinish(banner: ADBannerView!) {
-        self.adView!.removeFromSuperview()
+        self.adBackgroundView!.removeFromSuperview()
         self.showGlyphScene()
     }
 }
