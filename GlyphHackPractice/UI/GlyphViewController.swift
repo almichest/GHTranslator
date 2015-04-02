@@ -119,7 +119,19 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, GlyphViewDel
     }
     
     func didConfirmResultInView(view: GlyphView, shouldShowAd: Bool) {
-        self.showGlyphScene()
+        if shouldShowAd {
+            self.showAd()
+        } else {
+            self.showGlyphScene()
+        }
+    }
+    
+    private func showAd() {
+        let bannerView = ADBannerView(adType: ADAdType.MediumRectangle)
+        let diffWidth = self.view.frame.size.width - bannerView.frame.size.width
+        let diffHeight = self.view.frame.size.height - bannerView.frame.size.height
+        bannerView.frame = CGRectMake(diffWidth / 2.0, diffHeight / 2.0, bannerView.frame.size.width, bannerView.frame.size.height)
+        self.view!.addSubview(bannerView)
     }
     
     func didSelectBackButton(view: GlyphView) {
