@@ -293,7 +293,7 @@ class GlyphScene: SKScene{
     
     private func notifyUserInterInputCompleteIfPossible() {
         
-        if self.userInputs.count == self.currentQuestions.count && self.isInInputMode {
+        if self.userInputs.count >= self.currentQuestions.count && self.isInInputMode {
             self.isInInputMode = false
             doActionAfterSeconds({ () -> Void in
                 self.glyphSceneDelegate?.didCompleteUserInputs(self.currentQuestions, userInputs: self.userInputs)
@@ -305,6 +305,7 @@ class GlyphScene: SKScene{
         let particleGlyphPath = NSBundle.mainBundle().pathForResource("DrawingParticle", ofType: "sks")
         let particle = NSKeyedUnarchiver.unarchiveObjectWithFile(particleGlyphPath!) as! SKEmitterNode
         particle.position = point
+        particle.alpha = 0.5
         self.tracingParticles.append(particle)
         self.addChild(particle)
     }
