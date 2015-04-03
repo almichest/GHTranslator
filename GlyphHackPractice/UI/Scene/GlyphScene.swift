@@ -316,9 +316,11 @@ class GlyphScene: SKScene{
         
         if node == self.homeNode {
             self.glyphSceneDelegate?.didSelectHomeNodeInScene(self)
+            self.homeNode?.isSelected = false
             return
         } else if node == self.startButtonNode {
             self.handleTappingStartButton()
+            self.startButtonNode?.isSelected = false
             return
         } else if node == self {
             self.homeNode?.isSelected = false
