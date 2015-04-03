@@ -160,9 +160,9 @@ class GlyphScene: SKScene{
         }
         
         let vertex = node as! GlyphHackVertex
-        vertex.touch()
-        
         let index = vertex.index
+        
+        self.rootNode!.setTouchedIndicator(index)
         
         if(self.lastTouchedIndex < 0) {
             self.lastTouchedIndex = index
@@ -325,6 +325,7 @@ class GlyphScene: SKScene{
         self.userInputs.append(self.currentGlyphPath)
         self.lastTouchedIndex = -1
         
+        self.rootNode!.clearTouchedIndicator()
     }
     
     private func doActionAfterSeconds(action:() -> Void, after:NSTimeInterval) {

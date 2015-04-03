@@ -126,5 +126,16 @@ class RootNode: SKSpriteNode{
             })
         }
     }
+    
+    func setTouchedIndicator(index:Int) {
+        let vertex = self.vertexes[index]
+        vertex.touched = true
+    }
+    
+    func clearTouchedIndicator() {
+        for vertex in self.vertexes {
+            vertex.touched = false
+        }
+    }
 }
 
