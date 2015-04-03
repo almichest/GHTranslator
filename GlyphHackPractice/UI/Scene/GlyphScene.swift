@@ -160,6 +160,7 @@ class GlyphScene: SKScene{
         }
         
         let vertex = node as! GlyphHackVertex
+        vertex.touch()
         
         let index = vertex.index
         

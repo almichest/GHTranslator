@@ -12,6 +12,7 @@ import QuartzCore
 class GlyphHackVertex: SKSpriteNode {
     
     private(set) var index: Int = -1
+    private var touched:Bool = false
     
     private init() {
         let image = UIImage(named: "Circle")
@@ -29,5 +30,22 @@ class GlyphHackVertex: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func touch() {
+        if !self.touched {
+            self.addTouchedIndicator()
+        }
+    }
+    
+    private func addTouchedIndicator() {
+        let circle = CGRectMake(-self.size.width / 2.0, -self.size.width / 2.0, self.size.width, self.size.height)
+        let circleNode = SKShapeNode()
+        circleNode.path = UIBezierPath(ovalInRect: circle).CGPath
+        circleNode.fillColor = SKColor.yellowColor()
+        circleNode.lineWidth = 0
+        circleNode.antialiased = true
+        circleNode.alpha = 0.5
+        circleNode.setScale(0.3)
+        self.addChild(circleNode)
+    }
 }
 
