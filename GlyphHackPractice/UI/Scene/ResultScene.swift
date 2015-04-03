@@ -99,11 +99,33 @@ class ResultScene: SKScene {
     }
     
     private func prepareCorrectAnswerCountNode() {
-        let okCountLabel = GeneralLabelNode(text: "\(self.okCount) / \(GlyphConfiguration.currentLevel.rawValue)")
+        let okCountLabel = GeneralLabelNode(text: "Result : \(self.okCount) / \(GlyphConfiguration.currentLevel.rawValue)")
         okCountLabel.position = CGPointMake(self.size.width / 2.0, self.size.height - self.bottomLabelsOffset)
         okCountLabel.fontColor = SKColor.whiteColor()
         okCountLabel.fontSize = 18.0
         self.addChild(okCountLabel)
+    }
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        let touch: UITouch = touches.first as! UITouch
+        let location = touch.locationInNode(self)
+        let node = self.nodeAtPoint(location)
+        
+        if node == self.backButton {
+            self.backButton?.isSelected = true
+        }
+    }
+    
+    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+        let touch: UITouch = touches.first as! UITouch
+        let location = touch.locationInNode(self)
+        let node = self.nodeAtPoint(location)
+        
+        if node == self.backButton {
+            self.backButton?.isSelected = true
+        } else if node == self {
+            self.backButton?.isSelected = false
+        }
     }
     
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
@@ -113,6 +135,8 @@ class ResultScene: SKScene {
         
         if node == self.backButton {
             self.resultSceneDelegate?.didTapOKButtonOfScene(self)
+        } else if node == self {
+            self.backButton?.isSelected = false
         }
     }
 

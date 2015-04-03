@@ -11,11 +11,25 @@ import SpriteKit
 
 class SelectableLabelNode: GeneralLabelNode {
     
-    static let selectableFontColor = SKColor(red: 157.0 / 255.0, green: 204.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
+    static let normalFontColor = SKColor(red: 157.0 / 255.0, green: 204.0 / 255.0, blue: 224.0 / 255.0, alpha: 1.0)
+    static let selectedFontColor = SKColor(red: 157.0 / 255.0, green: 204.0 / 255.0, blue: 224.0 / 255.0, alpha: 0.5)
+    
+    var isSelected:Bool {
+        get {
+           return self.fontColor.isEqual(SelectableLabelNode.selectedFontColor)
+        }
+        set {
+            if newValue {
+                self.fontColor = SelectableLabelNode.selectedFontColor
+            } else {
+                self.fontColor = SelectableLabelNode.normalFontColor
+            }
+        }
+    }
     
     override init() {
         super.init()
-        self.fontColor = SelectableLabelNode.selectableFontColor
+        self.fontColor = SelectableLabelNode.normalFontColor
     }
     
     convenience init(text: String) {

@@ -69,6 +69,25 @@ class HomeScene: SKScene {
         self.addChild(self.scoreNode!)
     }
     
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        let touch: UITouch = touches.first as! UITouch
+        let location = touch.locationInNode(self)
+        let node = self.nodeAtPoint(location)
+        
+        if node == self {
+            return
+        }
+        
+        if node == self.startNode {
+            self.startNode?.isSelected = true
+        } else if node == self.selectLevelNode {
+            self.selectLevelNode?.isSelected = true
+        } else if node == self.scoreNode {
+            self.scoreNode?.isSelected = true
+        }
+        
+    }
+    
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         let touch: UITouch = touches.first as! UITouch
         let location = touch.locationInNode(self)
@@ -76,11 +95,43 @@ class HomeScene: SKScene {
         
         if node == self.startNode {
             self.homeSceneDelegate?.didTapStartNodeInScene(self)
+            self.startNode?.isSelected = false
         } else if node == self.selectLevelNode {
             self.homeSceneDelegate?.didTapSelectLevelNodeInScene(self)
+            self.selectLevelNode?.isSelected = false
         } else if node == self.scoreNode {
             self.homeSceneDelegate?.didTapScoreNodeInScene(self)
+            self.scoreNode?.isSelected = false
+        } else if node == self {
+            self.startNode?.isSelected = false
+            self.selectLevelNode?.isSelected = false
+            self.scoreNode?.isSelected = false
         }
+    }
+    
+    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+        let touch: UITouch = touches.first as! UITouch
+        let location = touch.locationInNode(self)
+        let node = self.nodeAtPoint(location)
+        
+        if node == self.startNode {
+            self.startNode?.isSelected = true
+        } else if node == self.selectLevelNode {
+            self.selectLevelNode?.isSelected = true
+        } else if node == self.scoreNode {
+            self.scoreNode?.isSelected = true
+        } else if node == self {
+            self.startNode?.isSelected = false
+            self.selectLevelNode?.isSelected = false
+            self.scoreNode?.isSelected = false
+        }
+        
+    }
+    
+    override func touchesCancelled(touches: Set<NSObject>!, withEvent event: UIEvent!) {
+        self.startNode?.isSelected = false
+        self.selectLevelNode?.isSelected = false
+        self.scoreNode?.isSelected = false
     }
 }
 

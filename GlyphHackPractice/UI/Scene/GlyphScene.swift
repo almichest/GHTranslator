@@ -45,7 +45,7 @@ class GlyphScene: SKScene{
     override func didMoveToView(view: SKView) {
         let rootNode = RootNode(color: SKColor.blackColor(), size: CGSizeMake(self.size.width, self.size.height))
         self.addChild(rootNode)
-        rootNode.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
+        rootNode.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2 - 20)
         self.rootNode = rootNode
         rootNode.prepare()
         self.prepareStartButton()
@@ -68,15 +68,15 @@ class GlyphScene: SKScene{
     private func prepareStartButton() {
         self.startButtonNode = SelectableLabelNode(text: "Start")
         self.startButtonNode!.fontSize = 25.0
-        self.startButtonNode!.position = CGPointMake(self.size.width / 4.0, self.size.height - 80)
+        self.startButtonNode!.position = CGPointMake(self.size.width / 4.0, self.rootNode!.size.height - 80)
         self.startButtonNode!.userInteractionEnabled = false
         self.addChild(self.startButtonNode!)
     }
     
     private func prepareGlyphNameNode() {
         self.glyphNameNode = GeneralLabelNode(text: "")
-        self.glyphNameNode!.position = CGPointMake(self.size.width / 2, 40)
-        self.glyphNameNode!.fontSize = 20.0
+        self.glyphNameNode!.position = CGPointMake(self.size.width / 2, self.rootNode!.size.height / 4.0)
+        self.glyphNameNode!.fontSize = 16.0
         self.addChild(self.glyphNameNode!)
     }
     
@@ -131,6 +131,15 @@ class GlyphScene: SKScene{
         if self.isInInputMode {
             self.createTracingParticle(location)
             self.handleNodeTouch(node, type:type)
+        }
+        
+        if node == self.startButtonNode {
+            self.startButtonNode?.isSelected = true
+        } else if node == self.homeNode {
+            self.homeNode?.isSelected = true
+        } else if node == self.rootNode {
+            self.startButtonNode?.isSelected = false
+            self.homeNode?.isSelected = false
         }
     }
     
@@ -311,6 +320,9 @@ class GlyphScene: SKScene{
         } else if node == self.startButtonNode {
             self.handleTappingStartButton()
             return
+        } else if node == self {
+            self.homeNode?.isSelected = false
+            self.startButtonNode?.isSelected = false
         }
         
         self.doActionAfterSeconds({ () -> Void in

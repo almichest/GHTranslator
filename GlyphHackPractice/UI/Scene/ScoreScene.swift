@@ -127,6 +127,33 @@ class ScoreScene: SKScene {
         self.addChild(hintNode3)
     }
     
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        let touch: UITouch = touches.first as! UITouch
+        let location = touch.locationInNode(self)
+        let node = self.nodeAtPoint(location)
+        
+        if node == self.backButtonNode {
+            self.backButtonNode?.isSelected = true
+        } else if node == self.gamecenterNode {
+            self.gamecenterNode?.isSelected = true
+        }
+    }
+    
+    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+        let touch: UITouch = touches.first as! UITouch
+        let location = touch.locationInNode(self)
+        let node = self.nodeAtPoint(location)
+        
+        if node == self.backButtonNode {
+            self.backButtonNode?.isSelected = true
+        } else if node == self.gamecenterNode {
+            self.gamecenterNode?.isSelected = true
+        } else if node == self {
+            self.backButtonNode?.isSelected = false
+            self.gamecenterNode?.isSelected = false
+        }
+    }
+    
     override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         let touch: UITouch = touches.first as! UITouch
         let location = touch.locationInNode(self)
@@ -137,6 +164,14 @@ class ScoreScene: SKScene {
         } else if node == self.gamecenterNode {
             self.scoreSceneDelegate?.didTapGamecenterButton(self)
         }
+        
+        self.backButtonNode?.isSelected = false
+        self.gamecenterNode?.isSelected = false
+    }
+    
+    override func touchesCancelled(touches: Set<NSObject>!, withEvent event: UIEvent!) {
+        self.backButtonNode?.isSelected = false
+        self.gamecenterNode?.isSelected = false
     }
 }
 
