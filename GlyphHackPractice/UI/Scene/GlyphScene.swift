@@ -60,10 +60,9 @@ class GlyphScene: SKScene{
     private func notifyAdPreparationIfNeeded() {
         GlyphScene.adCount++
         
-//        if GlyphScene.adCount % 3 == 0 {
-//            self.glyphSceneDelegate?.didDetectPreparingAd(self)
-//        }
-        self.glyphSceneDelegate?.didDetectPreparingAd(self)
+        if GlyphScene.adCount % 3 == 0 {
+            self.glyphSceneDelegate?.didDetectPreparingAd(self)
+        }
     }
     
     private func prepareStartButton() {
