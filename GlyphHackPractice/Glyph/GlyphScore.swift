@@ -110,6 +110,7 @@ class GlyphScore: NSObject {
                 return GlyphSequenceCount.Five
             default :
                 assert(false, "Must not reach here")
+                return GlyphSequenceCount.One
             }
         }
     }
