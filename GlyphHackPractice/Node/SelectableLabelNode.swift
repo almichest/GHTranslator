@@ -17,6 +17,10 @@ class SelectableLabelNode: SKSpriteNode {
     
     private var labelNode:SKLabelNode?
     
+    deinit {
+        self.labelNode?.removeFromParent()
+    }
+    
     var fontSize:CGFloat {
         get {
             return self.labelNode!.fontSize
