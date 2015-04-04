@@ -36,7 +36,7 @@ class HomeScene: SKScene {
     }
     
     private func prepareStartNode() {
-        self.startNode = SelectableLabelNode()
+        self.startNode = SelectableLabelNode(text: "")
         self.startNode!.fontSize = 25.0
         self.startNode!.position = CGPointMake(25, self.size.height / 2.0 + 100)
         self.startNode!.userInteractionEnabled = false
@@ -95,17 +95,17 @@ class HomeScene: SKScene {
         
         if node == self.startNode {
             self.homeSceneDelegate?.didTapStartNodeInScene(self)
-            self.startNode?.isSelected = false
         } else if node == self.selectLevelNode {
             self.homeSceneDelegate?.didTapSelectLevelNodeInScene(self)
-            self.selectLevelNode?.isSelected = false
+            SceneUtility.doActionAfterSeconds({ () -> Void in
+                self.selectLevelNode?.isSelected = false
+            }, after: 1.0)
         } else if node == self.scoreNode {
             self.homeSceneDelegate?.didTapScoreNodeInScene(self)
-            self.scoreNode?.isSelected = false
         } else if node == self {
-            self.startNode?.isSelected = false
+            self.startNode!.isSelected = false
             self.selectLevelNode?.isSelected = false
-            self.scoreNode?.isSelected = false
+            self.scoreNode!.isSelected = false
         }
     }
     

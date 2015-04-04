@@ -246,7 +246,7 @@ class GlyphScene: SKScene{
     }
     
     private func showDrawingGlyphMessage() {
-        self.doActionAfterSeconds({ () -> Void in
+        SceneUtility.doActionAfterSeconds({ () -> Void in
             self.messageNode!.text = "Draw Glyph(s) as shown ..."
             self.prepareCountDownNode()
             self.countDownNode!.startCountDown({ () -> Void in
@@ -295,7 +295,7 @@ class GlyphScene: SKScene{
         
         if self.userInputs.count >= self.currentQuestions.count && self.isInInputMode {
             self.isInInputMode = false
-            doActionAfterSeconds({ () -> Void in
+            SceneUtility.doActionAfterSeconds({ () -> Void in
                 self.glyphSceneDelegate?.didCompleteUserInputs(self.currentQuestions, userInputs: self.userInputs)
             }, after: 0.3)
         }
@@ -317,18 +317,16 @@ class GlyphScene: SKScene{
         
         if node == self.homeNode {
             self.glyphSceneDelegate?.didSelectHomeNodeInScene(self)
-            self.homeNode?.isSelected = false
             return
         } else if node == self.startButtonNode {
             self.handleTappingStartButton()
-            self.startButtonNode?.isSelected = false
             return
         } else if node == self {
             self.homeNode?.isSelected = false
             self.startButtonNode?.isSelected = false
         }
         
-        self.doActionAfterSeconds({ () -> Void in
+        SceneUtility.doActionAfterSeconds({ () -> Void in
             self.clearTracingParticles(completion: {
                 for path in self.currentGlyphPath {
                     self.showPath(path.point1, to: path.point2, type:GlyphShownType.UserInput)
@@ -340,14 +338,6 @@ class GlyphScene: SKScene{
         self.lastTouchedIndex = -1
         
         self.rootNode!.clearTouchedIndicator()
-    }
-    
-    private func doActionAfterSeconds(action:() -> Void, after:NSTimeInterval) {
-        let delay = after * Double(NSEC_PER_SEC)
-        let time  = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-        dispatch_after(time, dispatch_get_main_queue(), {
-            action()
-        })
     }
 }
 

@@ -163,10 +163,10 @@ class ScoreScene: SKScene {
             self.scoreSceneDelegate?.didTapBackButton(self)
         } else if node == self.gamecenterNode {
             self.scoreSceneDelegate?.didTapGamecenterButton(self)
+        } else if node == self {
+            self.backButtonNode?.isSelected = false
+            self.gamecenterNode?.isSelected = false
         }
-        
-        self.backButtonNode?.isSelected = false
-        self.gamecenterNode?.isSelected = false
     }
     
     override func touchesCancelled(touches: Set<NSObject>!, withEvent event: UIEvent!) {
