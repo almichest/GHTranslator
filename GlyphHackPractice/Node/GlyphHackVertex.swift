@@ -11,14 +11,26 @@ import QuartzCore
 
 class GlyphHackVertex: SKSpriteNode {
     
-    var delegate: GlyphHackVertexDelegate?
     private(set) var index: Int = -1
+    private var touchedIndicator:SKShapeNode?
+    var touched:Bool {
+        get {
+            return false
+        }
+        set {
+            if newValue && self.touchedIndicator == nil {
+                self.addTouchedIndicator()
+            } else if !newValue {
+                self.touchedIndicator?.removeFromParent()
+                self.touchedIndicator = nil
+            }
+        }
+    }
     
-    private override init() {
+    private init() {
         let image = UIImage(named: "Circle")
         let texture = SKTexture(image: image!)
         super.init(texture: texture, color: UIColor.redColor(), size:texture.size())
-        
     }
     
     convenience init(index: Int) {
@@ -31,11 +43,17 @@ class GlyphHackVertex: SKSpriteNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        Log.d("Touched : \(self.index)")
+    private func addTouchedIndicator() {
+        let circle = CGRectMake(-self.size.width / 2.0, -self.size.width / 2.0, self.size.width, self.size.height)
+        let circleNode = SKShapeNode()
+        circleNode.path = UIBezierPath(ovalInRect: circle).CGPath
+        circleNode.fillColor = SKColor.yellowColor()
+        circleNode.lineWidth = 0
+        circleNode.antialiased = true
+        circleNode.alpha = 0.5
+        circleNode.setScale(0.5)
+        self.addChild(circleNode)
+        self.touchedIndicator = circleNode
     }
 }
 
-protocol GlyphHackVertexDelegate {
-    func didTouchVertexAtIndex(index: Int)
-}

@@ -8,10 +8,12 @@
 
 import UIKit
 
-enum GlyphType: String {
+public enum GlyphType: String {
     case Abandon                                        = "ABANDON"
     
     case Adapt                                          = "ADAPT"
+    
+    case Adjust                                         = "ADJUST"
     
     case Advance                                        = "ADVANCE"
     
@@ -182,6 +184,8 @@ enum GlyphType: String {
     
     case Lie                                            = "LIE"
     
+    case Live                                           = "LIVE"
+    
     case LiveAgain                                      = "LIVE AGAIN"
     case Reincarnate                                    = "REINCARNATE"
     
@@ -264,7 +268,7 @@ enum GlyphType: String {
     case Safety                                         = "SAFETY"
     
     case Save                                           = "SAVE"
-    case Rescure                                        = "RESCURE"
+    case Rescue                                         = "RESCUE"
     
     case See                                            = "SEE"
     
@@ -282,7 +286,7 @@ enum GlyphType: String {
     case Shapers                                        = "SHAPERS"
     case Collective                                     = "COLLECTIVE"
     
-    case Shere                                          = "SHARE"
+    case Share                                          = "SHARE"
     
     case Simple                                         = "SIMPLE"
     
@@ -296,6 +300,7 @@ enum GlyphType: String {
     
     case Strong                                         = "STRONG"
     
+    case Them                                           = "THEM"
     case Together                                       = "TOGETHER"
     
     case Truth                                          = "TRUTH"
@@ -318,4 +323,7 @@ enum GlyphType: String {
     
     case You                                            = "YOU"
     case Other                                          = "OTHER"
+    
+    case UserInteractionResult                          = "USER_INTERACTION_RESULT"
+    
 }

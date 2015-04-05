@@ -21,16 +21,40 @@ class GlyphHackPracticeTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+    func testEqual() {
+        let paths1: Set<GlyphPath> = [GlyphPath(point1: 0, point2: 10)]
+        let glyph1 = GlyphGenerator.createGlyphWithType(GlyphType.UserInteractionResult, path: paths1)
+        
+        let paths2: Set<GlyphPath> = [GlyphPath(point1: 0, point2: 5),
+                                            GlyphPath(point1: 5, point2: 10)]
+        let glyph2 = GlyphGenerator.createGlyphWithType(GlyphType.UserInteractionResult, path: paths2)
+        
+        XCTAssert(glyph1.isEqual(glyph2), "")
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
+    func testCreatingChaosGlyph() {
+        let chaos = GlyphGenerator.createGlyphWithType(GlyphType.Chaos, path: nil)
+        
+        let inputPath: Set<GlyphPath> = [
+                                               GlyphPath(point1: 0, point2: 1),
+                                               GlyphPath(point1: 1, point2: 8),
+                                               GlyphPath(point1: 0, point2: 2),
+                                               GlyphPath(point1: 2, point2: 6),
+                                               GlyphPath(point1: 6, point2: 10),
+                                              ]
+        let inputGlyph = GlyphGenerator.createGlyphWithType(GlyphType.UserInteractionResult, path: inputPath)
+        XCTAssert(chaos.isEqual(inputGlyph), "")
+    }
+    
+    func testIfNilGlyphExists() {
+        let allGlyphSequences:[[[GlyphType]]] = GlyphSequenceProvider.provideAllSequence()
+        for sequence1:[[GlyphType]] in allGlyphSequences {
+            for sequence2:[GlyphType] in sequence1 {
+                for type in sequence2 {
+                    let glyph: Glyph? = GlyphGenerator.createGlyphWithType(type)
+                    XCTAssert(glyph != nil, "")
+                }
+            }
         }
     }
-    
 }
