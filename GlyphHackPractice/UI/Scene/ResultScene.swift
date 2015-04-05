@@ -36,6 +36,12 @@ class ResultScene: SKScene {
         self.prepareBackButton()
     }
     
+    override func willMoveFromView(view: SKView) {
+        for node in self.children {
+            node.removeFromParent()
+        }
+    }
+    
     private func prepareTextNodes() {
         let correctLabel = GeneralLabelNode(text: "Correct Answer")
         correctLabel.position = CGPointMake(self.size.width * 3.0 / 4.0, self.size.height - 50)
