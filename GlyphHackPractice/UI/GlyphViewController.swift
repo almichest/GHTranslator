@@ -134,7 +134,7 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, ADBannerView
     }
     
     func didConfirmResultInView(view: GlyphView) {
-        if(self.adView != nil) {
+        if self.adView != nil && self.adView!.bannerLoaded {
             self.showAdView()
         } else {
             self.showGlyphScene()
@@ -222,6 +222,7 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, ADBannerView
     }
     
     func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
+        Log.d("Loading ad failed ")
         self.adView = nil
     }
     
