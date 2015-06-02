@@ -10,7 +10,7 @@ import Foundation
 
 class Log: NSObject {
     
-    class func d(message: String,
+    static func d(message: String,
                  function: String = __FUNCTION__,
                  file: String = __FILE__,
                  line: Int = __LINE__) {
