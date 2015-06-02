@@ -8,6 +8,8 @@
 
 import UIKit
 import GameKit
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var localPlayer: GKLocalPlayer?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        self.authenticateGamePlayer()
+//        self.authenticateGamePlayer()
+        Fabric.with([Crashlytics]());
         return true
     }
     
@@ -43,15 +46,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let loadedLeaderboards:[GKLeaderboard] = leaderBoards as! [GKLeaderboard]
                 for leaderBoard:GKLeaderboard in loadedLeaderboards {
                     leaderBoard.loadScoresWithCompletionHandler({ (scores, error) -> Void in
-                        let score = scores[0] as! GKScore
-                        GlyphScore.overwriteLocalScore(score.leaderboardIdentifier, value: (Int)(score.value))
-                        Log.d("\(scores)")
+                        self.overwriteBestScores(scores);
                     })
                 }
             } else {
                 Log.d("\(error)")
             }
         }
+    }
+    
+    private func overwriteBestScores(scores:[AnyObject?]) {
+        if scores.count == 0 {
+            return;
+        }
+        
+        let score = scores[0] as! GKScore
+        GlyphScore.overwriteLocalScore(score.leaderboardIdentifier, value: (Int)(score.value))
+        Log.d("\(scores)")
     }
 
     func applicationWillResignActive(application: UIApplication) {
