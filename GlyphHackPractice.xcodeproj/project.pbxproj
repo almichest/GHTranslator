@@ -132,6 +132,13 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		427232691B1DFAC500DC1346 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
 		4276E98C1AC8035600F3DFB2 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +176,7 @@
 		42CDD0BE1A7CFC10001FFC1F /* GlyphHackPractice */ = {
 			isa = PBXGroup;
 			children = (
+				427232691B1DFAC500DC1346 /* Configuration */,
 				426B314A1AC65E23003AA565 /* UI */,
 				42F4FC171A99BA0100833C21 /* Glyph */,
 				42CDD0E71A7D052C001FFC1F /* Node */,
