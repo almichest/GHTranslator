@@ -236,7 +236,7 @@ class GlyphScene: SKScene{
             self.showingGlyph = target
             Log.d("target = \(target)")
             self.setGlyphName(target.type)
-            self.showGlyph(target)
+            self.showGlyph(target, type:.Question)
             self.glyphQueue.removeAtIndex(0)
         }
         
@@ -246,7 +246,7 @@ class GlyphScene: SKScene{
     }
     
     private func showDrawingGlyphMessage() {
-        SceneUtility.doActionAfterSeconds({ () -> Void in
+        ActionUtility.doActionAfterSeconds({ () -> Void in
             self.messageNode!.text = "Draw Glyph(s) as shown ..."
             self.prepareCountDownNode()
             self.countDownNode!.startCountDown({ () -> Void in
@@ -266,19 +266,14 @@ class GlyphScene: SKScene{
         self.glyphNameNode?.text = type.rawValue
     }
     
-    private func showGlyph(glyph:Glyph) {
-        for path in glyph.paths! {
-            self.showPath(path.point1, to: path.point2, type: GlyphShownType.Question)
-        }
-    }
-    
     private enum GlyphShownType {
         case Question
         case UserInput
     }
     
-    private func showPath(from:Int, to:Int, type:GlyphShownType) {
-        self.rootNode?.showPath(from, to:to, completion:{
+    private func showGlyph(glyph:Glyph, type: GlyphShownType) {
+        self.showingGlyph = glyph
+        self.rootNode?.showGlyph(glyph, autoRemove: true, completion: { () -> Void in
             self.showingGlyph = nil
             self.glyphNameNode?.text = ""
             
@@ -295,7 +290,7 @@ class GlyphScene: SKScene{
         
         if self.userInputs.count >= self.currentQuestions.count && self.isInInputMode {
             self.isInInputMode = false
-            SceneUtility.doActionAfterSeconds({ () -> Void in
+            ActionUtility.doActionAfterSeconds({ () -> Void in
                 self.glyphSceneDelegate?.didCompleteUserInputs(self.currentQuestions, userInputs: self.userInputs)
             }, after: 0.3)
         }
@@ -326,11 +321,10 @@ class GlyphScene: SKScene{
             self.startButtonNode?.isSelected = false
         }
         
-        SceneUtility.doActionAfterSeconds({ () -> Void in
+        ActionUtility.doActionAfterSeconds({ () -> Void in
             self.clearTracingParticles(completion: {
-                for path in self.currentGlyphPath {
-                    self.showPath(path.point1, to: path.point2, type:GlyphShownType.UserInput)
-                }
+                let glyph = Glyph(type: .UserInteractionResult , paths: self.currentGlyphPath)
+                self.showGlyph(glyph, type: .UserInput)
             })
         }, after: 0.0)
         

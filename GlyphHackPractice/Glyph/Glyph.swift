@@ -23,7 +23,7 @@ public class Glyph: NSObject, NSCopying {
         self.prepare()
     }
     
-    private convenience init(type: GlyphType, paths: Set<GlyphPath>?) {
+    convenience init(type: GlyphType, paths: Set<GlyphPath>?) {
         self.init(type: type)
         self.paths = paths
     }

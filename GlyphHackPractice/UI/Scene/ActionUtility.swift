@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SceneUtility: NSObject {
+class ActionUtility: NSObject {
    
     static func doActionAfterSeconds(action:() -> Void, after:NSTimeInterval) {
         let delay = after * Double(NSEC_PER_SEC)

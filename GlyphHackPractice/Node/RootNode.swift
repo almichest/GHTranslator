@@ -68,9 +68,29 @@ class RootNode: SKSpriteNode{
         }
     }
     
+    private let glyphDuration = 1.0
+    private var waitingCompletion:(() -> Void)?
+    func showGlyph(glyph: Glyph, autoRemove:Bool? = true, completion: (() -> Void)?) {
+        let paths = glyph.paths!
+        
+        for path in paths {
+            let from = path.point1
+            let to = path.point2
+            self.showPath(from, to: to, autoRemove: autoRemove!)
+        }
+        
+        self.waitingCompletion = completion
+        
+        ActionUtility.doActionAfterSeconds({ () -> Void in
+            if self.waitingCompletion != nil {
+                self.waitingCompletion!()
+            }
+        }, after: glyphDuration)
+    }
+    
     var spaceBetweenParticles:CGFloat = 15
     var waiting = false
-    func showPath(from:Int, to:Int, autoRemove:Bool? = true, completion:(() -> Void)?) {
+    private func showPath(from:Int, to:Int, autoRemove:Bool? = true) {
         
         Log.d("showPath \(from) - \(to)")
         
@@ -91,14 +111,13 @@ class RootNode: SKSpriteNode{
             } else {
                 target = CGPointMake(start.x + currentOffset * cos(arg), start.y + currentOffset * sin(arg))
             }
-            self.showParticle(target, autoRemove:autoRemove!, completion:completion)
+            self.showParticle(target, autoRemove:autoRemove!)
             
             currentOffset += spaceBetweenParticles
         }
     }
     
-    var mainParticle:SKEmitterNode? = nil
-    private func showParticle(point: CGPoint, autoRemove:Bool, completion:(() -> Void)? = nil) {
+    private func showParticle(point: CGPoint, autoRemove:Bool) {
         let particleGlyphPath = NSBundle.mainBundle().pathForResource("GlyphParticle", ofType: "sks")
         let particle = NSKeyedUnarchiver.unarchiveObjectWithFile(particleGlyphPath!) as! SKEmitterNode
         
@@ -111,18 +130,10 @@ class RootNode: SKSpriteNode{
         }
         
         self.addChild(particle)
-        if self.mainParticle == nil {
-            self.mainParticle = particle
-        }
         
         if(autoRemove) {
-            particle.runAction(SKAction.fadeAlphaTo(0.0, duration: 1.0), completion:{() in
+            particle.runAction(SKAction.fadeAlphaTo(0.0, duration:glyphDuration), completion:{() in
                 particle.removeFromParent()
-                if completion != nil && particle == self.mainParticle {
-                    Log.d("Completion");
-                    self.mainParticle = nil
-                    completion!()
-                }
             })
         }
     }

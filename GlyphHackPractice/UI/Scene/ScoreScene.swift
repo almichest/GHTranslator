@@ -163,7 +163,7 @@ class ScoreScene: SKScene {
             self.scoreSceneDelegate?.didTapBackButton(self)
         } else if node == self.gamecenterNode {
             self.scoreSceneDelegate?.didTapGamecenterButton(self)
-            SceneUtility.doActionAfterSeconds({ () -> Void in
+            ActionUtility.doActionAfterSeconds({ () -> Void in
                 self.gamecenterNode?.isSelected = false
             }, after: 1.0)
         } else if node == self {

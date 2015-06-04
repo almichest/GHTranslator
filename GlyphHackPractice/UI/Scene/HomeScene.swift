@@ -97,7 +97,7 @@ class HomeScene: SKScene {
             self.homeSceneDelegate?.didTapStartNodeInScene(self)
         } else if node == self.selectLevelNode {
             self.homeSceneDelegate?.didTapSelectLevelNodeInScene(self)
-            SceneUtility.doActionAfterSeconds({ () -> Void in
+            ActionUtility.doActionAfterSeconds({ () -> Void in
                 self.selectLevelNode?.isSelected = false
             }, after: 1.0)
         } else if node == self.scoreNode {

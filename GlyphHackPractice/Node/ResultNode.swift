@@ -27,18 +27,14 @@ class ResultNode: SKSpriteNode {
     
     private func prepareAnswerNode() {
         let node = self.createGlyphNode()
-        for path in self.answerGlyph.paths! {
-            node.showPath(path.point1, to: path.point2, autoRemove: false, completion: nil)
-        }
+        node.showGlyph(self.answerGlyph, autoRemove: false, completion: nil)
         node.position = CGPointMake(self.size.width * 3.0 / 4.0, 0)
         self.addChild(node)
     }
     
     private func prepareInputNode() {
         let node = self.createGlyphNode()
-        for path in self.inputGlyph.paths! {
-            node.showPath(path.point1, to: path.point2, autoRemove: false, completion: nil)
-        }
+        node.showGlyph(self.inputGlyph, autoRemove: false, completion: nil)
         node.position = CGPointMake(self.size.width / 4.0, 0)
         self.addChild(node)
     }
