@@ -192,8 +192,8 @@ class GlyphScene: SKScene{
     
     private func handleTappingStartButton() {
         
-        self.startButtonNode!.alpha = 0.0
-        self.homeNode!.alpha = 0.0
+        self.startButtonNode!.removeFromParent()
+        self.homeNode!.removeFromParent()
         
         self.currentQuestions.removeAll(keepCapacity: true)
         self.userInputs.removeAll(keepCapacity: true)
