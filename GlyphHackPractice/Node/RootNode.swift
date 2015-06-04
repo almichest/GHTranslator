@@ -88,6 +88,14 @@ class RootNode: SKSpriteNode{
         }, after: glyphDuration)
     }
     
+    func removeCurrentGlyph() {
+        for node in self.children {
+            if node is SKEmitterNode {
+                node.removeFromParent()
+            }
+        }
+    }
+    
     var spaceBetweenParticles:CGFloat = 15
     var waiting = false
     private func showPath(from:Int, to:Int, autoRemove:Bool? = true) {

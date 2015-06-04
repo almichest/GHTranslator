@@ -129,6 +129,7 @@ class GlyphScene: SKScene{
         let node = self.nodeAtPoint(location)
         
         if self.isInInputMode {
+            self.rootNode?.removeCurrentGlyph()
             self.createTracingParticle(location)
             self.handleNodeTouch(node, type:type)
         }
@@ -222,7 +223,7 @@ class GlyphScene: SKScene{
     private func enqueueGlyphSequence(glyphTypes: [GlyphType]) {
         for type in glyphTypes {
             let glyph = GlyphGenerator.createGlyphWithType(type)
-            self.glyphQueue.append(glyph)
+            self.glyphQueue += [glyph]
         }
         
         self.showNextGlyph()
@@ -301,7 +302,7 @@ class GlyphScene: SKScene{
         let particle = NSKeyedUnarchiver.unarchiveObjectWithFile(particleGlyphPath!) as! SKEmitterNode
         particle.position = point
         particle.alpha = 0.5
-        self.tracingParticles.append(particle)
+        self.tracingParticles += [particle]
         self.addChild(particle)
     }
     
@@ -319,6 +320,10 @@ class GlyphScene: SKScene{
         } else if node == self {
             self.homeNode?.isSelected = false
             self.startButtonNode?.isSelected = false
+        }
+        
+        if !self.isInInputMode {
+            return
         }
         
         ActionUtility.doActionAfterSeconds({ () -> Void in
