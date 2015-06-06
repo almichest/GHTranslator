@@ -264,7 +264,9 @@ class GlyphScene: SKScene{
     }
     
     private func setGlyphName(type:GlyphType) {
-        self.glyphNameNode?.text = type.rawValue
+        if GlyphConfiguration.showGlyphName {
+            self.glyphNameNode?.text = type.rawValue
+        }
     }
     
     private enum GlyphShownType {

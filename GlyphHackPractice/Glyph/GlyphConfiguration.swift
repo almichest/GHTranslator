@@ -13,21 +13,28 @@ class GlyphConfiguration: NSObject {
     static let GlyphConfigurationChangeCurrentLevelNotification = "GlyphConfigurationChangeCurrentLevelNotification"
     
     private static let GlyphConfigurationCurrentLevelKey = "GlyphConfigurationCurrentLevel"
+    private static let GlyphConfigurationShowGlyphNameKey = "GlyphConfigurationShowGlyphName"
+    private static let GlyphConfigurationLaunchedBeforeKey = "GlyphConfigurationLaunchedBefore"
+    private static let userDefaults = NSUserDefaults.standardUserDefaults()
     
     static var currentLevel:GlyphSequenceCount {
         get {
-            let userDefaults = NSUserDefaults.standardUserDefaults()
-            var integerValue = userDefaults.integerForKey(GlyphConfigurationCurrentLevelKey)
-            if integerValue == 0 {
-                integerValue = 1
-            }
+            var integerValue = self.userDefaults.integerForKey(GlyphConfigurationCurrentLevelKey)
             return GlyphSequenceCount(rawValue: integerValue)!
         }
         set {
-            let userDefaults = NSUserDefaults.standardUserDefaults()
-            userDefaults.setInteger(newValue.rawValue, forKey: GlyphConfigurationCurrentLevelKey)
+            self.userDefaults.setInteger(newValue.rawValue, forKey: GlyphConfigurationCurrentLevelKey)
             let notificationCenter = NSNotificationCenter.defaultCenter()
             notificationCenter.postNotificationName(GlyphConfigurationChangeCurrentLevelNotification, object: nil)
+        }
+    }
+    
+    static var showGlyphName:Bool {
+        get {
+            return self.userDefaults.boolForKey(GlyphConfigurationShowGlyphNameKey)
+        }
+        set {
+            self.userDefaults.setBool(newValue, forKey: GlyphConfigurationShowGlyphNameKey)
         }
     }
 }
