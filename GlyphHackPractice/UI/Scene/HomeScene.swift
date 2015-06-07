@@ -12,7 +12,7 @@ import SpriteKit
 class HomeScene: SKScene {
     
     private var startNode:SelectableLabelNode?
-    private var selectLevelNode:SelectableLabelNode?
+    private var settingNode:SelectableLabelNode?
     private var scoreNode:SelectableLabelNode?
     
     weak var homeSceneDelegate:HomeSceneDelegate?
@@ -51,12 +51,12 @@ class HomeScene: SKScene {
     }
     
     private func prepareSelectLevelNode() {
-        self.selectLevelNode = SelectableLabelNode(text: "Select Level")
-        self.selectLevelNode!.fontSize = 25.0
-        self.selectLevelNode!.position = CGPointMake(25, self.size.height / 2.0)
-        self.selectLevelNode!.userInteractionEnabled = false
-        self.selectLevelNode!.horizontalAlignmentMode = .Left
-        self.addChild(self.selectLevelNode!)
+        self.settingNode = SelectableLabelNode(text: "Settings")
+        self.settingNode!.fontSize = 25.0
+        self.settingNode!.position = CGPointMake(25, self.size.height / 2.0)
+        self.settingNode!.userInteractionEnabled = false
+        self.settingNode!.horizontalAlignmentMode = .Left
+        self.addChild(self.settingNode!)
     }
     
     
@@ -80,8 +80,8 @@ class HomeScene: SKScene {
         
         if node == self.startNode {
             self.startNode?.isSelected = true
-        } else if node == self.selectLevelNode {
-            self.selectLevelNode?.isSelected = true
+        } else if node == self.settingNode {
+            self.settingNode?.isSelected = true
         } else if node == self.scoreNode {
             self.scoreNode?.isSelected = true
         }
@@ -95,16 +95,16 @@ class HomeScene: SKScene {
         
         if node == self.startNode {
             self.homeSceneDelegate?.didTapStartNodeInScene(self)
-        } else if node == self.selectLevelNode {
-            self.homeSceneDelegate?.didTapSelectLevelNodeInScene(self)
+        } else if node == self.settingNode {
+            self.homeSceneDelegate?.didTapSettingNodeInScene(self)
             ActionUtility.doActionAfterSeconds({ () -> Void in
-                self.selectLevelNode?.isSelected = false
+                self.settingNode?.isSelected = false
             }, after: 1.0)
         } else if node == self.scoreNode {
             self.homeSceneDelegate?.didTapScoreNodeInScene(self)
         } else if node == self {
             self.startNode!.isSelected = false
-            self.selectLevelNode?.isSelected = false
+            self.settingNode?.isSelected = false
             self.scoreNode!.isSelected = false
         }
     }
@@ -116,13 +116,13 @@ class HomeScene: SKScene {
         
         if node == self.startNode {
             self.startNode?.isSelected = true
-        } else if node == self.selectLevelNode {
-            self.selectLevelNode?.isSelected = true
+        } else if node == self.settingNode {
+            self.settingNode?.isSelected = true
         } else if node == self.scoreNode {
             self.scoreNode?.isSelected = true
         } else if node == self {
             self.startNode?.isSelected = false
-            self.selectLevelNode?.isSelected = false
+            self.settingNode?.isSelected = false
             self.scoreNode?.isSelected = false
         }
         
@@ -130,13 +130,13 @@ class HomeScene: SKScene {
     
     override func touchesCancelled(touches: Set<NSObject>!, withEvent event: UIEvent!) {
         self.startNode?.isSelected = false
-        self.selectLevelNode?.isSelected = false
+        self.settingNode?.isSelected = false
         self.scoreNode?.isSelected = false
     }
 }
 
 protocol HomeSceneDelegate:class {
     func didTapStartNodeInScene(scene:HomeScene)
-    func didTapSelectLevelNodeInScene(scene:HomeScene)
+    func didTapSettingNodeInScene(scene:HomeScene)
     func didTapScoreNodeInScene(scene:HomeScene)
 }

@@ -26,6 +26,7 @@ class GlyphConfiguration: NSObject {
             self.userDefaults.setInteger(newValue.rawValue, forKey: GlyphConfigurationCurrentLevelKey)
             let notificationCenter = NSNotificationCenter.defaultCenter()
             notificationCenter.postNotificationName(GlyphConfigurationChangeCurrentLevelNotification, object: nil)
+            self.userDefaults.synchronize()
         }
     }
     
@@ -35,6 +36,26 @@ class GlyphConfiguration: NSObject {
         }
         set {
             self.userDefaults.setBool(newValue, forKey: GlyphConfigurationShowGlyphNameKey)
+            self.userDefaults.synchronize()
         }
+    }
+    
+    static var lauhcnedBefore:Bool {
+        get {
+            return self.userDefaults.boolForKey(GlyphConfigurationLaunchedBeforeKey)
+        }
+        set {
+            self.userDefaults.setBool(newValue, forKey: GlyphConfigurationLaunchedBeforeKey)
+            self.userDefaults.synchronize()
+        }
+    }
+    
+    static func loadInitialValue() {
+        
+        let dictionary: NSMutableDictionary = NSMutableDictionary()
+        dictionary[GlyphConfigurationCurrentLevelKey] = 1
+        dictionary[GlyphConfigurationShowGlyphNameKey] = true
+        dictionary[GlyphConfigurationLaunchedBeforeKey] = true
+        self.userDefaults.registerDefaults(dictionary as [NSObject : AnyObject])
     }
 }

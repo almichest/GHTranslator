@@ -65,8 +65,13 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, ADBannerView
         glyphView!.presentGlyphScene(scene)
     }
     
-    func didSelectSelectLevelItemInView(view: GlyphView) {
-        self.showLevelSelectActionSheet()
+    func didSelectSettingItemInView(view: GlyphView) {
+        self.showSettingViewController()
+    }
+    
+    func showSettingViewController() {
+        let settingViewController = SettingViewController.viewController()
+        self.presentViewController(settingViewController, animated: true, completion: nil)
     }
     
     func didSelectScoreItemInView(view: GlyphView) {
@@ -186,30 +191,6 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, ADBannerView
         let gameCenterViewController = GKGameCenterViewController()
         gameCenterViewController.gameCenterDelegate = self
         self.presentViewController(gameCenterViewController, animated: true, completion: nil)
-    }
-    
-    //MARK: - Select Level
-    private func showLevelSelectActionSheet() {
-        let actionSheet = UIActionSheet()
-        actionSheet.delegate = self
-        actionSheet.title = "Select Level"
-        actionSheet.addButtonWithTitle("1")
-        actionSheet.addButtonWithTitle("2")
-        actionSheet.addButtonWithTitle("3")
-        actionSheet.addButtonWithTitle("4")
-        actionSheet.addButtonWithTitle("5")
-        actionSheet.addButtonWithTitle("Cancel")
-        actionSheet.cancelButtonIndex = 5
-        actionSheet.showInView(self.view)
-    }
-    
-    //MARK: - UIActionSheetDelegate
-    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
-        if(buttonIndex >= GlyphSequenceCount.Five.rawValue) {
-            return
-        }
-        
-        GlyphConfiguration.currentLevel = GlyphSequenceCount(rawValue: buttonIndex + 1)!
     }
     
     //MARK: - ADBannerViewDelegate

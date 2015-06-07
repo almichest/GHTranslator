@@ -21,10 +21,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        self.authenticateGamePlayer()
         Fabric.with([Crashlytics]());
         
-        SRGAppVerWatcher.sharedWatcher().executeOnceAfterInstall { () -> Void in
-            GlyphConfiguration.showGlyphName = true
-            GlyphConfiguration.currentLevel = .One
+        if !GlyphConfiguration.lauhcnedBefore {
+            GlyphConfiguration.loadInitialValue();
         }
+        
         return true
     }
     

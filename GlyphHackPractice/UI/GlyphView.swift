@@ -39,8 +39,8 @@ public class GlyphView: SKView, HomeSceneDelegate, GlyphSceneDelegate, ResultSce
         self.glyphViewDelegate?.didSelectStartItemInView(self)
     }
     
-    func didTapSelectLevelNodeInScene(scene: HomeScene) {
-        self.glyphViewDelegate?.didSelectSelectLevelItemInView(self)
+    func didTapSettingNodeInScene(scene: HomeScene) {
+        self.glyphViewDelegate?.didSelectSettingItemInView(self)
     }
     
     func didTapScoreNodeInScene(scene: HomeScene) {
@@ -76,7 +76,7 @@ public class GlyphView: SKView, HomeSceneDelegate, GlyphSceneDelegate, ResultSce
 
 public protocol GlyphViewDelegate: class {
     func didSelectStartItemInView(view:GlyphView)
-    func didSelectSelectLevelItemInView(view:GlyphView)
+    func didSelectSettingItemInView(view:GlyphView)
     func didSelectScoreItemInView(view:GlyphView)
     func didSelectHomeItemInView(view:GlyphView)
     

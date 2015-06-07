@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Wvo-x9-Vq1" customClass="LevelSelectView" customModule="GlyphHackPractice" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="5" width="101" height="33"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z78-sk-85q">
+                    <rect key="frame" x="10" y="6" width="42" height="21"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="pcy-xH-xvw"/>
+                        <constraint firstAttribute="width" constant="42" id="wDE-xq-QYI"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Courier" family="Courier" pointSize="18"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TableIndicator" translatesAutoresizingMaskIntoConstraints="NO" id="dci-Ul-cx4">
+                    <rect key="frame" x="50" y="0.0" width="51" height="33"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="33" id="RTG-SC-wUM"/>
+                        <constraint firstAttribute="width" constant="51" id="fc8-PS-Gbw"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="dci-Ul-cx4" secondAttribute="trailing" id="6Ix-vc-NkX"/>
+                <constraint firstAttribute="centerY" secondItem="dci-Ul-cx4" secondAttribute="centerY" id="G9Z-Qr-LDN"/>
+                <constraint firstItem="z78-sk-85q" firstAttribute="leading" secondItem="Wvo-x9-Vq1" secondAttribute="leading" constant="10" id="Z4l-te-3aG"/>
+                <constraint firstAttribute="centerY" secondItem="z78-sk-85q" secondAttribute="centerY" id="gi9-il-0fs"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="currentLevelLabel" destination="z78-sk-85q" id="bL4-qR-mYx"/>
+            </connections>
+            <point key="canvasLocation" x="372.5" y="238.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="TableIndicator" width="25" height="40"/>
+    </resources>
+</document>

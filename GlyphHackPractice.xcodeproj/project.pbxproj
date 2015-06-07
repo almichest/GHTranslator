@@ -36,6 +36,12 @@
 		4276E99E1ACBA39300F3DFB2 /* ResultNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4276E99D1ACBA39300F3DFB2 /* ResultNode.swift */; };
 		42B6D5E01AED4B030080DF43 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42B6D5DE1AED4B030080DF43 /* Crashlytics.framework */; };
 		42B6D5E11AED4B030080DF43 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42B6D5DF1AED4B030080DF43 /* Fabric.framework */; };
+		42CC4FBD1B231A9800C86C1F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CC4FBC1B231A9800C86C1F /* SettingViewController.swift */; };
+		42CC4FBF1B231AB300C86C1F /* SettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42CC4FBE1B231AB300C86C1F /* SettingViewController.storyboard */; };
+		42CC4FC11B2342E500C86C1F /* SettingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42CC4FC01B2342E500C86C1F /* SettingTableViewCell.xib */; };
+		42CC4FC31B23447C00C86C1F /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CC4FC21B23447C00C86C1F /* SettingTableViewCell.swift */; };
+		42CC4FC51B235B7D00C86C1F /* LevelSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CC4FC41B235B7D00C86C1F /* LevelSelectView.swift */; };
+		42CC4FC71B235B9700C86C1F /* LevelSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42CC4FC61B235B9700C86C1F /* LevelSelectView.xib */; };
 		42CDD0C21A7CFC10001FFC1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDD0C11A7CFC10001FFC1F /* AppDelegate.swift */; };
 		42CDD0CB1A7CFC10001FFC1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42CDD0C91A7CFC10001FFC1F /* Main.storyboard */; };
 		42CDD0CD1A7CFC10001FFC1F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42CDD0CC1A7CFC10001FFC1F /* Images.xcassets */; };
@@ -85,6 +91,12 @@
 		42B6D5DE1AED4B030080DF43 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		42B6D5DF1AED4B030080DF43 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		42CC4FBB1B22F8F000C86C1F /* GlyphHackPractice-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GlyphHackPractice-Bridging-Header.h"; sourceTree = "<group>"; };
+		42CC4FBC1B231A9800C86C1F /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		42CC4FBE1B231AB300C86C1F /* SettingViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingViewController.storyboard; sourceTree = "<group>"; };
+		42CC4FC01B2342E500C86C1F /* SettingTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingTableViewCell.xib; sourceTree = "<group>"; };
+		42CC4FC21B23447C00C86C1F /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		42CC4FC41B235B7D00C86C1F /* LevelSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectView.swift; sourceTree = "<group>"; };
+		42CC4FC61B235B9700C86C1F /* LevelSelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LevelSelectView.xib; sourceTree = "<group>"; };
 		42CDD0BC1A7CFC10001FFC1F /* GlyphHackPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlyphHackPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42CDD0C01A7CFC10001FFC1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42CDD0C11A7CFC10001FFC1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +154,12 @@
 				426B314F1AC65E23003AA565 /* GlyphParticle.sks */,
 				426B31551AC65E39003AA565 /* GlyphView.swift */,
 				4276E99B1ACAA68F00F3DFB2 /* DrawingParticle.sks */,
+				42CC4FBC1B231A9800C86C1F /* SettingViewController.swift */,
+				42CC4FBE1B231AB300C86C1F /* SettingViewController.storyboard */,
+				42CC4FC01B2342E500C86C1F /* SettingTableViewCell.xib */,
+				42CC4FC21B23447C00C86C1F /* SettingTableViewCell.swift */,
+				42CC4FC41B235B7D00C86C1F /* LevelSelectView.swift */,
+				42CC4FC61B235B9700C86C1F /* LevelSelectView.xib */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -355,10 +373,13 @@
 			files = (
 				426B31531AC65E23003AA565 /* spark.png in Resources */,
 				426B31541AC65E23003AA565 /* GlyphParticle.sks in Resources */,
+				42CC4FC11B2342E500C86C1F /* SettingTableViewCell.xib in Resources */,
 				42CDD0D01A7CFC10001FFC1F /* LaunchScreen.xib in Resources */,
+				42CC4FBF1B231AB300C86C1F /* SettingViewController.storyboard in Resources */,
 				42CDD0CD1A7CFC10001FFC1F /* Images.xcassets in Resources */,
 				4276E99C1ACAA68F00F3DFB2 /* DrawingParticle.sks in Resources */,
 				42CDD0CB1A7CFC10001FFC1F /* Main.storyboard in Resources */,
+				42CC4FC71B235B9700C86C1F /* LevelSelectView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +449,7 @@
 				4276E9891AC79C6400F3DFB2 /* GlyphConfiguration.swift in Sources */,
 				421D40211ACBF239001FDB41 /* GlyphScore.swift in Sources */,
 				426F89F21ACD863A0085DA5B /* SelectableLabelNode.swift in Sources */,
+				42CC4FC31B23447C00C86C1F /* SettingTableViewCell.swift in Sources */,
 				421D40231ACBFF90001FDB41 /* GeneralLabelNode.swift in Sources */,
 				426F89F41AD00AF80085DA5B /* ActionUtility.swift in Sources */,
 				4276E9921AC803BB00F3DFB2 /* HomeScene.swift in Sources */,
@@ -440,6 +462,8 @@
 				4276E9981AC959BD00F3DFB2 /* CountDownLabelNode.swift in Sources */,
 				42D559A91A9A08C00091A490 /* GlyphTypes.swift in Sources */,
 				42CDD0C21A7CFC10001FFC1F /* AppDelegate.swift in Sources */,
+				42CC4FBD1B231A9800C86C1F /* SettingViewController.swift in Sources */,
+				42CC4FC51B235B7D00C86C1F /* LevelSelectView.swift in Sources */,
 				425882581AC676A200219E0C /* NodeUtility.swift in Sources */,
 				421D401F1ACBE921001FDB41 /* ScoreScene.swift in Sources */,
 				4276E9941AC9571D00F3DFB2 /* ResultScene.swift in Sources */,
