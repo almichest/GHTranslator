@@ -294,6 +294,7 @@
 			buildConfigurationList = 42CDD0DF1A7CFC11001FFC1F /* Build configuration list for PBXNativeTarget "GlyphHackPractice" */;
 			buildPhases = (
 				3A86169A3DA22B6204836042 /* Check Pods Manifest.lock */,
+				42CC4FC81B24326D00C86C1F /* Increment Build Number */,
 				42CDD0B81A7CFC10001FFC1F /* Sources */,
 				42CDD0B91A7CFC10001FFC1F /* Frameworks */,
 				42CDD0BA1A7CFC10001FFC1F /* Resources */,
@@ -420,6 +421,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "./Fabric.framework/run f1f4eba500980a1370a8359bde42de3f84cec832 bed9e0c3399662f71f81a814b98604288e855a251035fd767d1f1e2157348d6d";
+		};
+		42CC4FC81B24326D00C86C1F /* Increment Build Number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Increment Build Number";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\nif [ ${CONFIGURATION} != Debug ]; then\n    buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\n    buildNumber=$(($buildNumber + 1))\n    /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$INFOPLIST_FILE\"\nfi";
 		};
 		E37158A8E9D6BF1483DF2589 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -79,7 +79,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     private func prepareSettingCell(cell: SettingTableViewCell, indexPath: NSIndexPath) {
         for view in cell.customItemView.subviews {
-            view.removeFromParent()
+            view.removeFromSuperview()
         }
         
         switch indexPath.row {
