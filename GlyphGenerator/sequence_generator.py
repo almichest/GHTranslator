@@ -18,9 +18,8 @@ class Source :
             values = line.split(',')
             sequences.append(values)
 
-        s = json.dumps(sequences)
         output = open('sequence_0' + str(self.count) + '.json', 'w')
-        output.write(s)
+        json.dump(sequences, output)
         output.close()
 
 for x in range (1, 6) :

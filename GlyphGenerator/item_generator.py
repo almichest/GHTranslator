@@ -35,22 +35,18 @@ class Glyph :
 class GlyphPath :
     def __init__(self, start, goal) :
         if goal <= start :
-            print('start = ' + str(start) + ' goal = ' + str(goal))
             sys.exit('goal must be larger than start')
 
         if not (0 <= start <= 10) :
-            print('start = ' + str(start) + ' goal = ' + str(goal))
             sys.exit('start is illegal value')
 
         if not (0 <= goal <= 10) :
-            print('start = ' + str(start) + ' goal = ' + str(goal))
             sys.exit('goal is illegal value')
 
         self.start = start
         self.goal = goal
 
 def glyph_from_csv(csv) :
-    print(csv)
     values = csv.split(',')
     glyph = Glyph(values[0])
 
@@ -75,16 +71,13 @@ glyph_list = []
 for line in item_file :
     glyph_list.append(glyph_from_csv(line).to_json_map())
 
-s = json.dumps(glyph_list)
 
 item_file.close()
 
 item_json = open('items.json', 'w')
 
-item_json.write(s)
+json.dump(glyph_list, item_json)
 
 item_json.close()
-
-print(s)
 
 
