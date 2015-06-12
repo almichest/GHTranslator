@@ -42,6 +42,12 @@
 		42CC4FC31B23447C00C86C1F /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CC4FC21B23447C00C86C1F /* SettingTableViewCell.swift */; };
 		42CC4FC51B235B7D00C86C1F /* LevelSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CC4FC41B235B7D00C86C1F /* LevelSelectView.swift */; };
 		42CC4FC71B235B9700C86C1F /* LevelSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42CC4FC61B235B9700C86C1F /* LevelSelectView.xib */; };
+		42CC4FDD1B2B2EBA00C86C1F /* items.json in Resources */ = {isa = PBXBuildFile; fileRef = 42CC4FD71B2B2EBA00C86C1F /* items.json */; };
+		42CC4FDE1B2B2EBA00C86C1F /* sequence_01.json in Resources */ = {isa = PBXBuildFile; fileRef = 42CC4FD81B2B2EBA00C86C1F /* sequence_01.json */; };
+		42CC4FDF1B2B2EBA00C86C1F /* sequence_02.json in Resources */ = {isa = PBXBuildFile; fileRef = 42CC4FD91B2B2EBA00C86C1F /* sequence_02.json */; };
+		42CC4FE01B2B2EBA00C86C1F /* sequence_03.json in Resources */ = {isa = PBXBuildFile; fileRef = 42CC4FDA1B2B2EBA00C86C1F /* sequence_03.json */; };
+		42CC4FE11B2B2EBA00C86C1F /* sequence_04.json in Resources */ = {isa = PBXBuildFile; fileRef = 42CC4FDB1B2B2EBA00C86C1F /* sequence_04.json */; };
+		42CC4FE21B2B2EBA00C86C1F /* sequence_05.json in Resources */ = {isa = PBXBuildFile; fileRef = 42CC4FDC1B2B2EBA00C86C1F /* sequence_05.json */; };
 		42CDD0C21A7CFC10001FFC1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDD0C11A7CFC10001FFC1F /* AppDelegate.swift */; };
 		42CDD0CB1A7CFC10001FFC1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42CDD0C91A7CFC10001FFC1F /* Main.storyboard */; };
 		42CDD0CD1A7CFC10001FFC1F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42CDD0CC1A7CFC10001FFC1F /* Images.xcassets */; };
@@ -97,6 +103,12 @@
 		42CC4FC21B23447C00C86C1F /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		42CC4FC41B235B7D00C86C1F /* LevelSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectView.swift; sourceTree = "<group>"; };
 		42CC4FC61B235B9700C86C1F /* LevelSelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LevelSelectView.xib; sourceTree = "<group>"; };
+		42CC4FD71B2B2EBA00C86C1F /* items.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = items.json; sourceTree = "<group>"; };
+		42CC4FD81B2B2EBA00C86C1F /* sequence_01.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sequence_01.json; sourceTree = "<group>"; };
+		42CC4FD91B2B2EBA00C86C1F /* sequence_02.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sequence_02.json; sourceTree = "<group>"; };
+		42CC4FDA1B2B2EBA00C86C1F /* sequence_03.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sequence_03.json; sourceTree = "<group>"; };
+		42CC4FDB1B2B2EBA00C86C1F /* sequence_04.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sequence_04.json; sourceTree = "<group>"; };
+		42CC4FDC1B2B2EBA00C86C1F /* sequence_05.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sequence_05.json; sourceTree = "<group>"; };
 		42CDD0BC1A7CFC10001FFC1F /* GlyphHackPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlyphHackPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42CDD0C01A7CFC10001FFC1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42CDD0C11A7CFC10001FFC1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -183,6 +195,19 @@
 			path = Scene;
 			sourceTree = "<group>";
 		};
+		42CC4FD61B2B2EBA00C86C1F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				42CC4FD71B2B2EBA00C86C1F /* items.json */,
+				42CC4FD81B2B2EBA00C86C1F /* sequence_01.json */,
+				42CC4FD91B2B2EBA00C86C1F /* sequence_02.json */,
+				42CC4FDA1B2B2EBA00C86C1F /* sequence_03.json */,
+				42CC4FDB1B2B2EBA00C86C1F /* sequence_04.json */,
+				42CC4FDC1B2B2EBA00C86C1F /* sequence_05.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		42CDD0B31A7CFC10001FFC1F = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +235,7 @@
 		42CDD0BE1A7CFC10001FFC1F /* GlyphHackPractice */ = {
 			isa = PBXGroup;
 			children = (
+				42CC4FD61B2B2EBA00C86C1F /* Resources */,
 				4272326E1B1F43D600DC1346 /* Utility */,
 				426B314A1AC65E23003AA565 /* UI */,
 				42F4FC171A99BA0100833C21 /* Glyph */,
@@ -372,14 +398,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42CC4FE11B2B2EBA00C86C1F /* sequence_04.json in Resources */,
 				426B31531AC65E23003AA565 /* spark.png in Resources */,
 				426B31541AC65E23003AA565 /* GlyphParticle.sks in Resources */,
+				42CC4FE01B2B2EBA00C86C1F /* sequence_03.json in Resources */,
+				42CC4FDD1B2B2EBA00C86C1F /* items.json in Resources */,
 				42CC4FC11B2342E500C86C1F /* SettingTableViewCell.xib in Resources */,
 				42CDD0D01A7CFC10001FFC1F /* LaunchScreen.xib in Resources */,
+				42CC4FE21B2B2EBA00C86C1F /* sequence_05.json in Resources */,
 				42CC4FBF1B231AB300C86C1F /* SettingViewController.storyboard in Resources */,
 				42CDD0CD1A7CFC10001FFC1F /* Images.xcassets in Resources */,
 				4276E99C1ACAA68F00F3DFB2 /* DrawingParticle.sks in Resources */,
+				42CC4FDE1B2B2EBA00C86C1F /* sequence_01.json in Resources */,
 				42CDD0CB1A7CFC10001FFC1F /* Main.storyboard in Resources */,
+				42CC4FDF1B2B2EBA00C86C1F /* sequence_02.json in Resources */,
 				42CC4FC71B235B9700C86C1F /* LevelSelectView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
