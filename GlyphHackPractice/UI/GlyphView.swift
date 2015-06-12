@@ -52,7 +52,7 @@ public class GlyphView: SKView, HomeSceneDelegate, GlyphSceneDelegate, ResultSce
         self.glyphViewDelegate?.didSelectHomeItemInView(self)
     }
     
-    func didCompleteUserInputs(answer:[GlyphType], userInputs:[Set<GlyphPath>?]) {
+    func didCompleteUserInputs(answer:[String], userInputs:[Set<GlyphPath>?]) {
         self.glyphViewDelegate?.didCompleteUserInput(answer, userInputs: userInputs)
     }
     
@@ -80,7 +80,7 @@ public protocol GlyphViewDelegate: class {
     func didSelectScoreItemInView(view:GlyphView)
     func didSelectHomeItemInView(view:GlyphView)
     
-    func didCompleteUserInput(answer:[GlyphType], userInputs:[Set<GlyphPath>?])
+    func didCompleteUserInput(answer:[String], userInputs:[Set<GlyphPath>?])
     func didDetectPreparingAd(view:GlyphView)
     
     func didConfirmResultInView(view:GlyphView)

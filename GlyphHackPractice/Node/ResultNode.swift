@@ -49,7 +49,7 @@ class ResultNode: SKSpriteNode {
     
     private func prepareGlyphNameNode() {
         Log.d("self.size = \(self.size)")
-        let glyphName = self.answerGlyph.type.rawValue
+        let glyphName = self.answerGlyph.type
         let glyphNameLabel = GeneralLabelNode(text: glyphName)
         glyphNameLabel.position = CGPointMake(self.size.width / 2.0, self.size.height / 6)
         glyphNameLabel.fontColor = SKColor.cyanColor()

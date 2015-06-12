@@ -23,17 +23,17 @@ class GlyphHackPracticeTests: XCTestCase {
     
     func testEqual() {
         let paths1: Set<GlyphPath> = [GlyphPath(point1: 0, point2: 10)]
-        let glyph1 = GlyphGenerator.createGlyphWithType(GlyphType.UserInteractionResult, path: paths1)
+        let glyph1 = GlyphGenerator.sharedGenerator().createGlyphWithType("", path: paths1)
         
         let paths2: Set<GlyphPath> = [GlyphPath(point1: 0, point2: 5),
                                             GlyphPath(point1: 5, point2: 10)]
-        let glyph2 = GlyphGenerator.createGlyphWithType(GlyphType.UserInteractionResult, path: paths2)
+        let glyph2 = GlyphGenerator.sharedGenerator().createGlyphWithType("", path: paths2)
         
         XCTAssert(glyph1.isEqual(glyph2), "")
     }
     
     func testCreatingChaosGlyph() {
-        let chaos = GlyphGenerator.createGlyphWithType(GlyphType.Chaos, path: nil)
+        let chaos = GlyphGenerator.sharedGenerator().createGlyphWithType("CHAOS", path: nil)
         
         let inputPath: Set<GlyphPath> = [
                                                GlyphPath(point1: 0, point2: 1),
@@ -42,16 +42,16 @@ class GlyphHackPracticeTests: XCTestCase {
                                                GlyphPath(point1: 2, point2: 6),
                                                GlyphPath(point1: 6, point2: 10),
                                               ]
-        let inputGlyph = GlyphGenerator.createGlyphWithType(GlyphType.UserInteractionResult, path: inputPath)
+        let inputGlyph = GlyphGenerator.sharedGenerator().createGlyphWithType("", path: inputPath)
         XCTAssert(chaos.isEqual(inputGlyph), "")
     }
     
     func testIfNilGlyphExists() {
-        let allGlyphSequences:[[[GlyphType]]] = GlyphSequenceProvider.provideAllSequence()
-        for sequence1:[[GlyphType]] in allGlyphSequences {
-            for sequence2:[GlyphType] in sequence1 {
+        let allGlyphSequences:[[[String]]] = GlyphSequenceProvider.sharedProvider().provideAllSequence()
+        for sequence1:[[String]] in allGlyphSequences {
+            for sequence2:[String] in sequence1 {
                 for type in sequence2 {
-                    let glyph: Glyph? = GlyphGenerator.createGlyphWithType(type)
+                    let glyph: Glyph? = GlyphGenerator.sharedGenerator().createGlyphWithType(type)
                     XCTAssert(glyph != nil, "")
                 }
             }

@@ -13,7 +13,6 @@
 		421D40231ACBFF90001FDB41 /* GeneralLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421D40221ACBFF90001FDB41 /* GeneralLabelNode.swift */; };
 		421D40251ACCF9E5001FDB41 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 421D40241ACCF9E5001FDB41 /* GameKit.framework */; };
 		423259E51AC3A4A3004726FF /* Glyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F4FC181A99BA0100833C21 /* Glyph.swift */; };
-		423259E61AC3A878004726FF /* GlyphTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D559A81A9A08C00091A490 /* GlyphTypes.swift */; };
 		423259E71AC3A89F004726FF /* GlyphGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42165D111AA2F0EB001EC0F5 /* GlyphGenerator.swift */; };
 		423259E81AC3E4CE004726FF /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D559A21A9895D70091A490 /* Log.swift */; };
 		423259EA1AC42437004726FF /* GlyphSequenceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423259E91AC42437004726FF /* GlyphSequenceProvider.swift */; };
@@ -55,7 +54,6 @@
 		42CDD0DC1A7CFC11001FFC1F /* GlyphHackPracticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDD0DB1A7CFC11001FFC1F /* GlyphHackPracticeTests.swift */; };
 		42CDD0E61A7CFEA0001FFC1F /* GlyphHackVertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDD0E51A7CFEA0001FFC1F /* GlyphHackVertex.swift */; };
 		42D559A31A9895D70091A490 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D559A21A9895D70091A490 /* Log.swift */; };
-		42D559A91A9A08C00091A490 /* GlyphTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D559A81A9A08C00091A490 /* GlyphTypes.swift */; };
 		42F4FC191A99BA0100833C21 /* Glyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F4FC181A99BA0100833C21 /* Glyph.swift */; };
 		629698A720BCE539D9500A61 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D9856DA0B963C610CDE471 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -120,7 +118,6 @@
 		42CDD0DB1A7CFC11001FFC1F /* GlyphHackPracticeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlyphHackPracticeTests.swift; sourceTree = "<group>"; };
 		42CDD0E51A7CFEA0001FFC1F /* GlyphHackVertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GlyphHackVertex.swift; path = Node/GlyphHackVertex.swift; sourceTree = "<group>"; };
 		42D559A21A9895D70091A490 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
-		42D559A81A9A08C00091A490 /* GlyphTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlyphTypes.swift; sourceTree = "<group>"; };
 		42F4FC181A99BA0100833C21 /* Glyph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Glyph.swift; sourceTree = "<group>"; };
 		CAF973F08F2BD924C4DBF956 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DD8A13EC9363B1DA0392931E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -294,7 +291,6 @@
 			isa = PBXGroup;
 			children = (
 				42F4FC181A99BA0100833C21 /* Glyph.swift */,
-				42D559A81A9A08C00091A490 /* GlyphTypes.swift */,
 				42165D111AA2F0EB001EC0F5 /* GlyphGenerator.swift */,
 				423259E91AC42437004726FF /* GlyphSequenceProvider.swift */,
 				4276E9881AC79C6400F3DFB2 /* GlyphConfiguration.swift */,
@@ -507,7 +503,6 @@
 				42165D121AA2F0EB001EC0F5 /* GlyphGenerator.swift in Sources */,
 				426B31581AC65EFA003AA565 /* RootNode.swift in Sources */,
 				4276E9981AC959BD00F3DFB2 /* CountDownLabelNode.swift in Sources */,
-				42D559A91A9A08C00091A490 /* GlyphTypes.swift in Sources */,
 				42CDD0C21A7CFC10001FFC1F /* AppDelegate.swift in Sources */,
 				42CC4FBD1B231A9800C86C1F /* SettingViewController.swift in Sources */,
 				42CC4FC51B235B7D00C86C1F /* LevelSelectView.swift in Sources */,
@@ -524,7 +519,6 @@
 			files = (
 				426B31491AC5810D003AA565 /* GlyphSequenceProvider.swift in Sources */,
 				423259E51AC3A4A3004726FF /* Glyph.swift in Sources */,
-				423259E61AC3A878004726FF /* GlyphTypes.swift in Sources */,
 				423259E81AC3E4CE004726FF /* Log.swift in Sources */,
 				423259E71AC3A89F004726FF /* GlyphGenerator.swift in Sources */,
 				42CDD0DC1A7CFC11001FFC1F /* GlyphHackPracticeTests.swift in Sources */,
