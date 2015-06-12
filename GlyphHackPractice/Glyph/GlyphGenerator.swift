@@ -38,6 +38,11 @@ class GlyphGenerator: NSObject {
     }
     
     func createGlyphWithType(type: String, path: Set<GlyphPath>? = nil) -> Glyph {
+        if path != nil {
+            return Glyph(type: type, paths: path)
+        }
+        
+//        Log.d("\(self.glyphDictionary)")
         let paths:[[Int]] = self.glyphDictionary[type]!
         var mutablePaths: Set<GlyphPath> = Set<GlyphPath>(minimumCapacity: paths.count)
         for path in paths {

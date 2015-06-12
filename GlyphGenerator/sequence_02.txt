@@ -1,4 +1,4 @@
-Advance,EnlightenedA
+Advance,Enlightened
 Avoid,Conflict
 Change,Now
 Discover,Portal
@@ -15,5 +15,5 @@ Question,All
 Question,Truth
 Question,Attack
 Search,Potential
-Strong,CreativityB
+Strong,Creativity
 Strong,Soul

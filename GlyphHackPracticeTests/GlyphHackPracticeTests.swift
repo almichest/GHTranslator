@@ -33,7 +33,7 @@ class GlyphHackPracticeTests: XCTestCase {
     }
     
     func testCreatingChaosGlyph() {
-        let chaos = GlyphGenerator.sharedGenerator().createGlyphWithType("CHAOS", path: nil)
+        let chaos = GlyphGenerator.sharedGenerator().createGlyphWithType("Chaos", path: nil)
         
         let inputPath: Set<GlyphPath> = [
                                                GlyphPath(point1: 0, point2: 1),

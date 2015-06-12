@@ -24,7 +24,6 @@ Contemplate
 Contract
 Courage
 Creation
-CreativityB
 Danger
 Data
 Defend
@@ -37,8 +36,7 @@ Discover
 Outside
 Easy
 End
-EnlightenedA
-EnlightenedB
+Enlightened
 Equal
 Escape
 Evolution
@@ -84,7 +82,7 @@ Perfection
 Potential
 Now
 Purity
-PursueA
+Pursue
 Question
 React
 Rebel
