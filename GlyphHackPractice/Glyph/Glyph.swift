@@ -13,9 +13,9 @@ public class Glyph: NSObject, NSCopying {
     static let maxGlyphIndex = 10
     
     var paths: Set<GlyphPath>?
-    let type: GlyphType
+    let type: String
     
-    init(type: GlyphType) {
+    init(type: String) {
         self.type = type
         self.paths = []
         super.init()
@@ -23,7 +23,7 @@ public class Glyph: NSObject, NSCopying {
         self.prepare()
     }
     
-    convenience init(type: GlyphType, paths: Set<GlyphPath>?) {
+    convenience init(type: String, paths: Set<GlyphPath>?) {
         self.init(type: type)
         self.paths = paths
     }
@@ -59,7 +59,7 @@ public class Glyph: NSObject, NSCopying {
     
     override public var description: String {
         get {
-            return "\(self.type.rawValue) - \(self.paths)"
+            return "\(self.type) - \(self.paths)"
         }
     }
 }

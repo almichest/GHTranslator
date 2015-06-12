@@ -82,18 +82,18 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, ADBannerView
         self.showHomeScene()
     }
     
-    func didCompleteUserInput(answer: [GlyphType], userInputs: [Set<GlyphPath>?]) {
+    func didCompleteUserInput(answer: [String], userInputs: [Set<GlyphPath>?]) {
         self.showResultScene(answer, userInputs: userInputs)
     }
     
-    private func showResultScene(answer: [GlyphType], userInputs: [Set<GlyphPath>?]) {
+    private func showResultScene(answer: [String], userInputs: [Set<GlyphPath>?]) {
         var answerGlyphs = [Glyph]()
         for type in answer {
-            answerGlyphs.append(GlyphGenerator.createGlyphWithType(type))
+            answerGlyphs.append(GlyphGenerator.sharedGenerator().createGlyphWithType(type))
         }
         var userInputGlyphs = [Glyph]()
         for userInput in userInputs {
-            userInputGlyphs.append(GlyphGenerator.createGlyphWithType(GlyphType.UserInteractionResult, path: userInput))
+            userInputGlyphs.append(GlyphGenerator.sharedGenerator().createGlyphWithType("", path: userInput))
         }
         
         let glyphView = self.view as? GlyphView

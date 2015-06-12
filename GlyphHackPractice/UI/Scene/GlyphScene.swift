@@ -25,7 +25,7 @@ class GlyphScene: SKScene{
     
     private var isInInputMode:Bool = false
     
-    private var currentQuestions = Array<GlyphType>(count:GlyphConfiguration.currentLevel.rawValue, repeatedValue:GlyphType.UserInteractionResult)
+    private var currentQuestions = Array<String>(count:GlyphConfiguration.currentLevel.rawValue, repeatedValue:"")
     private var userInputs = Array<Set<GlyphPath>?>(count:GlyphConfiguration.currentLevel.rawValue, repeatedValue:nil)
     
     override init(size: CGSize) {
@@ -203,7 +203,7 @@ class GlyphScene: SKScene{
         self.countDownNode!.startCountDown { () -> Void in
             self.messageNode!.text = ""
             self.countDownNode?.removeFromParent()
-            let sequence = GlyphSequenceProvider.provideGlyphSequence(GlyphConfiguration.currentLevel)
+            let sequence = GlyphSequenceProvider.sharedProvider().provideGlyphSequence(GlyphConfiguration.currentLevel)
             self.currentQuestions = sequence
             self.enqueueGlyphSequence(sequence)
         }
@@ -220,9 +220,9 @@ class GlyphScene: SKScene{
     
     //MARK: - Showing supplied path
     var glyphQueue:[Glyph] = Array<Glyph>()
-    private func enqueueGlyphSequence(glyphTypes: [GlyphType]) {
+    private func enqueueGlyphSequence(glyphTypes: [String]) {
         for type in glyphTypes {
-            let glyph = GlyphGenerator.createGlyphWithType(type)
+            let glyph = GlyphGenerator.sharedGenerator().createGlyphWithType(type)
             self.glyphQueue += [glyph]
         }
         
@@ -263,9 +263,9 @@ class GlyphScene: SKScene{
         self.messageNode!.text = "Let's draw !"
     }
     
-    private func setGlyphName(type:GlyphType) {
+    private func setGlyphName(type: String) {
         if GlyphConfiguration.showGlyphName {
-            self.glyphNameNode?.text = type.rawValue
+            self.glyphNameNode?.text = type
         }
     }
     
@@ -330,7 +330,7 @@ class GlyphScene: SKScene{
         
         ActionUtility.doActionAfterSeconds({ () -> Void in
             self.clearTracingParticles(completion: {
-                let glyph = Glyph(type: .UserInteractionResult , paths: self.currentGlyphPath)
+                let glyph = Glyph(type: "" , paths: self.currentGlyphPath)
                 self.showGlyph(glyph, type: .UserInput)
             })
         }, after: 0.0)
@@ -344,6 +344,6 @@ class GlyphScene: SKScene{
 
 protocol GlyphSceneDelegate: class {
     func didSelectHomeNodeInScene(scene:GlyphScene)
-    func didCompleteUserInputs(answer:[GlyphType], userInputs:[Set<GlyphPath>?])
+    func didCompleteUserInputs(answer:[String], userInputs:[Set<GlyphPath>?])
     func didDetectPreparingAd(scene:GlyphScene)
 }

@@ -13,7 +13,6 @@
 		421D40231ACBFF90001FDB41 /* GeneralLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421D40221ACBFF90001FDB41 /* GeneralLabelNode.swift */; };
 		421D40251ACCF9E5001FDB41 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 421D40241ACCF9E5001FDB41 /* GameKit.framework */; };
 		423259E51AC3A4A3004726FF /* Glyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F4FC181A99BA0100833C21 /* Glyph.swift */; };
-		423259E61AC3A878004726FF /* GlyphTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D559A81A9A08C00091A490 /* GlyphTypes.swift */; };
 		423259E71AC3A89F004726FF /* GlyphGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42165D111AA2F0EB001EC0F5 /* GlyphGenerator.swift */; };
 		423259E81AC3E4CE004726FF /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D559A21A9895D70091A490 /* Log.swift */; };
 		423259EA1AC42437004726FF /* GlyphSequenceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423259E91AC42437004726FF /* GlyphSequenceProvider.swift */; };
@@ -42,6 +41,12 @@
 		42CC4FC31B23447C00C86C1F /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CC4FC21B23447C00C86C1F /* SettingTableViewCell.swift */; };
 		42CC4FC51B235B7D00C86C1F /* LevelSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CC4FC41B235B7D00C86C1F /* LevelSelectView.swift */; };
 		42CC4FC71B235B9700C86C1F /* LevelSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42CC4FC61B235B9700C86C1F /* LevelSelectView.xib */; };
+		42CC4FDD1B2B2EBA00C86C1F /* items.json in Resources */ = {isa = PBXBuildFile; fileRef = 42CC4FD71B2B2EBA00C86C1F /* items.json */; };
+		42CC4FDE1B2B2EBA00C86C1F /* sequence_01.json in Resources */ = {isa = PBXBuildFile; fileRef = 42CC4FD81B2B2EBA00C86C1F /* sequence_01.json */; };
+		42CC4FDF1B2B2EBA00C86C1F /* sequence_02.json in Resources */ = {isa = PBXBuildFile; fileRef = 42CC4FD91B2B2EBA00C86C1F /* sequence_02.json */; };
+		42CC4FE01B2B2EBA00C86C1F /* sequence_03.json in Resources */ = {isa = PBXBuildFile; fileRef = 42CC4FDA1B2B2EBA00C86C1F /* sequence_03.json */; };
+		42CC4FE11B2B2EBA00C86C1F /* sequence_04.json in Resources */ = {isa = PBXBuildFile; fileRef = 42CC4FDB1B2B2EBA00C86C1F /* sequence_04.json */; };
+		42CC4FE21B2B2EBA00C86C1F /* sequence_05.json in Resources */ = {isa = PBXBuildFile; fileRef = 42CC4FDC1B2B2EBA00C86C1F /* sequence_05.json */; };
 		42CDD0C21A7CFC10001FFC1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDD0C11A7CFC10001FFC1F /* AppDelegate.swift */; };
 		42CDD0CB1A7CFC10001FFC1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42CDD0C91A7CFC10001FFC1F /* Main.storyboard */; };
 		42CDD0CD1A7CFC10001FFC1F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42CDD0CC1A7CFC10001FFC1F /* Images.xcassets */; };
@@ -49,7 +54,6 @@
 		42CDD0DC1A7CFC11001FFC1F /* GlyphHackPracticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDD0DB1A7CFC11001FFC1F /* GlyphHackPracticeTests.swift */; };
 		42CDD0E61A7CFEA0001FFC1F /* GlyphHackVertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDD0E51A7CFEA0001FFC1F /* GlyphHackVertex.swift */; };
 		42D559A31A9895D70091A490 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D559A21A9895D70091A490 /* Log.swift */; };
-		42D559A91A9A08C00091A490 /* GlyphTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D559A81A9A08C00091A490 /* GlyphTypes.swift */; };
 		42F4FC191A99BA0100833C21 /* Glyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F4FC181A99BA0100833C21 /* Glyph.swift */; };
 		629698A720BCE539D9500A61 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D9856DA0B963C610CDE471 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -97,6 +101,12 @@
 		42CC4FC21B23447C00C86C1F /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		42CC4FC41B235B7D00C86C1F /* LevelSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectView.swift; sourceTree = "<group>"; };
 		42CC4FC61B235B9700C86C1F /* LevelSelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LevelSelectView.xib; sourceTree = "<group>"; };
+		42CC4FD71B2B2EBA00C86C1F /* items.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = items.json; sourceTree = "<group>"; };
+		42CC4FD81B2B2EBA00C86C1F /* sequence_01.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sequence_01.json; sourceTree = "<group>"; };
+		42CC4FD91B2B2EBA00C86C1F /* sequence_02.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sequence_02.json; sourceTree = "<group>"; };
+		42CC4FDA1B2B2EBA00C86C1F /* sequence_03.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sequence_03.json; sourceTree = "<group>"; };
+		42CC4FDB1B2B2EBA00C86C1F /* sequence_04.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sequence_04.json; sourceTree = "<group>"; };
+		42CC4FDC1B2B2EBA00C86C1F /* sequence_05.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sequence_05.json; sourceTree = "<group>"; };
 		42CDD0BC1A7CFC10001FFC1F /* GlyphHackPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlyphHackPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42CDD0C01A7CFC10001FFC1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42CDD0C11A7CFC10001FFC1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -108,7 +118,6 @@
 		42CDD0DB1A7CFC11001FFC1F /* GlyphHackPracticeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlyphHackPracticeTests.swift; sourceTree = "<group>"; };
 		42CDD0E51A7CFEA0001FFC1F /* GlyphHackVertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GlyphHackVertex.swift; path = Node/GlyphHackVertex.swift; sourceTree = "<group>"; };
 		42D559A21A9895D70091A490 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
-		42D559A81A9A08C00091A490 /* GlyphTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlyphTypes.swift; sourceTree = "<group>"; };
 		42F4FC181A99BA0100833C21 /* Glyph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Glyph.swift; sourceTree = "<group>"; };
 		CAF973F08F2BD924C4DBF956 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DD8A13EC9363B1DA0392931E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -183,6 +192,19 @@
 			path = Scene;
 			sourceTree = "<group>";
 		};
+		42CC4FD61B2B2EBA00C86C1F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				42CC4FD71B2B2EBA00C86C1F /* items.json */,
+				42CC4FD81B2B2EBA00C86C1F /* sequence_01.json */,
+				42CC4FD91B2B2EBA00C86C1F /* sequence_02.json */,
+				42CC4FDA1B2B2EBA00C86C1F /* sequence_03.json */,
+				42CC4FDB1B2B2EBA00C86C1F /* sequence_04.json */,
+				42CC4FDC1B2B2EBA00C86C1F /* sequence_05.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		42CDD0B31A7CFC10001FFC1F = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +232,7 @@
 		42CDD0BE1A7CFC10001FFC1F /* GlyphHackPractice */ = {
 			isa = PBXGroup;
 			children = (
+				42CC4FD61B2B2EBA00C86C1F /* Resources */,
 				4272326E1B1F43D600DC1346 /* Utility */,
 				426B314A1AC65E23003AA565 /* UI */,
 				42F4FC171A99BA0100833C21 /* Glyph */,
@@ -268,7 +291,6 @@
 			isa = PBXGroup;
 			children = (
 				42F4FC181A99BA0100833C21 /* Glyph.swift */,
-				42D559A81A9A08C00091A490 /* GlyphTypes.swift */,
 				42165D111AA2F0EB001EC0F5 /* GlyphGenerator.swift */,
 				423259E91AC42437004726FF /* GlyphSequenceProvider.swift */,
 				4276E9881AC79C6400F3DFB2 /* GlyphConfiguration.swift */,
@@ -372,14 +394,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42CC4FE11B2B2EBA00C86C1F /* sequence_04.json in Resources */,
 				426B31531AC65E23003AA565 /* spark.png in Resources */,
 				426B31541AC65E23003AA565 /* GlyphParticle.sks in Resources */,
+				42CC4FE01B2B2EBA00C86C1F /* sequence_03.json in Resources */,
+				42CC4FDD1B2B2EBA00C86C1F /* items.json in Resources */,
 				42CC4FC11B2342E500C86C1F /* SettingTableViewCell.xib in Resources */,
 				42CDD0D01A7CFC10001FFC1F /* LaunchScreen.xib in Resources */,
+				42CC4FE21B2B2EBA00C86C1F /* sequence_05.json in Resources */,
 				42CC4FBF1B231AB300C86C1F /* SettingViewController.storyboard in Resources */,
 				42CDD0CD1A7CFC10001FFC1F /* Images.xcassets in Resources */,
 				4276E99C1ACAA68F00F3DFB2 /* DrawingParticle.sks in Resources */,
+				42CC4FDE1B2B2EBA00C86C1F /* sequence_01.json in Resources */,
 				42CDD0CB1A7CFC10001FFC1F /* Main.storyboard in Resources */,
+				42CC4FDF1B2B2EBA00C86C1F /* sequence_02.json in Resources */,
 				42CC4FC71B235B9700C86C1F /* LevelSelectView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -475,7 +503,6 @@
 				42165D121AA2F0EB001EC0F5 /* GlyphGenerator.swift in Sources */,
 				426B31581AC65EFA003AA565 /* RootNode.swift in Sources */,
 				4276E9981AC959BD00F3DFB2 /* CountDownLabelNode.swift in Sources */,
-				42D559A91A9A08C00091A490 /* GlyphTypes.swift in Sources */,
 				42CDD0C21A7CFC10001FFC1F /* AppDelegate.swift in Sources */,
 				42CC4FBD1B231A9800C86C1F /* SettingViewController.swift in Sources */,
 				42CC4FC51B235B7D00C86C1F /* LevelSelectView.swift in Sources */,
@@ -492,7 +519,6 @@
 			files = (
 				426B31491AC5810D003AA565 /* GlyphSequenceProvider.swift in Sources */,
 				423259E51AC3A4A3004726FF /* Glyph.swift in Sources */,
-				423259E61AC3A878004726FF /* GlyphTypes.swift in Sources */,
 				423259E81AC3E4CE004726FF /* Log.swift in Sources */,
 				423259E71AC3A89F004726FF /* GlyphGenerator.swift in Sources */,
 				42CDD0DC1A7CFC11001FFC1F /* GlyphHackPracticeTests.swift in Sources */,
