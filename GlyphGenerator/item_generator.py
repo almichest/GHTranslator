@@ -76,7 +76,7 @@ item_file.close()
 
 item_json = open('items.json', 'w')
 
-json.dump(glyph_list, item_json)
+json.dump(glyph_list, item_json, indent=2, sort_keys=True)
 
 item_json.close()
 
