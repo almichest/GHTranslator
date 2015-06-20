@@ -1,78 +1,94 @@
 [
   [
-    "Advance",
-    "Enlightened"
+    "Civilization",
+    "Chaos"
   ],
   [
-    "Avoid",
-    "Conflict"
+    "Pursue",
+    "Xm"
   ],
   [
-    "Change",
-    "Now"
-  ],
-  [
-    "Discover",
-    "Portal"
-  ],
-  [
-    "Escape",
-    "Together"
-  ],
-  [
-    "Follow",
-    "Journey"
-  ],
-  [
-    "Gain",
-    "Safety"
-  ],
-  [
-    "Hide",
+    "Pursue",
     "Truth"
   ],
   [
-    "Nourish",
-    "Journey"
+    "Separate",
+    "War"
   ],
   [
-    "OpenAll",
-    "Portal"
-  ],
-  [
-    "Path",
-    "Harmony"
+    "Create",
+    "Danger"
   ],
   [
     "Path",
     "Perfection"
   ],
   [
-    "Pure",
-    "Truth"
+    "Discover",
+    "Safety"
+  ],
+  [
+    "Discover",
+    "Lie"
+  ],
+  [
+    "Discover",
+    "Portal"
+  ],
+  [
+    "Attack",
+    "Chaos"
+  ],
+  [
+    "Attack",
+    "Difficult"
+  ],
+  [
+    "Liberate",
+    "Xm"
   ],
   [
     "Question",
-    "All"
+    "War"
   ],
   [
-    "Question",
-    "Truth"
-  ],
-  [
-    "Question",
-    "Attack"
+    "Lead",
+    "Enlightened"
   ],
   [
     "Search",
     "Potential"
   ],
   [
-    "Strong",
-    "Creativity"
+    "Search",
+    "Past"
   ],
   [
-    "Strong",
-    "Soul"
+    "Capture",
+    "Portal"
+  ],
+  [
+    "Pure",
+    "Truth"
+  ],
+  [
+    "Pure",
+    "Body"
+  ],
+  [
+    "Pure",
+    "Human"
+  ],
+  [
+    "Nourish",
+    "Journey"
+  ],
+  [
+    "All",
+    "Chaos"
+  ],
+  [
+    "OpenAll",
+    "Truth"
   ]
 ]

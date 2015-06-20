@@ -1,83 +1,23 @@
 [
   [
-    "Adapt",
-    "HumanA",
-    "Weak"
-  ],
-  [
-    "Advance",
-    "HumanA",
-    "Enlightened"
-  ],
-  [
-    "Advance",
-    "HumanA",
-    "Resistance"
-  ],
-  [
-    "Advance",
-    "Purity",
-    "Truth"
-  ],
-  [
-    "Again",
-    "Journey",
-    "Outside"
-  ],
-  [
-    "All",
+    "Gain",
     "Civilization",
-    "Chaos"
+    "Harmony"
   ],
   [
-    "All",
-    "Xm",
-    "Liberate"
-  ],
-  [
-    "Answer",
-    "Again",
-    "Avoid"
-  ],
-  [
-    "Attack",
-    "Create",
-    "Danger"
-  ],
-  [
-    "Attack",
-    "Destruction",
-    "Future"
-  ],
-  [
-    "Attack",
+    "Destroy",
     "Difficult",
-    "Future"
+    "Barrier"
   ],
   [
-    "Attack",
-    "Shapers",
+    "Destroy",
+    "Destiny",
+    "Barrier"
+  ],
+  [
+    "Civilization",
+    "War",
     "Chaos"
-  ],
-  [
-    "Attack",
-    "Shapers",
-    "Evolution"
-  ],
-  [
-    "Attack",
-    "Shapers",
-    "Portal"
-  ],
-  [
-    "Avoid",
-    "Attack",
-    "Chaos"
-  ],
-  [
-    "Avoid",
-    "Chaos",
-    "Soul"
   ],
   [
     "Avoid",
@@ -86,158 +26,28 @@
   ],
   [
     "Avoid",
-    "Complex",
-    "Soul"
-  ],
-  [
-    "Avoid",
     "Destiny",
     "Lie"
   ],
   [
-    "Avoid",
-    "Impure",
+    "Separate",
+    "Future",
     "Evolution"
   ],
   [
-    "Avoid",
-    "Pure",
-    "Chaos"
+    "Path",
+    "Peace",
+    "Difficult"
   ],
   [
-    "Avoid",
-    "Attack",
-    "Chaos"
-  ],
-  [
-    "Capture",
-    "Shapers",
-    "Portal"
-  ],
-  [
-    "Capture",
-    "Xm",
-    "Portal"
-  ],
-  [
-    "Change",
-    "HumanA",
-    "Future"
-  ],
-  [
-    "Civilization",
-    "Attack",
-    "Chaos"
-  ],
-  [
-    "Complex",
-    "Journey",
-    "Future"
-  ],
-  [
-    "Contemplate",
+    "Again",
     "Journey",
     "Outside"
   ],
   [
-    "Contemplate",
-    "Potential",
-    "Perfection"
-  ],
-  [
-    "Contemplate",
-    "Potential",
-    "Journey"
-  ],
-  [
-    "Contemplate",
-    "Potential",
-    "Perfection"
-  ],
-  [
-    "Courage",
-    "Destiny",
-    "Rebel"
-  ],
-  [
-    "Create",
-    "Future",
-    "Journey"
-  ],
-  [
-    "Danger",
-    "Change",
-    "Past"
-  ],
-  [
-    "Defend",
-    "Search",
-    "Safety"
-  ],
-  [
-    "Destroy",
-    "Civilization",
-    "Danger"
-  ],
-  [
-    "Destroy",
-    "Destiny",
-    "Barrier"
-  ],
-  [
-    "Destroy",
-    "Difficult",
-    "Barrier"
-  ],
-  [
-    "Destroy",
-    "Impure",
-    "Truth"
-  ],
-  [
-    "Destroy",
-    "Weak",
-    "Civilization"
-  ],
-  [
-    "Deteriorate",
-    "Advance",
-    "Now"
-  ],
-  [
-    "Discover",
-    "Harmony",
-    "Equal"
-  ],
-  [
-    "Discover",
-    "Portal",
-    "Truth"
-  ],
-  [
     "Discover",
     "Pure",
     "Truth"
-  ],
-  [
-    "Discover",
-    "Resistance",
-    "Truth"
-  ],
-  [
-    "Discover",
-    "Safety",
-    "Civilization"
-  ],
-  [
-    "Discover",
-    "Shapers",
-    "Civilization"
-  ],
-  [
-    "Discover",
-    "Shapers",
-    "Enlightened"
   ],
   [
     "Discover",
@@ -245,139 +55,29 @@
     "Lie"
   ],
   [
-    "Discover",
-    "Shapers",
-    "Data"
-  ],
-  [
-    "Escape",
-    "Impure",
-    "Evolution"
-  ],
-  [
-    "Escape",
-    "Impure",
-    "Future"
-  ],
-  [
-    "Escape",
-    "Impure",
-    "Truth"
-  ],
-  [
-    "Escape",
-    "Portal",
-    "Harm"
-  ],
-  [
-    "Escape",
-    "Shapers",
-    "Harm"
-  ],
-  [
-    "Escape",
-    "Shapers",
-    "Harmony"
-  ],
-  [
-    "Fear",
-    "Chaos",
-    "Xm"
-  ],
-  [
-    "Fear",
-    "Complex",
-    "Xm"
-  ],
-  [
-    "Follow",
+    "Nature",
     "Pure",
-    "Journey"
+    "Defend"
   ],
   [
-    "Future",
-    "Equal",
-    "Past"
+    "War",
+    "Create",
+    "Danger"
   ],
   [
-    "Gain",
-    "Civilization",
-    "Harmony"
-  ],
-  [
-    "Gain",
-    "Future",
-    "Escape"
-  ],
-  [
-    "Harm",
-    "Danger",
-    "Avoid"
-  ],
-  [
-    "Harmony",
-    "Stability",
+    "War",
+    "Destroy",
     "Future"
   ],
   [
-    "Hide",
-    "Journey",
-    "Truth"
-  ],
-  [
-    "Hide",
-    "Path",
+    "Attack",
+    "Difficult",
     "Future"
   ],
   [
-    "HumanA",
-    "Gain",
-    "Safety"
-  ],
-  [
-    "Improve",
-    "Advance",
-    "Now"
-  ],
-  [
-    "Improve",
-    "Future",
-    "Together"
-  ],
-  [
-    "Improve",
-    "HumanA",
-    "Shapers"
-  ],
-  [
-    "Not",
-    "Creativity",
-    "Future"
-  ],
-  [
-    "Not",
-    "Xm",
-    "Truth"
-  ],
-  [
-    "Journey",
-    "Not",
-    "Soul"
-  ],
-  [
-    "Lead",
-    "Enlightened",
-    "Civilization"
-  ],
-  [
-    "Lead",
-    "Resistance",
-    "Question"
-  ],
-  [
-    "Liberate",
-    "HumanA",
-    "Future"
+    "Attack",
+    "Shapers",
+    "Evolution"
   ],
   [
     "Liberate",
@@ -385,119 +85,19 @@
     "Potential"
   ],
   [
-    "Lose",
-    "Attack",
-    "Retreat"
-  ],
-  [
-    "Creativity",
-    "Body",
-    "Breathe"
-  ],
-  [
-    "Creativity",
-    "Equal",
-    "Truth"
-  ],
-  [
-    "Creativity",
-    "Open",
-    "Breathe"
-  ],
-  [
-    "Nature",
-    "Purity",
-    "Defend"
-  ],
-  [
-    "Nourish",
-    "Creativity",
-    "Journey"
-  ],
-  [
-    "Nourish",
-    "Xm",
-    "Portal"
-  ],
-  [
-    "OpenAll",
-    "Portal",
-    "Evolution"
-  ],
-  [
-    "OpenAll",
-    "Simple",
-    "Truth"
-  ],
-  [
-    "Open",
-    "HumanA",
-    "Weak"
-  ],
-  [
-    "Past",
-    "Equal",
+    "Inside",
+    "Mind",
     "Future"
   ],
   [
-    "Past",
-    "Harmony",
-    "Difficult"
+    "Fear",
+    "Chaos",
+    "Xm"
   ],
   [
-    "Past",
-    "Now",
+    "Change",
+    "Human",
     "Future"
-  ],
-  [
-    "Path",
-    "Harmony",
-    "Difficult"
-  ],
-  [
-    "Harmony",
-    "Simple",
-    "Journey"
-  ],
-  [
-    "Harmony",
-    "Stability",
-    "Future"
-  ],
-  [
-    "Perfection",
-    "Past",
-    "Harmony"
-  ],
-  [
-    "Potential",
-    "Truth",
-    "Harmony"
-  ],
-  [
-    "Potential",
-    "Xm",
-    "Attack"
-  ],
-  [
-    "Potential",
-    "Xm",
-    "Harmony"
-  ],
-  [
-    "Potential",
-    "Xm",
-    "Attack"
-  ],
-  [
-    "Pursue",
-    "Complex",
-    "Truth"
-  ],
-  [
-    "Pursue",
-    "Purity",
-    "Body"
   ],
   [
     "Question",
@@ -511,13 +111,28 @@
   ],
   [
     "Question",
-    "HumanA",
-    "Truth"
-  ],
-  [
-    "Question",
     "Shapers",
     "Chaos"
+  ],
+  [
+    "Escape",
+    "Impure",
+    "Evolution"
+  ],
+  [
+    "Complex",
+    "Journey",
+    "Future"
+  ],
+  [
+    "Follow",
+    "Pure",
+    "Journey"
+  ],
+  [
+    "Lead",
+    "Resistance",
+    "Question"
   ],
   [
     "React",
@@ -525,49 +140,34 @@
     "Civilization"
   ],
   [
-    "React",
-    "Purity",
-    "Truth"
-  ],
-  [
-    "Recharge",
-    "Nature",
-    "Perfection"
-  ],
-  [
-    "Again",
-    "Journey",
-    "Outside"
-  ],
-  [
-    "Retreat",
-    "Search",
-    "Safety"
-  ],
-  [
-    "Search",
-    "Xm",
+    "Capture",
+    "Shapers",
     "Portal"
   ],
   [
-    "See",
-    "Truth",
-    "Now"
+    "Journey",
+    "Inside",
+    "Soul"
   ],
   [
-    "Separate",
+    "Lose",
+    "Attack",
+    "Retreat"
+  ],
+  [
+    "Improve",
+    "Advance",
+    "Present"
+  ],
+  [
+    "Improve",
+    "Human",
+    "Shapers"
+  ],
+  [
     "Future",
-    "Evolution"
-  ],
-  [
-    "Separate",
-    "Future",
-    "Pursue"
-  ],
-  [
-    "Together",
-    "Purity",
-    "Journey"
+    "Equal",
+    "Past"
   ],
   [
     "Together",
@@ -575,38 +175,38 @@
     "Safety"
   ],
   [
-    "Truth",
-    "Nourish",
-    "Soul"
+    "Harm",
+    "Danger",
+    "Avoid"
   ],
   [
-    "Want",
-    "Truth",
-    "Now"
+    "Perfection",
+    "Path",
+    "Peace"
   ],
   [
-    "Want",
+    "Mind",
+    "Open",
+    "Live"
+  ],
+  [
+    "All",
     "Xm",
-    "Now"
+    "Liberate"
   ],
   [
-    "Attack",
-    "Attack",
-    "Chaos"
-  ],
-  [
-    "Attack",
-    "Creation",
-    "Danger"
-  ],
-  [
-    "Attack",
-    "Destruction",
-    "Future"
+    "OpenAll",
+    "Portal",
+    "Success"
   ],
   [
     "Xm",
     "Nourish",
     "Civilization"
+  ],
+  [
+    "Truth",
+    "Nourish",
+    "Soul"
   ]
 ]
