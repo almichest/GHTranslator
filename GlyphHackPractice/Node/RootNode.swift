@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class RootNode: SKSpriteNode{
+class RootNode: SKSpriteNode {
     
     var particleScale:CGFloat = 1.0
     var vertexScale:CGFloat = 1.0
@@ -68,7 +68,7 @@ class RootNode: SKSpriteNode{
         }
     }
     
-    private let glyphDuration = 0.9
+    private let glyphDuration = 1.1
     private var waitingCompletion:(() -> Void)?
     func showGlyph(glyph: Glyph, autoRemove:Bool? = true, completion: (() -> Void)?) {
         let paths = glyph.paths!
