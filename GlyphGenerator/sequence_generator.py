@@ -19,7 +19,7 @@ class Source :
             sequences.append(values)
 
         output = open('sequence_0' + str(self.count) + '.json', 'w')
-        json.dump(sequences, output)
+        json.dump(sequences, output, indent=2, sort_keys=True)
         output.close()
 
 for x in range (1, 6) :
