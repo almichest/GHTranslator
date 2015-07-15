@@ -22,6 +22,8 @@ class GlyphScene: SKScene{
     private var homeNode:SelectableLabelNode?
     private var countDownNode:CountDownLabelNode?
     private var messageNode:GeneralLabelNode?
+    private var numeratorNode:GeneralLabelNode?
+    private var denominatorNode:GeneralLabelNode?
     
     private var isInInputMode:Bool = false
     
@@ -54,6 +56,7 @@ class GlyphScene: SKScene{
         self.prepareHomeNode()
         self.prepareMessageNode()
         self.notifyAdPreparationIfNeeded()
+        self.prepareGlyphOrderNodes()
     }
     
     static var adCount = 0
@@ -106,6 +109,31 @@ class GlyphScene: SKScene{
         self.addChild(self.messageNode!)
     }
     
+    private func prepareGlyphOrderNodes() {
+        
+        let verticalPosition = self.size.height - 120
+        
+        self.numeratorNode = GeneralLabelNode()
+        self.numeratorNode?.fontSize = 20.0
+        self.numeratorNode?.fontColor = SKColor.whiteColor()
+        self.numeratorNode?.position = CGPointMake(self.size.width / 2.0 - 30, verticalPosition)
+        self.numeratorNode?.text = "1"
+        self.addChild(self.numeratorNode!)
+        
+        self.denominatorNode = GeneralLabelNode()
+        self.denominatorNode?.fontSize = 20.0
+        self.denominatorNode?.fontColor = SKColor.whiteColor()
+        self.denominatorNode?.position = CGPointMake(self.size.width / 2.0 + 30, verticalPosition)
+        self.denominatorNode?.text = "1"
+        self.addChild(self.denominatorNode!)
+        
+        let dividerNode = GeneralLabelNode()
+        dividerNode.fontSize = 20.0
+        dividerNode.fontColor = SKColor.whiteColor()
+        dividerNode.position = CGPointMake(self.size.width / 2.0, verticalPosition)
+        dividerNode.text = "/"
+        self.addChild(dividerNode)
+    }
     
     //MARK: - Touch
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
