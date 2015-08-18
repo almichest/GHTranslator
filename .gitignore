@@ -19,7 +19,6 @@ DerivedData
 
 # CocoaPod
 Pods/*
-Podfile.lock
 
 # others
 *.swp
