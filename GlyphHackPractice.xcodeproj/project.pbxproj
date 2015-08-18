@@ -55,6 +55,7 @@
 		42CDD0E61A7CFEA0001FFC1F /* GlyphHackVertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42CDD0E51A7CFEA0001FFC1F /* GlyphHackVertex.swift */; };
 		42D559A31A9895D70091A490 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D559A21A9895D70091A490 /* Log.swift */; };
 		42F4FC191A99BA0100833C21 /* Glyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F4FC181A99BA0100833C21 /* Glyph.swift */; };
+		42F6F0351B837390001E4CA1 /* GlyphFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F6F0341B837390001E4CA1 /* GlyphFetcher.swift */; };
 		629698A720BCE539D9500A61 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D9856DA0B963C610CDE471 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +120,7 @@
 		42CDD0E51A7CFEA0001FFC1F /* GlyphHackVertex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GlyphHackVertex.swift; path = Node/GlyphHackVertex.swift; sourceTree = "<group>"; };
 		42D559A21A9895D70091A490 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		42F4FC181A99BA0100833C21 /* Glyph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Glyph.swift; sourceTree = "<group>"; };
+		42F6F0341B837390001E4CA1 /* GlyphFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GlyphFetcher.swift; path = Client/GlyphFetcher.swift; sourceTree = "<group>"; };
 		CAF973F08F2BD924C4DBF956 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DD8A13EC9363B1DA0392931E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -232,6 +234,7 @@
 		42CDD0BE1A7CFC10001FFC1F /* GlyphHackPractice */ = {
 			isa = PBXGroup;
 			children = (
+				42F6F0311B8372DB001E4CA1 /* Client */,
 				42CC4FD61B2B2EBA00C86C1F /* Resources */,
 				4272326E1B1F43D600DC1346 /* Utility */,
 				426B314A1AC65E23003AA565 /* UI */,
@@ -297,6 +300,14 @@
 				421D40201ACBF239001FDB41 /* GlyphScore.swift */,
 			);
 			path = Glyph;
+			sourceTree = "<group>";
+		};
+		42F6F0311B8372DB001E4CA1 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				42F6F0341B837390001E4CA1 /* GlyphFetcher.swift */,
+			);
+			name = Client;
 			sourceTree = "<group>";
 		};
 		C4D3B633DC357C9D06E4CD9F /* Pods */ = {
@@ -519,6 +530,7 @@
 				426B31521AC65E23003AA565 /* GlyphViewController.swift in Sources */,
 				42D559A31A9895D70091A490 /* Log.swift in Sources */,
 				42165D121AA2F0EB001EC0F5 /* GlyphGenerator.swift in Sources */,
+				42F6F0351B837390001E4CA1 /* GlyphFetcher.swift in Sources */,
 				426B31581AC65EFA003AA565 /* RootNode.swift in Sources */,
 				4276E9981AC959BD00F3DFB2 /* CountDownLabelNode.swift in Sources */,
 				42CDD0C21A7CFC10001FFC1F /* AppDelegate.swift in Sources */,

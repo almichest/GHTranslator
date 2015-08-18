@@ -25,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             GlyphConfiguration.loadInitialValue();
         }
         
+        GlyphFetcher.sharedFetcher().fetchGlyphs()
+        
         return true
     }
     
