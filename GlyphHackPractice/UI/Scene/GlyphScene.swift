@@ -22,8 +22,10 @@ class GlyphScene: SKScene{
     private var homeNode:SelectableLabelNode?
     private var countDownNode:CountDownLabelNode?
     private var messageNode:GeneralLabelNode?
+    
     private var numeratorNode:GeneralLabelNode?
     private var denominatorNode:GeneralLabelNode?
+    private var dividerNode:GeneralLabelNode?
     
     private var isInInputMode:Bool = false
     
@@ -118,6 +120,7 @@ class GlyphScene: SKScene{
         self.numeratorNode?.fontColor = SKColor.whiteColor()
         self.numeratorNode?.position = CGPointMake(self.size.width / 2.0 - 30, verticalPosition)
         self.numeratorNode?.text = "1"
+        self.numeratorNode?.hidden = true
         self.addChild(self.numeratorNode!)
         
         self.denominatorNode = GeneralLabelNode()
@@ -125,14 +128,16 @@ class GlyphScene: SKScene{
         self.denominatorNode?.fontColor = SKColor.whiteColor()
         self.denominatorNode?.position = CGPointMake(self.size.width / 2.0 + 30, verticalPosition)
         self.denominatorNode?.text = "1"
+        self.denominatorNode?.hidden = true
         self.addChild(self.denominatorNode!)
         
-        let dividerNode = GeneralLabelNode()
-        dividerNode.fontSize = 20.0
-        dividerNode.fontColor = SKColor.whiteColor()
-        dividerNode.position = CGPointMake(self.size.width / 2.0, verticalPosition)
-        dividerNode.text = "/"
-        self.addChild(dividerNode)
+        self.dividerNode = GeneralLabelNode()
+        self.dividerNode?.fontSize = 20.0
+        self.dividerNode?.fontColor = SKColor.whiteColor()
+        self.dividerNode?.position = CGPointMake(self.size.width / 2.0, verticalPosition)
+        self.dividerNode?.text = "/"
+        self.dividerNode?.hidden = true
+        self.addChild(self.dividerNode!)
     }
     
     //MARK: - Touch
@@ -289,6 +294,21 @@ class GlyphScene: SKScene{
     private func startDrawingGlyph() {
         self.isInInputMode = true
         self.messageNode!.text = "Let's draw !"
+        self.showGlyphIndex()
+    }
+    
+    private func showGlyphIndex() {
+        
+        if self.userInputs.count == self.currentQuestions.count {
+            return
+        }
+        
+        self.denominatorNode?.hidden = false
+        self.numeratorNode?.hidden = false
+        self.dividerNode?.hidden = false
+        
+        self.denominatorNode?.text = "\(self.currentQuestions.count)"
+        self.numeratorNode?.text = "\(self.userInputs.count + 1)"
     }
     
     private func setGlyphName(type: String) {
@@ -365,6 +385,7 @@ class GlyphScene: SKScene{
         
         self.userInputs.append(self.currentGlyphPath)
         self.lastTouchedIndex = -1
+        self.showGlyphIndex()
         
         self.rootNode!.clearTouchedIndicator()
     }

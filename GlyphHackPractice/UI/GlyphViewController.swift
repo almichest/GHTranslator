@@ -36,7 +36,7 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, ADBannerView
     }
     
     override func prefersStatusBarHidden() -> Bool {
-        return false
+        return true
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
