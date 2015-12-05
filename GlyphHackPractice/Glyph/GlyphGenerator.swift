@@ -22,8 +22,6 @@ class GlyphGenerator: NSObject {
         let fileHandle = NSFileHandle(forReadingAtPath: path!)
         let data = fileHandle!.readDataToEndOfFile()
         
-        let error: NSErrorPointer = NSErrorPointer()
-        
         let glyphs = (try! NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)) as! Array<Dictionary<String, AnyObject>>
         
         var mutableGlyphDictionary = Dictionary<String, [[Int]]>()

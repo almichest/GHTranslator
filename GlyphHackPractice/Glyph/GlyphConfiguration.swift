@@ -52,10 +52,9 @@ class GlyphConfiguration: NSObject {
     
     static func loadInitialValue() {
         
-        let dictionary: NSMutableDictionary = NSMutableDictionary()
-        dictionary[GlyphConfigurationCurrentLevelKey] = 1
-        dictionary[GlyphConfigurationShowGlyphNameKey] = true
-        dictionary[GlyphConfigurationLaunchedBeforeKey] = true
-        self.userDefaults.registerDefaults(dictionary as [NSObject : AnyObject])
+        let dictionary = [GlyphConfigurationCurrentLevelKey     : 1,
+                          GlyphConfigurationShowGlyphNameKey    : true,
+                          GlyphConfigurationLaunchedBeforeKey   : true]
+        self.userDefaults.registerDefaults(dictionary)
     }
 }

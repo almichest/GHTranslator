@@ -33,8 +33,6 @@ public class GlyphSequenceProvider: NSObject {
             let fileHandle = NSFileHandle(forReadingAtPath: path!)
             let data = fileHandle!.readDataToEndOfFile()
             
-            let error: NSErrorPointer = NSErrorPointer()
-            
             let sequences = (try! NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)) as! [[String]]
             
             mutableSequencesDictionary[GlyphSequenceCount(rawValue: i)!] = sequences

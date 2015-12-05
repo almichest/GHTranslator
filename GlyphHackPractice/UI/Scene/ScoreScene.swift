@@ -128,7 +128,9 @@ class ScoreScene: SKScene {
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        let touch: UITouch = touches.first as! UITouch
+        guard let touch = touches.first else {
+            return;
+        }
         let location = touch.locationInNode(self)
         let node = self.nodeAtPoint(location)
         
@@ -140,7 +142,9 @@ class ScoreScene: SKScene {
     }
     
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        let touch: UITouch = touches.first as! UITouch
+        guard let touch = touches.first else {
+            return;
+        }
         let location = touch.locationInNode(self)
         let node = self.nodeAtPoint(location)
         
@@ -155,7 +159,9 @@ class ScoreScene: SKScene {
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        let touch: UITouch = touches.first as! UITouch
+        guard let touch = touches.first else {
+            return;
+        }
         let location = touch.locationInNode(self)
         let node = self.nodeAtPoint(location)
         

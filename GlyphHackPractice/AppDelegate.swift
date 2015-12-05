@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.localPlayer = GKLocalPlayer()
         self.localPlayer!.authenticateHandler = {(viewController, error) -> Void in
             if (viewController != nil) {
-                self.window!.rootViewController!.presentViewController(viewController, animated: true, completion: nil)
+                self.window!.rootViewController!.presentViewController(viewController!, animated: true, completion: nil)
             } else {
                 if (error == nil) {
                     Log.d("authentication completed")
@@ -46,16 +46,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func loadBestScores() {
         GKLeaderboard.loadLeaderboardsWithCompletionHandler { (leaderBoards, error) -> Void in
-            if error == nil {
-                Log.d("\(leaderBoards)")
-                let loadedLeaderboards:[GKLeaderboard] = leaderBoards as! [GKLeaderboard]
-                for leaderBoard:GKLeaderboard in loadedLeaderboards {
-                    leaderBoard.loadScoresWithCompletionHandler({ (scores, error) -> Void in
-                        self.overwriteBestScores(scores);
-                    })
-                }
-            } else {
+            guard error == nil else {
                 Log.d("\(error)")
+                return
+            }
+            
+            
+            guard let loaded = leaderBoards else {
+                Log.d("leaderBoards are nil")
+                return
+            }
+            
+            Log.d("\(leaderBoards)")
+            
+            for leaderBoard:GKLeaderboard in loaded {
+                leaderBoard.loadScoresWithCompletionHandler({ (scores, error) -> Void in
+                    guard (scores != nil) else {
+                        return
+                    }
+                    self.overwriteBestScores(scores!);
+                })
             }
         }
     }

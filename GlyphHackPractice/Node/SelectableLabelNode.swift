@@ -42,7 +42,11 @@ class SelectableLabelNode: SKSpriteNode {
     
     var text:String {
         get {
-            return self.labelNode!.text
+            guard let _ = self.labelNode?.text else {
+                return ""
+            }
+            
+            return (self.labelNode?.text)!
         }
         set {
             self.labelNode!.text = newValue
@@ -52,7 +56,11 @@ class SelectableLabelNode: SKSpriteNode {
     
     var isSelected:Bool {
         get {
-           return self.labelNode!.fontColor.isEqual(SelectableLabelNode.selectedFontColor)
+            guard let _ = self.labelNode?.fontColor else {
+                return false
+            }
+            
+           return (self.labelNode?.fontColor!.isEqual(SelectableLabelNode.selectedFontColor))!
         }
         set {
             if newValue {

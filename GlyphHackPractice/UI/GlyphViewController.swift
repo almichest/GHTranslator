@@ -109,7 +109,6 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, ADBannerView
     private func prepareAdView() {
         self.adView = ADBannerView(adType: ADAdType.MediumRectangle)
         self.adView!.delegate = self
-        let diffWidth = self.view.frame.size.width - self.adView!.frame.size.width
         let diffHeight = self.view.frame.size.height - self.adView!.frame.size.height
         self.adView!.frame = CGRectMake(-adView!.frame.size.width, diffHeight / 2.0, self.adView!.frame.size.width, self.adView!.frame.size.height)
     }

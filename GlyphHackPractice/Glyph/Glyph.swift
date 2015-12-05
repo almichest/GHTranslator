@@ -82,7 +82,6 @@ public class GlyphPath: NSObject, NSCopying {
     
     override public func isEqual(object: AnyObject?) -> Bool {
         let another = object as! GlyphPath
-        let hash = self.hash
         return ((self.point1 == another.point1) && (self.point2 == another.point2));
     }
     

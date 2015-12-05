@@ -126,16 +126,22 @@ class RootNode: SKSpriteNode {
     }
     
     private func showParticle(point: CGPoint, autoRemove:Bool) {
-        let particleGlyphPath = NSBundle.mainBundle().pathForResource("GlyphParticle", ofType: "sks")
-        let particle = NSKeyedUnarchiver.unarchiveObjectWithFile(particleGlyphPath!) as! SKEmitterNode
+        
+        guard let color = self.particleColor else {
+            return
+        }
+        guard let path = NSBundle.mainBundle().pathForResource("GlyphParticle", ofType: "sks") else {
+            return
+        }
+        guard let particle = NSKeyedUnarchiver.unarchiveObjectWithFile(path) as! SKEmitterNode? else {
+            return
+        }
         
         particle.position = point
         particle.setScale(self.particleScale)
-        if(self.particleColor != nil) {
-            particle.particleColorSequence = nil
-            particle.particleColorBlendFactor = 1.0
-            particle.particleColor = self.particleColor
-        }
+        particle.particleColorSequence = nil
+        particle.particleColorBlendFactor = 1.0
+        particle.particleColor = color
         
         self.addChild(particle)
         
