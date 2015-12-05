@@ -35,7 +35,7 @@ public class GlyphSequenceProvider: NSObject {
             
             let error: NSErrorPointer = NSErrorPointer()
             
-            var sequences = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: error) as! [[String]]
+            let sequences = (try! NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)) as! [[String]]
             
             mutableSequencesDictionary[GlyphSequenceCount(rawValue: i)!] = sequences
         }
@@ -45,7 +45,7 @@ public class GlyphSequenceProvider: NSObject {
     
     public func provideGlyphSequence(count: GlyphSequenceCount) -> [String] {
         let target: [[String]] = self.sequencesDictionary[count]!
-        var index = Int(arc4random_uniform(UInt32(target.count)))
+        let index = Int(arc4random_uniform(UInt32(target.count)))
         return target[index]
     }
     

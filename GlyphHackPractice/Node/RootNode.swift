@@ -16,7 +16,7 @@ class RootNode: SKSpriteNode {
     
     private var vertexes:[GlyphHackVertex]
     
-    override init(texture: SKTexture!, color: UIColor!, size: CGSize) {
+    override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         self.vertexes = [GlyphHackVertex](count: 11, repeatedValue: GlyphHackVertex(index: 0))
         super.init(texture: texture, color: color, size: size)
     }

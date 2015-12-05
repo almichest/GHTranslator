@@ -19,7 +19,7 @@ class GeneralLabelNode: SKLabelNode {
         self.fontColor = SKColor.whiteColor()
     }
     
-    convenience override init(fontNamed fontName: String!) {
+    convenience override init(fontNamed fontName: String?) {
         self.init()
     }
     

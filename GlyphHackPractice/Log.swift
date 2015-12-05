@@ -16,7 +16,7 @@ class Log: NSObject {
                  line: Int = __LINE__) {
                     
         #if DEBUG
-        println("File: \(file), Function: \(function), Line: \(line)\n \(message)")
+        print("File: \(file), Function: \(function), Line: \(line)\n \(message)")
         #else
         #endif
     }

@@ -356,6 +356,8 @@
 		42CDD0B41A7CFC10001FFC1F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0710;
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Hiraku Ohno";
 				TargetAttributes = {

@@ -141,12 +141,12 @@ class GlyphScene: SKScene{
     }
     
     //MARK: - Touch
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.currentGlyphPath.removeAll(keepCapacity: true)
         self.handleTouches(touches, type:TouchType.Began)
     }
     
-    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.handleTouches(touches, type:TouchType.Moved)
     }
     
@@ -186,7 +186,7 @@ class GlyphScene: SKScene{
     private func removeParticle(particle:SKEmitterNode, completion:(() -> Void)?) {
         particle.runAction(SKAction.fadeAlphaTo(0.0, duration: 0.05), completion:{
             particle.removeFromParent()
-            self.tracingParticles.removeAtIndex(find(self.tracingParticles, particle)!)
+            self.tracingParticles.removeAtIndex(self.tracingParticles.indexOf(particle)!)
             if self.tracingParticles.count == 0 {
                 if completion != nil {
                     completion!()
@@ -356,7 +356,7 @@ class GlyphScene: SKScene{
         self.addChild(particle)
     }
     
-    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         let touch: UITouch = touches.first as! UITouch
         let location = touch.locationInNode(self)
         let node = self.nodeAtPoint(location)
@@ -377,7 +377,7 @@ class GlyphScene: SKScene{
         }
         
         ActionUtility.doActionAfterSeconds({ () -> Void in
-            self.clearTracingParticles(completion: {
+            self.clearTracingParticles({
                 let glyph = Glyph(type: "" , paths: self.currentGlyphPath)
                 self.showGlyph(glyph, type: .UserInput)
             })

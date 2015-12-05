@@ -24,7 +24,7 @@ class GlyphGenerator: NSObject {
         
         let error: NSErrorPointer = NSErrorPointer()
         
-        var glyphs = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: error) as! Array<Dictionary<String, AnyObject>>
+        let glyphs = (try! NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments)) as! Array<Dictionary<String, AnyObject>>
         
         var mutableGlyphDictionary = Dictionary<String, [[Int]]>()
         

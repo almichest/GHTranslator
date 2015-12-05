@@ -19,7 +19,7 @@ class GlyphConfiguration: NSObject {
     
     static var currentLevel:GlyphSequenceCount {
         get {
-            var integerValue = self.userDefaults.integerForKey(GlyphConfigurationCurrentLevelKey)
+            let integerValue = self.userDefaults.integerForKey(GlyphConfigurationCurrentLevelKey)
             return GlyphSequenceCount(rawValue: integerValue)!
         }
         set {
