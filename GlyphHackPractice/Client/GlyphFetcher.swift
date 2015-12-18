@@ -7,34 +7,80 @@
 //
 
 import UIKit
+import Bolts
+import Alamofire
 
 class GlyphFetcher: NSObject {
     
-    private let testURL = "https://raw.githubusercontent.com/almichest/GHTranslator/master/GlyphHackPractice/Resources/items.json"
+    static let itemsName = "items"
+    static let sequencePrefix = "sequences"
+    
+    private static let itemsURL = "https://raw.githubusercontent.com/almichest/GHTranslator/master/GlyphHackPractice/Resources/items.json"
+    private static let sequenceUrl1 = "https://raw.githubusercontent.com/almichest/GHTranslator/master/GlyphHackPractice/Resources/sequence_01.json"
+    private static let sequenceUrl2 = "https://raw.githubusercontent.com/almichest/GHTranslator/master/GlyphHackPractice/Resources/sequence_02.json"
+    private static let sequenceUrl3 = "https://raw.githubusercontent.com/almichest/GHTranslator/master/GlyphHackPractice/Resources/sequence_03.json"
+    private static let sequenceUrl4 = "https://raw.githubusercontent.com/almichest/GHTranslator/master/GlyphHackPractice/Resources/sequence_04.json"
+    private static let sequenceUrl5 = "https://raw.githubusercontent.com/almichest/GHTranslator/master/GlyphHackPractice/Resources/sequence_05.json"
     
     private static let instance = GlyphFetcher()
-    private let httpManager:AFHTTPSessionManager
     
     static func sharedFetcher() -> GlyphFetcher {
         return instance;
     }
     
-    override init() {
-        self.httpManager = AFHTTPSessionManager()
-        self.httpManager.responseSerializer.acceptableContentTypes = NSSet(array: ["text/plain"]) as Set<NSObject>
+    func fetchGlyphs() -> BFTask {
+        
+        let itemsTask = self.getJson(GlyphFetcher.itemsURL)
+        let sequenceTask1 = self.getJson(GlyphFetcher.sequenceUrl1)
+        let sequenceTask2 = self.getJson(GlyphFetcher.sequenceUrl2)
+        let sequenceTask3 = self.getJson(GlyphFetcher.sequenceUrl3)
+        let sequenceTask4 = self.getJson(GlyphFetcher.sequenceUrl4)
+        let sequenceTask5 = self.getJson(GlyphFetcher.sequenceUrl5)
+        
+        let allTask = BFTaskCompletionSource()
+        
+        BFTask(forCompletionOfAllTasks: [itemsTask, sequenceTask1, sequenceTask2, sequenceTask3, sequenceTask4, sequenceTask4, sequenceTask5]).continueWithSuccessBlock({ (task) -> AnyObject? in
+            guard let items = itemsTask.result,
+                  let sequence1 = sequenceTask1.result,
+                  let sequence2 = sequenceTask2.result,
+                  let sequence3 = sequenceTask3.result,
+                  let sequence4 = sequenceTask4.result,
+                  let sequence5 = sequenceTask5.result else {
+                    allTask.trySetError(NSError(domain: "fetching", code: 0, userInfo: nil))
+                    return nil
+                    
+            }
+            
+            allTask.trySetResult([GlyphFetcher.itemsName : items,
+                                  GlyphFetcher.sequencePrefix + "1" : sequence1,
+                                  GlyphFetcher.sequencePrefix + "2" : sequence2,
+                                  GlyphFetcher.sequencePrefix + "3" : sequence3,
+                                  GlyphFetcher.sequencePrefix + "4" : sequence4,
+                                  GlyphFetcher.sequencePrefix + "5" : sequence5])
+            return nil
+            
+        })
+        
+        return allTask.task
+        
     }
     
-    func fetchGlyphs() -> BFTask {
-        let completionSource = BFTaskCompletionSource()
+    private func getJson(url: String) -> BFTask {
+        let tcs = BFTaskCompletionSource()
+        Alamofire.request(.GET, url)
+                 .responseJSON {response -> Void in
+                    if response.result.isSuccess {
+                        Log.d("\(response.result.value)")
+                        guard let result = response.result.value else {
+                            tcs.trySetError(NSError(domain: "glyph", code: 0, userInfo: nil))
+                            return
+                        }
+                        tcs.trySetResult(result);
+                    } else {
+                        tcs.trySetError(NSError(domain: "glyph", code: 0, userInfo: nil))
+                    }
+        }
         
-        self.httpManager.GET(testURL, parameters: nil,
-            success: {(dataTask: NSURLSessionDataTask!, responseObject: AnyObject!) in
-                Log.d("\(responseObject)")
-            }, failure: {(dataTask: NSURLSessionDataTask!, error: NSError!) in
-                Log.d("\(error)")
-            }
-        )
-        
-        return completionSource.task
+        return tcs.task
     }
 }

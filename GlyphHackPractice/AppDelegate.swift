@@ -25,7 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             GlyphConfiguration.loadInitialValue();
         }
         
-        GlyphFetcher.sharedFetcher().fetchGlyphs()
+        GlyphFetcher.sharedFetcher().fetchGlyphs().continueWithSuccessBlock { (task) -> AnyObject? in
+            Log.d("\(task.result)")
+            
+            return nil
+        }
         
         return true
     }

@@ -56,7 +56,7 @@
 		42D559A31A9895D70091A490 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D559A21A9895D70091A490 /* Log.swift */; };
 		42F4FC191A99BA0100833C21 /* Glyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F4FC181A99BA0100833C21 /* Glyph.swift */; };
 		42F6F0351B837390001E4CA1 /* GlyphFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F6F0341B837390001E4CA1 /* GlyphFetcher.swift */; };
-		629698A720BCE539D9500A61 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D9856DA0B963C610CDE471 /* libPods.a */; };
+		91A8D0566E4BD8A14BD902A6 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70F850603CFA48505E8E3F4A /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +70,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		16D9856DA0B963C610CDE471 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		42165D111AA2F0EB001EC0F5 /* GlyphGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlyphGenerator.swift; sourceTree = "<group>"; };
 		421D401E1ACBE921001FDB41 /* ScoreScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreScene.swift; sourceTree = "<group>"; };
 		421D40201ACBF239001FDB41 /* GlyphScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlyphScore.swift; sourceTree = "<group>"; };
@@ -121,6 +120,7 @@
 		42D559A21A9895D70091A490 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		42F4FC181A99BA0100833C21 /* Glyph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Glyph.swift; sourceTree = "<group>"; };
 		42F6F0341B837390001E4CA1 /* GlyphFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GlyphFetcher.swift; path = Client/GlyphFetcher.swift; sourceTree = "<group>"; };
+		70F850603CFA48505E8E3F4A /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF973F08F2BD924C4DBF956 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DD8A13EC9363B1DA0392931E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,7 +134,7 @@
 				42B6D5E01AED4B030080DF43 /* Crashlytics.framework in Frameworks */,
 				4276E98B1AC7BBC300F3DFB2 /* iAd.framework in Frameworks */,
 				42B6D5E11AED4B030080DF43 /* Fabric.framework in Frameworks */,
-				629698A720BCE539D9500A61 /* libPods.a in Frameworks */,
+				91A8D0566E4BD8A14BD902A6 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,7 +151,7 @@
 		0DC0EE22278664336D33C5E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				16D9856DA0B963C610CDE471 /* libPods.a */,
+				70F850603CFA48505E8E3F4A /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -675,7 +675,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = GlyphHackPractice/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = hira.glyphhack.practice;
@@ -697,7 +697,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = GlyphHackPractice/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hira.glyphhack.practice;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -8,4 +8,3 @@
 
 #import <SRGAppVerWatcher/SRGAppVerWatcher.h>
 #import <Bolts/Bolts.h>
-#import <AFNetworking/AFNetworking.h>
