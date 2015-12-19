@@ -255,7 +255,7 @@ class GlyphScene: SKScene{
     var glyphQueue:[Glyph] = Array<Glyph>()
     private func enqueueGlyphSequence(glyphTypes: [String]) {
         for type in glyphTypes {
-            let glyph = GlyphGenerator.sharedGenerator().createGlyphWithType(type)
+            let glyph = try! GlyphGenerator.sharedGenerator().createGlyphWithType(type)
             self.glyphQueue += [glyph]
         }
         

@@ -13,7 +13,6 @@ import Alamofire
 class GlyphFetcher: NSObject {
     
     static let itemsName = "items"
-    static let sequencePrefix = "sequences"
     
     private static let itemsURL = "https://raw.githubusercontent.com/almichest/GHTranslator/master/GlyphHackPractice/Resources/items.json"
     private static let sequenceUrl1 = "https://raw.githubusercontent.com/almichest/GHTranslator/master/GlyphHackPractice/Resources/sequence_01.json"
@@ -52,11 +51,11 @@ class GlyphFetcher: NSObject {
             }
             
             allTask.trySetResult([GlyphFetcher.itemsName : items,
-                                  GlyphFetcher.sequencePrefix + "1" : sequence1,
-                                  GlyphFetcher.sequencePrefix + "2" : sequence2,
-                                  GlyphFetcher.sequencePrefix + "3" : sequence3,
-                                  GlyphFetcher.sequencePrefix + "4" : sequence4,
-                                  GlyphFetcher.sequencePrefix + "5" : sequence5])
+                                  "1" : sequence1,
+                                  "2" : sequence2,
+                                  "3" : sequence3,
+                                  "4" : sequence4,
+                                  "5" : sequence5])
             return nil
             
         })

@@ -89,11 +89,11 @@ class GlyphViewController: UIViewController, UIActionSheetDelegate, ADBannerView
     private func showResultScene(answer: [String], userInputs: [Set<GlyphPath>?]) {
         var answerGlyphs = [Glyph]()
         for type in answer {
-            answerGlyphs.append(GlyphGenerator.sharedGenerator().createGlyphWithType(type))
+            answerGlyphs.append(try! GlyphGenerator.sharedGenerator().createGlyphWithType(type))
         }
         var userInputGlyphs = [Glyph]()
         for userInput in userInputs {
-            userInputGlyphs.append(GlyphGenerator.sharedGenerator().createGlyphWithType("", path: userInput))
+            userInputGlyphs.append(try! GlyphGenerator.sharedGenerator().createGlyphWithType("", path: userInput))
         }
         
         let glyphView = self.view as? GlyphView

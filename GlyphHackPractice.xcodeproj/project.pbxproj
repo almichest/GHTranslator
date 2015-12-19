@@ -16,6 +16,7 @@
 		423259E71AC3A89F004726FF /* GlyphGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42165D111AA2F0EB001EC0F5 /* GlyphGenerator.swift */; };
 		423259E81AC3E4CE004726FF /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D559A21A9895D70091A490 /* Log.swift */; };
 		423259EA1AC42437004726FF /* GlyphSequenceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423259E91AC42437004726FF /* GlyphSequenceProvider.swift */; };
+		423481241C25BF6E00692E59 /* GlyphFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F6F0341B837390001E4CA1 /* GlyphFetcher.swift */; };
 		425882581AC676A200219E0C /* NodeUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425882571AC676A200219E0C /* NodeUtility.swift */; };
 		426B31491AC5810D003AA565 /* GlyphSequenceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423259E91AC42437004726FF /* GlyphSequenceProvider.swift */; };
 		426B31521AC65E23003AA565 /* GlyphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426B314D1AC65E23003AA565 /* GlyphViewController.swift */; };
@@ -549,6 +550,7 @@
 			files = (
 				426B31491AC5810D003AA565 /* GlyphSequenceProvider.swift in Sources */,
 				423259E51AC3A4A3004726FF /* Glyph.swift in Sources */,
+				423481241C25BF6E00692E59 /* GlyphFetcher.swift in Sources */,
 				423259E81AC3E4CE004726FF /* Log.swift in Sources */,
 				423259E71AC3A89F004726FF /* GlyphGenerator.swift in Sources */,
 				42CDD0DC1A7CFC11001FFC1F /* GlyphHackPracticeTests.swift in Sources */,
@@ -675,7 +677,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = GlyphHackPractice/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = hira.glyphhack.practice;
@@ -697,7 +699,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = GlyphHackPractice/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hira.glyphhack.practice;
 				PRODUCT_NAME = "$(TARGET_NAME)";

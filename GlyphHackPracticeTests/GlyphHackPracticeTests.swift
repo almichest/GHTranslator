@@ -23,17 +23,17 @@ class GlyphHackPracticeTests: XCTestCase {
     
     func testEqual() {
         let paths1: Set<GlyphPath> = [GlyphPath(point1: 0, point2: 10)]
-        let glyph1 = GlyphGenerator.sharedGenerator().createGlyphWithType("", path: paths1)
+        let glyph1 = try! GlyphGenerator.sharedGenerator().createGlyphWithType("", path: paths1)
         
         let paths2: Set<GlyphPath> = [GlyphPath(point1: 0, point2: 5),
                                             GlyphPath(point1: 5, point2: 10)]
-        let glyph2 = GlyphGenerator.sharedGenerator().createGlyphWithType("", path: paths2)
+        let glyph2 = try! GlyphGenerator.sharedGenerator().createGlyphWithType("", path: paths2)
         
         XCTAssert(glyph1.isEqual(glyph2), "")
     }
     
     func testCreatingChaosGlyph() {
-        let chaos = GlyphGenerator.sharedGenerator().createGlyphWithType("Chaos", path: nil)
+        let chaos = try! GlyphGenerator.sharedGenerator().createGlyphWithType("Chaos", path: nil)
         
         let inputPath: Set<GlyphPath> = [
                                                GlyphPath(point1: 0, point2: 1),
@@ -42,7 +42,7 @@ class GlyphHackPracticeTests: XCTestCase {
                                                GlyphPath(point1: 2, point2: 6),
                                                GlyphPath(point1: 6, point2: 10),
                                               ]
-        let inputGlyph = GlyphGenerator.sharedGenerator().createGlyphWithType("", path: inputPath)
+        let inputGlyph = try! GlyphGenerator.sharedGenerator().createGlyphWithType("", path: inputPath)
         XCTAssert(chaos.isEqual(inputGlyph), "")
     }
     
@@ -51,10 +51,39 @@ class GlyphHackPracticeTests: XCTestCase {
         for sequence1:[[String]] in allGlyphSequences {
             for sequence2:[String] in sequence1 {
                 for type in sequence2 {
-                    let glyph: Glyph? = GlyphGenerator.sharedGenerator().createGlyphWithType(type)
+                    let glyph: Glyph? = try! GlyphGenerator.sharedGenerator().createGlyphWithType(type)
                     XCTAssert(glyph != nil, "")
                 }
             }
+        }
+    }
+    
+    func testFetchingItems() {
+        
+        let expectation = self.expectationWithDescription("fetch done");
+        
+        GlyphFetcher.sharedFetcher().fetchGlyphs().continueWithSuccessBlock { (task) -> AnyObject? in
+            Log.d("\(task.result)")
+            
+            guard let result = task.result else {
+                return nil
+            }
+            
+            var resultDictionary = result as! Dictionary<String, AnyObject>
+            
+            try! GlyphGenerator.sharedGenerator().overwriteGlyphs(resultDictionary[GlyphFetcher.itemsName] as! Array<Dictionary<String, AnyObject>>)
+            resultDictionary.removeValueForKey(GlyphFetcher.itemsName);
+            try! GlyphSequenceProvider.sharedProvider().overwriteSequences(resultDictionary)
+            
+            self.testIfNilGlyphExists()
+            self.testEqual()
+            self.testCreatingChaosGlyph()
+            
+            expectation.fulfill()
+            return nil
+        }
+        
+        self.waitForExpectationsWithTimeout(10) { (error) -> Void in
         }
     }
 }

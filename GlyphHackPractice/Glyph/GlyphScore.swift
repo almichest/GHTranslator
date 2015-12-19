@@ -59,6 +59,7 @@ class GlyphScore: NSObject {
         GKScore.reportScores(scores, withCompletionHandler: { (error) -> Void in
             Log.d("Reporting scores completed. error : \(error)")
             if error != nil {
+                Log.d("\(error)")
             }
         })
     }
