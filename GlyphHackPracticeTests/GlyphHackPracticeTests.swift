@@ -75,13 +75,31 @@ class GlyphHackPracticeTests: XCTestCase {
             resultDictionary.removeValueForKey(GlyphFetcher.itemsName);
             try! GlyphSequenceProvider.sharedProvider().overwriteSequences(resultDictionary)
             
-            self.testIfNilGlyphExists()
-            self.testEqual()
-            self.testCreatingChaosGlyph()
             
+            let allGlyphSequences:[[[String]]] = GlyphSequenceProvider.sharedProvider().provideAllSequence()
+            for sequence1:[[String]] in allGlyphSequences {
+                for sequence2:[String] in sequence1 {
+                    for type in sequence2 {
+                        let glyph: Glyph? = try! GlyphGenerator.sharedGenerator().createGlyphWithType(type)
+                        XCTAssert(glyph != nil, "")
+                    }
+                }
+            }
             expectation.fulfill()
             return nil
         }
+        
+        let chaos = try! GlyphGenerator.sharedGenerator().createGlyphWithType("Chaos", path: nil)
+        
+        let inputPath: Set<GlyphPath> = [
+                                               GlyphPath(point1: 0, point2: 1),
+                                               GlyphPath(point1: 1, point2: 8),
+                                               GlyphPath(point1: 0, point2: 2),
+                                               GlyphPath(point1: 2, point2: 6),
+                                               GlyphPath(point1: 6, point2: 10),
+                                              ]
+        let inputGlyph = try! GlyphGenerator.sharedGenerator().createGlyphWithType("", path: inputPath)
+        XCTAssert(chaos.isEqual(inputGlyph), "")
         
         self.waitForExpectationsWithTimeout(10) { (error) -> Void in
         }
