@@ -28,6 +28,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GlyphFetcher.sharedFetcher().fetchGlyphs().continueWithSuccessBlock { (task) -> AnyObject? in
             Log.d("\(task.result)")
             
+            guard let result = task.result else {
+                return nil
+            }
+            
+            var resultDictionary = result as! Dictionary<String, AnyObject>
+            
+            try! GlyphGenerator.sharedGenerator().overwriteGlyphs(resultDictionary[GlyphFetcher.itemsName] as! Array<Dictionary<String, AnyObject>>)
+            resultDictionary.removeValueForKey(GlyphFetcher.itemsName);
+            try! GlyphSequenceProvider.sharedProvider().overwriteSequences(resultDictionary)
+            
             return nil
         }
         
